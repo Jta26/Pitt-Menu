@@ -1,0 +1,30 @@
+{
+  "name": "Menu-Parser",
+  "version": "1.0.0",
+  "description": "Repo for 2019 Capstone Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jta26/Menu-Parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jta26/Menu-Parser/issues"
+  },
+  "homepage": "https://github.com/Jta26/Menu-Parser#readme",
+  "dependencies": {
+    "moment": "^2.23.0",
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-sticky": "^6.0.3"
+  }
+}
