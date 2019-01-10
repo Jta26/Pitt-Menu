@@ -1,21 +1,29 @@
 
 
 const dateObjStyle = {
-    color: 'black',
-    fontSize: 17,
+    color: 'white',
+    fontSize: 20,
     textAlign: 'center',
-    border: '3px solid #DFDCE3',
-    padding: 5,
-    paddingLeft: 100,
-    paddingRight: 100,
-    marginLeft: 20,
-    marginRight: 20
+    fontFamily: 'Fjalla One',
+    marginLeft: 30,
+    marginRight: 30,
+    alignItems: 'column',
+    marginTop: 20,
+    
 }
-
+const datePStyle = {
+    opacity: 0.6, float: 'left',
+    fontSize: 15,
+    color: 'rgb(126,188,89)',
+    
+}
 const DateObj = (props) => (
     <div style={dateObjStyle}>
         <p>{props.title}</p>
-        <p style={{opacity: 0.6}}>{props.date}</p>
+        <div style={{display: 'flex', justifyContent:'space-between', flexDirection: 'row'}}>
+        <p style={datePStyle}>Week {props.week}</p>
+        <p style={datePStyle}>{props.date}</p>
+    </div>
     </div>
 );
 

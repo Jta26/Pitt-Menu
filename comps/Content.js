@@ -1,50 +1,65 @@
+import Scrollbars from 'react-scrollbars-custom';
+var imgUrl = '../data/images/bckrnd.png';
+
+const titleStyles = {
+    marginTop: 20,
+    backgroundColor:'rgba(51,54,59,0.9)',
+    fontFamily: 'Fjalla One'
+}
 const contentStyle = {
-    backgroundColor: '#DFDCE3;',
-    height: '100vh',
-    overflowY: 'scroll',
-    display: 'flex',
-    
-    justifyContent:'center',
+    height: '95vh',
+    overflowY: 'hidden',
+    color: 'white',
+    backgroundImage: `url(${'https://i.imgur.com/96u67GB.png'})`,
+    backgroundSize: 'cover',
+
 }
 const contentContainer = {
-    width: '85%',
-    backgroundColor: '#4ABDAC',
-    marginTop: 100,
+    backgroundColor: 'rgba(51,54,59,0.9)',
+    marginTop: '10vh',
     padding: 25,
-    borderRadius:30,
-   
+}
+const paraStyles = {
+    marginTop: 40,
+    opacity: '.9999'
 }
 
 export default class Content extends React.Component {
+    paragraphs = [];
     constructor(props) {
         super(props);
         this.state = {
-            title: this.props.title,
-            date: this.props.date,
-            content: this.props.content
+            title: props.title,
+            date: props.date,
+            paragraphs: props.paragraphs
         }
+
     }
     componentWillReceiveProps(props) {
         this.setState({
-            title: this.props.title,
-            date: this.props.date,
-            content: this.props.content
-        })
+            title: props.title,
+            date: props.date,
+            paragraphs: props.paragraphs
+        });
+    }
+    paraGen() {
+        return (
+            <p style={paraStyles}>{para}</p>
+        )
     }
     render() {
-        
         return (
-            <div style={contentStyle}>
+            <Scrollbars style={contentStyle}>
+                <div style={titleStyles}>
+                <h4 style={{textAlign: 'center', paddingTop: 10}}>{this.state.date}</h4>
+                <h1 style={{textAlign: 'center', fontFamily:'Fjalla One', lineHeight: 3, fontSize: 40}}><b>{this.state.title}</b></h1>
+                </div>
                 <div style={contentContainer}>
-                    <div>
-                        <h1 style={{fontFamily: 'Bree Serif', textAlign: 'center', fontSize: 40}}>{this.state.title}</h1>
-                        <h4>{this.state.date}</h4>
-                        <p style={{marginTop: 50}}>{this.state.content}</p>
-                        <p style={{marginTop: 50}}>{this.state.content}</p>
+                    <div style={{width: '75%', margin: 'auto'}}>
+                        <p>{this.state.paragraphs}</p>
                     </div>
                 </div>
-                
-            </div>
+            </Scrollbars>
         )
     }
 

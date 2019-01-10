@@ -105,7 +105,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Content; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/home/joel/Desktop/Menu-Parser/comps/Content.js";
+/* harmony import */ var react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-scrollbars-custom */ "react-scrollbars-custom");
+/* harmony import */ var react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/home/joel/Menu-Parser/comps/Content.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -118,27 +120,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var imgUrl = '../data/images/bckrnd.png';
+var titleStyles = {
+  marginTop: 20,
+  backgroundColor: 'rgba(51,54,59,0.9)',
+  fontFamily: 'Fjalla One'
+};
 var contentStyle = {
-  backgroundColor: '#DFDCE3;',
-  height: '100vh',
-  overflowY: 'scroll',
-  display: 'flex',
-  justifyContent: 'center'
+  height: '95vh',
+  overflowY: 'hidden',
+  color: 'white',
+  backgroundImage: "url(".concat('https://i.imgur.com/96u67GB.png', ")"),
+  backgroundSize: 'cover'
 };
 var contentContainer = {
-  width: '85%',
-  backgroundColor: '#4ABDAC',
-  marginTop: 100,
-  padding: 25,
-  borderRadius: 30
+  backgroundColor: 'rgba(51,54,59,0.9)',
+  marginTop: '10vh',
+  padding: 25
+};
+var paraStyles = {
+  marginTop: 40,
+  opacity: '.9999'
 };
 
 var Content =
@@ -152,10 +165,13 @@ function (_React$Component) {
     _classCallCheck(this, Content);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Content).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paragraphs", []);
+
     _this.state = {
-      title: _this.props.title,
-      date: _this.props.date,
-      content: _this.props.content
+      title: props.title,
+      date: props.date,
+      paragraphs: props.paragraphs
     };
     return _this;
   }
@@ -164,70 +180,92 @@ function (_React$Component) {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(props) {
       this.setState({
-        title: this.props.title,
-        date: this.props.date,
-        content: this.props.content
+        title: props.title,
+        date: props.date,
+        paragraphs: props.paragraphs
       });
+    }
+  }, {
+    key: "paraGen",
+    value: function paraGen() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: paraStyles,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47
+        },
+        __self: this
+      }, para);
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_1___default.a, {
         style: contentStyle,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 52
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: contentContainer,
+        style: titleStyles,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 53
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         style: {
-          fontFamily: 'Bree Serif',
           textAlign: 'center',
+          paddingTop: 10
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54
+        },
+        __self: this
+      }, this.state.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        style: {
+          textAlign: 'center',
+          fontFamily: 'Fjalla One',
+          lineHeight: 3,
           fontSize: 40
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 55
         },
         __self: this
-      }, this.state.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 55
         },
         __self: this
-      }, this.state.date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, this.state.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: contentContainer,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          marginTop: 50
+          width: '75%',
+          margin: 'auto'
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 58
         },
         __self: this
-      }, this.state.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          marginTop: 50
-        },
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 59
         },
         __self: this
-      }, this.state.content))));
+      }, this.state.paragraphs))));
     }
   }]);
 
@@ -249,18 +287,23 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/home/joel/Desktop/Menu-Parser/comps/DateObject.js";
+var _jsxFileName = "/home/joel/Menu-Parser/comps/DateObject.js";
 
 var dateObjStyle = {
-  color: 'black',
-  fontSize: 17,
+  color: 'white',
+  fontSize: 20,
   textAlign: 'center',
-  border: '3px solid #DFDCE3',
-  padding: 5,
-  paddingLeft: 100,
-  paddingRight: 100,
-  marginLeft: 20,
-  marginRight: 20
+  fontFamily: 'Fjalla One',
+  marginLeft: 30,
+  marginRight: 30,
+  alignItems: 'column',
+  marginTop: 20
+};
+var datePStyle = {
+  opacity: 0.6,
+  float: 'left',
+  fontSize: 15,
+  color: 'rgb(126,188,89)'
 };
 
 var DateObj = function DateObj(props) {
@@ -268,28 +311,148 @@ var DateObj = function DateObj(props) {
     style: dateObjStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 21
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 22
     },
     __self: this
-  }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
-      opacity: 0.6
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexDirection: 'row'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 23
     },
     __self: this
-  }, props.date));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: datePStyle,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }, "Week ", props.week), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    style: datePStyle,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  }, props.date)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DateObj);
+
+/***/ }),
+
+/***/ "./comps/Header.js":
+/*!*************************!*\
+  !*** ./comps/Header.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var typed_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! typed.js */ "typed.js");
+/* harmony import */ var typed_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(typed_js__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/home/joel/Menu-Parser/comps/Header.js";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+var headerContainerStyles = {
+  backgroundColor: 'rgba(51,54,59,0.9)',
+  height: '5vh',
+  outline: '1px solid black'
+};
+var titleStyles = {
+  textAlign: 'right',
+  fontSize: '2em',
+  marginRight: 20,
+  fontFamily: 'Fjalla One',
+  paddingTop: 5,
+  color: '#fff'
+};
+
+var Header =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header(props) {
+    var _this;
+
+    _classCallCheck(this, Header);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Header, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var options = {
+        strings: ["Joel Austin Capstone Blog"],
+        typeSpeed: 50,
+        showCursor: false
+      };
+      var typed = new typed_js__WEBPACK_IMPORTED_MODULE_1___default.a(".typed", options);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: headerContainerStyles,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "typed",
+        style: titleStyles,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }));
+    }
+  }]);
+
+  return Header;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
 
 /***/ }),
 
@@ -297,10 +460,10 @@ var DateObj = function DateObj(props) {
 /*!*************************!*\
   !*** ./data/blogs.json ***!
   \*************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, default */
 /***/ (function(module) {
 
-module.exports = [{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nisl interdum diam imperdiet auctor. Phasellus porta mollis egestas. Duis auctor at tellus at molestie. Ut suscipit imperdiet laoreet. Curabitur condimentum porttitor mi quis interdum. Ut eu magna tortor. Sed semper nisl ante, quis vehicula sapien aliquet eget. Praesent semper tempor placerat. Morbi in dolor sed massa efficitur elementum in id lorem. Nullam nisl magna, consectetur a enim in, efficitur vehicula dui. Suspendisse tristique nunc vitae aliquet egestas. Quisque mattis mattis nunc et efficitur. Donec gravida tincidunt consectetur. Aenean malesuada aliquet orci, et porta eros fringilla vel. Ut dictum sed orci in volutpat. Etiam id ornare lacus, eget dapibus urna.In faucibus sem tortor, ac mattis nunc rutrum sed. Nam bibendum risus vitae porttitor pulvinar. Vivamus accumsan ante arcu, non sodales leo ultrices vel. Etiam auctor consequat tellus ac accumsan. Curabitur euismod, libero sed dictum dictum, augue dui maximus eros, nec semper lorem massa et nisl. Aliquam tempus scelerisque nulla eget tincidunt. Suspendisse vulputate lobortis velit. Donec eget tortor mauris. Donec eget leo aliquam, pellentesque nisl a, vestibulum arcu. Curabitur blandit pretium aliquam.Etiam iaculis ex ante, eget lobortis magna commodo viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam suscipit nibh at pharetra pellentesque. Donec fermentum, felis quis commodo mollis, augue felis malesuada velit, id suscipit sem lectus eget felis. Nam faucibus sollicitudin dolor, sit amet facilisis tortor varius aliquam. In hendrerit tincidunt pretium. Donec tellus turpis, scelerisque et sapien vitae, semper faucibus urna. Integer ut mi diam. Mauris nisl sem, feugiat nec porttitor eu, tempus ullamcorper metus. Phasellus ultrices sapien sed lorem malesuada maximus. Integer libero velit, gravida eu odio ut, placerat mollis lacus.Nunc placerat tempor lectus, porttitor feugiat mauris venenatis ac. Donec et dolor sodales, dapibus est et, rhoncus lorem. Nam lobortis laoreet felis at pulvinar. Nam congue lobortis nibh, nec vestibulum erat bibendum sit amet. Aliquam erat volutpat. Sed aliquam tincidunt pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam bibendum justo nisi, vel gravida lectus aliquet sed. Ut quam dui, sagittis sit amet eros sed, sodales commodo neque. Mauris elit risus, maximus sed eleifend at, interdum in erat. Vestibulum a sem eu arcu euismod tempor. Etiam non lobortis tortor, ac efficitur lorem. Donec enim lacus, rutrum at nibh nec, iaculis aliquet felis.Nullam magna urna, lacinia quis hendrerit ut, cursus vitae libero. Nam sapien arcu, condimentum sed nisl sed, feugiat consectetur neque. Vestibulum lobortis eget sapien sit amet lobortis. Praesent non dapibus nulla. Proin nec volutpat ante, a faucibus arcu. Cras eget ultrices est, id rutrum orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Mauris eget lectus tincidunt, auctor lacus non, scelerisque nulla. Pellentesque elementum ullamcorper augue vel placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fermentum urna magna. Etiam interdum purus in dapibus molestie. Cras mauris orci, lacinia ut luctus non, maximus placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nisl interdum diam imperdiet auctor. Phasellus porta mollis egestas. Duis auctor at tellus at molestie. Ut suscipit imperdiet laoreet. Curabitur condimentum porttitor mi quis interdum. Ut eu magna tortor. Sed semper nisl ante, quis vehicula sapien aliquet eget. Praesent semper tempor placerat. Morbi in dolor sed massa efficitur elementum in id lorem. Nullam nisl magna, consectetur a enim in, efficitur vehicula dui. Suspendisse tristique nunc vitae aliquet egestas. Quisque mattis mattis nunc et efficitur. Donec gravida tincidunt consectetur. Aenean malesuada aliquet orci, et porta eros fringilla vel. Ut dictum sed orci in volutpat. Etiam id ornare lacus, eget dapibus urna.In faucibus sem tortor, ac mattis nunc rutrum sed. Nam bibendum risus vitae porttitor pulvinar. Vivamus accumsan ante arcu, non sodales leo ultrices vel. Etiam auctor consequat tellus ac accumsan. Curabitur euismod, libero sed dictum dictum, augue dui maximus eros, nec semper lorem massa et nisl. Aliquam tempus scelerisque nulla eget tincidunt. Suspendisse vulputate lobortis velit. Donec eget tortor mauris. Donec eget leo aliquam, pellentesque nisl a, vestibulum arcu. Curabitur blandit pretium aliquam.Etiam iaculis ex ante, eget lobortis magna commodo viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam suscipit nibh at pharetra pellentesque. Donec fermentum, felis quis commodo mollis, augue felis malesuada velit, id suscipit sem lectus eget felis. Nam faucibus sollicitudin dolor, sit amet facilisis tortor varius aliquam. In hendrerit tincidunt pretium. Donec tellus turpis, scelerisque et sapien vitae, semper faucibus urna. Integer ut mi diam. Mauris nisl sem, feugiat nec porttitor eu, tempus ullamcorper metus. Phasellus ultrices sapien sed lorem malesuada maximus. Integer libero velit, gravida eu odio ut, placerat mollis lacus.Nunc placerat tempor lectus, porttitor feugiat mauris venenatis ac. Donec et dolor sodales, dapibus est et, rhoncus lorem. Nam lobortis laoreet felis at pulvinar. Nam congue lobortis nibh, nec vestibulum erat bibendum sit amet. Aliquam erat volutpat. Sed aliquam tincidunt pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam bibendum justo nisi, vel gravida lectus aliquet sed. Ut quam dui, sagittis sit amet eros sed, sodales commodo neque. Mauris elit risus, maximus sed eleifend at, interdum in erat. Vestibulum a sem eu arcu euismod tempor. Etiam non lobortis tortor, ac efficitur lorem. Donec enim lacus, rutrum at nibh nec, iaculis aliquet felis.Nullam magna urna, lacinia quis hendrerit ut, cursus vitae libero. Nam sapien arcu, condimentum sed nisl sed, feugiat consectetur neque. Vestibulum lobortis eget sapien sit amet lobortis. Praesent non dapibus nulla. Proin nec volutpat ante, a faucibus arcu. Cras eget ultrices est, id rutrum orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Mauris eget lectus tincidunt, auctor lacus non, scelerisque nulla. Pellentesque elementum ullamcorper augue vel placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fermentum urna magna. Etiam interdum purus in dapibus molestie. Cras mauris orci, lacinia ut luctus non, maximus placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nisl interdum diam imperdiet auctor. Phasellus porta mollis egestas. Duis auctor at tellus at molestie. Ut suscipit imperdiet laoreet. Curabitur condimentum porttitor mi quis interdum. Ut eu magna tortor. Sed semper nisl ante, quis vehicula sapien aliquet eget. Praesent semper tempor placerat. Morbi in dolor sed massa efficitur elementum in id lorem. Nullam nisl magna, consectetur a enim in, efficitur vehicula dui. Suspendisse tristique nunc vitae aliquet egestas. Quisque mattis mattis nunc et efficitur. Donec gravida tincidunt consectetur. Aenean malesuada aliquet orci, et porta eros fringilla vel. Ut dictum sed orci in volutpat. Etiam id ornare lacus, eget dapibus urna.In faucibus sem tortor, ac mattis nunc rutrum sed. Nam bibendum risus vitae porttitor pulvinar. Vivamus accumsan ante arcu, non sodales leo ultrices vel. Etiam auctor consequat tellus ac accumsan. Curabitur euismod, libero sed dictum dictum, augue dui maximus eros, nec semper lorem massa et nisl. Aliquam tempus scelerisque nulla eget tincidunt. Suspendisse vulputate lobortis velit. Donec eget tortor mauris. Donec eget leo aliquam, pellentesque nisl a, vestibulum arcu. Curabitur blandit pretium aliquam.Etiam iaculis ex ante, eget lobortis magna commodo viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam suscipit nibh at pharetra pellentesque. Donec fermentum, felis quis commodo mollis, augue felis malesuada velit, id suscipit sem lectus eget felis. Nam faucibus sollicitudin dolor, sit amet facilisis tortor varius aliquam. In hendrerit tincidunt pretium. Donec tellus turpis, scelerisque et sapien vitae, semper faucibus urna. Integer ut mi diam. Mauris nisl sem, feugiat nec porttitor eu, tempus ullamcorper metus. Phasellus ultrices sapien sed lorem malesuada maximus. Integer libero velit, gravida eu odio ut, placerat mollis lacus.Nunc placerat tempor lectus, porttitor feugiat mauris venenatis ac. Donec et dolor sodales, dapibus est et, rhoncus lorem. Nam lobortis laoreet felis at pulvinar. Nam congue lobortis nibh, nec vestibulum erat bibendum sit amet. Aliquam erat volutpat. Sed aliquam tincidunt pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam bibendum justo nisi, vel gravida lectus aliquet sed. Ut quam dui, sagittis sit amet eros sed, sodales commodo neque. Mauris elit risus, maximus sed eleifend at, interdum in erat. Vestibulum a sem eu arcu euismod tempor. Etiam non lobortis tortor, ac efficitur lorem. Donec enim lacus, rutrum at nibh nec, iaculis aliquet felis.Nullam magna urna, lacinia quis hendrerit ut, cursus vitae libero. Nam sapien arcu, condimentum sed nisl sed, feugiat consectetur neque. Vestibulum lobortis eget sapien sit amet lobortis. Praesent non dapibus nulla. Proin nec volutpat ante, a faucibus arcu. Cras eget ultrices est, id rutrum orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Mauris eget lectus tincidunt, auctor lacus non, scelerisque nulla. Pellentesque elementum ullamcorper augue vel placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fermentum urna magna. Etiam interdum purus in dapibus molestie. Cras mauris orci, lacinia ut luctus non, maximus placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nisl interdum diam imperdiet auctor. Phasellus porta mollis egestas. Duis auctor at tellus at molestie. Ut suscipit imperdiet laoreet. Curabitur condimentum porttitor mi quis interdum. Ut eu magna tortor. Sed semper nisl ante, quis vehicula sapien aliquet eget. Praesent semper tempor placerat. Morbi in dolor sed massa efficitur elementum in id lorem. Nullam nisl magna, consectetur a enim in, efficitur vehicula dui. Suspendisse tristique nunc vitae aliquet egestas. Quisque mattis mattis nunc et efficitur. Donec gravida tincidunt consectetur. Aenean malesuada aliquet orci, et porta eros fringilla vel. Ut dictum sed orci in volutpat. Etiam id ornare lacus, eget dapibus urna.In faucibus sem tortor, ac mattis nunc rutrum sed. Nam bibendum risus vitae porttitor pulvinar. Vivamus accumsan ante arcu, non sodales leo ultrices vel. Etiam auctor consequat tellus ac accumsan. Curabitur euismod, libero sed dictum dictum, augue dui maximus eros, nec semper lorem massa et nisl. Aliquam tempus scelerisque nulla eget tincidunt. Suspendisse vulputate lobortis velit. Donec eget tortor mauris. Donec eget leo aliquam, pellentesque nisl a, vestibulum arcu. Curabitur blandit pretium aliquam.Etiam iaculis ex ante, eget lobortis magna commodo viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam suscipit nibh at pharetra pellentesque. Donec fermentum, felis quis commodo mollis, augue felis malesuada velit, id suscipit sem lectus eget felis. Nam faucibus sollicitudin dolor, sit amet facilisis tortor varius aliquam. In hendrerit tincidunt pretium. Donec tellus turpis, scelerisque et sapien vitae, semper faucibus urna. Integer ut mi diam. Mauris nisl sem, feugiat nec porttitor eu, tempus ullamcorper metus. Phasellus ultrices sapien sed lorem malesuada maximus. Integer libero velit, gravida eu odio ut, placerat mollis lacus.Nunc placerat tempor lectus, porttitor feugiat mauris venenatis ac. Donec et dolor sodales, dapibus est et, rhoncus lorem. Nam lobortis laoreet felis at pulvinar. Nam congue lobortis nibh, nec vestibulum erat bibendum sit amet. Aliquam erat volutpat. Sed aliquam tincidunt pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam bibendum justo nisi, vel gravida lectus aliquet sed. Ut quam dui, sagittis sit amet eros sed, sodales commodo neque. Mauris elit risus, maximus sed eleifend at, interdum in erat. Vestibulum a sem eu arcu euismod tempor. Etiam non lobortis tortor, ac efficitur lorem. Donec enim lacus, rutrum at nibh nec, iaculis aliquet felis.Nullam magna urna, lacinia quis hendrerit ut, cursus vitae libero. Nam sapien arcu, condimentum sed nisl sed, feugiat consectetur neque. Vestibulum lobortis eget sapien sit amet lobortis. Praesent non dapibus nulla. Proin nec volutpat ante, a faucibus arcu. Cras eget ultrices est, id rutrum orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Mauris eget lectus tincidunt, auctor lacus non, scelerisque nulla. Pellentesque elementum ullamcorper augue vel placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fermentum urna magna. Etiam interdum purus in dapibus molestie. Cras mauris orci, lacinia ut luctus non, maximus placerat nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nisl interdum diam imperdiet auctor. Phasellus porta mollis egestas. Duis auctor at tellus at molestie. Ut suscipit imperdiet laoreet. Curabitur condimentum porttitor mi quis interdum. Ut eu magna tortor. Sed semper nisl ante, quis vehicula sapien aliquet eget. Praesent semper tempor placerat. Morbi in dolor sed massa efficitur elementum in id lorem. Nullam nisl magna, consectetur a enim in, efficitur vehicula dui. Suspendisse tristique nunc vitae aliquet egestas. Quisque mattis mattis nunc et efficitur. Donec gravida tincidunt consectetur. Aenean malesuada aliquet orci, et porta eros fringilla vel. Ut dictum sed orci in volutpat. Etiam id ornare lacus, eget dapibus urna.In faucibus sem tortor, ac mattis nunc rutrum sed. Nam bibendum risus vitae porttitor pulvinar. Vivamus accumsan ante arcu, non sodales leo ultrices vel. Etiam auctor consequat tellus ac accumsan. Curabitur euismod, libero sed dictum dictum, augue dui maximus eros, nec semper lorem massa et nisl. Aliquam tempus scelerisque nulla eget tincidunt. Suspendisse vulputate lobortis velit. Donec eget tortor mauris. Donec eget leo aliquam, pellentesque nisl a, vestibulum arcu. Curabitur blandit pretium aliquam.Etiam iaculis ex ante, eget lobortis magna commodo viverra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam suscipit nibh at pharetra pellentesque. Donec fermentum, felis quis commodo mollis, augue felis malesuada velit, id suscipit sem lectus eget felis. Nam faucibus sollicitudin dolor, sit amet facilisis tortor varius aliquam. In hendrerit tincidunt pretium. Donec tellus turpis, scelerisque et sapien vitae, semper faucibus urna. Integer ut mi diam. Mauris nisl sem, feugiat nec porttitor eu, tempus ullamcorper metus. Phasellus ultrices sapien sed lorem malesuada maximus. Integer libero velit, gravida eu odio ut, placerat mollis lacus.Nunc placerat tempor lectus, porttitor feugiat mauris venenatis ac. Donec et dolor sodales, dapibus est et, rhoncus lorem. Nam lobortis laoreet felis at pulvinar. Nam congue lobortis nibh, nec vestibulum erat bibendum sit amet. Aliquam erat volutpat. Sed aliquam tincidunt pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam bibendum justo nisi, vel gravida lectus aliquet sed. Ut quam dui, sagittis sit amet eros sed, sodales commodo neque. Mauris elit risus, maximus sed eleifend at, interdum in erat. Vestibulum a sem eu arcu euismod tempor. Etiam non lobortis tortor, ac efficitur lorem. Donec enim lacus, rutrum at nibh nec, iaculis aliquet felis.Nullam magna urna, lacinia quis hendrerit ut, cursus vitae libero. Nam sapien arcu, condimentum sed nisl sed, feugiat consectetur neque. Vestibulum lobortis eget sapien sit amet lobortis. Praesent non dapibus nulla. Proin nec volutpat ante, a faucibus arcu. Cras eget ultrices est, id rutrum orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Mauris eget lectus tincidunt, auctor lacus non, scelerisque nulla. Pellentesque elementum ullamcorper augue vel placerat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fermentum urna magna. Etiam interdum purus in dapibus molestie. Cras mauris orci, lacinia ut luctus non, maximus placerat nisl. "},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"},{"title":"Capstone Blog Created","date":"Jan 8 2019","content":"This was created today."},{"title":"Test 2","date":"Jan 9 2019","content":"This test"},{"title":"Test 3","date":"Jan 10 2019"}];
+module.exports = [{"title":"Capstone Blog Creation","date":"Jan 9 2019","week":"1","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]},{"title":"Project Idea Formed","date":"Jan 10 2019","week":"2","paragraphs":["Today I created this single page blog using Next.js and React."]}];
 
 /***/ }),
 
@@ -324,13 +487,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _comps_DateObject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../comps/DateObject */ "./comps/DateObject.js");
 /* harmony import */ var _comps_Content__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../comps/Content */ "./comps/Content.js");
-/* harmony import */ var _data_blogs_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../data/blogs.json */ "./data/blogs.json");
-var _data_blogs_json__WEBPACK_IMPORTED_MODULE_6___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/blogs.json */ "./data/blogs.json", 1);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "moment");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_sticky__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-sticky */ "react-sticky");
-/* harmony import */ var react_sticky__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_sticky__WEBPACK_IMPORTED_MODULE_8__);
-var _jsxFileName = "/home/joel/Desktop/Menu-Parser/pages/index.js";
+/* harmony import */ var _comps_Header__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../comps/Header */ "./comps/Header.js");
+/* harmony import */ var _data_blogs_json__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../data/blogs.json */ "./data/blogs.json");
+var _data_blogs_json__WEBPACK_IMPORTED_MODULE_7___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../data/blogs.json */ "./data/blogs.json", 1);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_sticky__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-sticky */ "react-sticky");
+/* harmony import */ var react_sticky__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_sticky__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-scrollbars-custom */ "react-scrollbars-custom");
+/* harmony import */ var react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_10__);
+var _jsxFileName = "/home/joel/Menu-Parser/pages/index.js";
 
 
 
@@ -344,13 +510,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
 
 
 
@@ -365,15 +533,25 @@ var indexStyles = {
 };
 var navContainerStyles = {
   flexDirection: 'row',
+  height: '95vh',
+  overflowY: 'hidden',
+  backgroundColor: 'rgba(51,54,59,1)',
+  outline: 'none',
+  width: '300px',
   float: 'left',
-  height: '100vh',
-  overflowY: 'scroll'
+  textDecorationLine: 'none'
 };
 var contentStyles = {
   flexDirection: 'row'
 };
-var navStyles = {
-  backgroundColor: '   '
+var navStyles = {};
+var hoverStyles = {
+  opacity: '.7'
+};
+var linkStyles = {
+  textDecorationLine: 'none',
+  paddingTop: 10,
+  outline: 'none'
 };
 
 var Index =
@@ -390,35 +568,44 @@ function (_React$Component) {
     _this.state = {
       selectedBlogTitle: '',
       selectedBlogDate: '',
-      selectedBlogContent: []
+      selectedBlogContent: [],
+      hover: false
     };
+    _this.hoverToggle = _this.hoverToggle.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Index, [{
+    key: "hoverToggle",
+    value: function hoverToggle() {
+      this.setState({
+        hover: !this.state.hover
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var blogList = _data_blogs_json__WEBPACK_IMPORTED_MODULE_6__.map(function (blog, index) {
+      var blogList = _data_blogs_json__WEBPACK_IMPORTED_MODULE_7__.map(function (blog, index) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           style: navStyles,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 55
           },
           __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_sticky__WEBPACK_IMPORTED_MODULE_8__["StickyContainer"], {
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_sticky__WEBPACK_IMPORTED_MODULE_9__["StickyContainer"], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 57
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
           href: "/",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 44
+            lineNumber: 58
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
@@ -426,23 +613,26 @@ function (_React$Component) {
             return _this2.setState({
               selectedBlogTitle: blog.title,
               selectedBlogDate: blog.date,
-              selectedBlogContent: blog.content
+              selectedBlogParagraphs: blog.paragraphs
             });
           },
-          style: {
-            textDecorationLine: 'none'
+          onMouseEnter: _this2.hoverToggle,
+          onMouseLeave: _this2.hoverToggle,
+          style: _this2.state.hover ? hoverStyles : {
+            opacity: '1'
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 45
+            lineNumber: 59
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_comps_DateObject__WEBPACK_IMPORTED_MODULE_4__["default"], {
           title: blog.title,
-          date: moment__WEBPACK_IMPORTED_MODULE_7___default()(blog.date).format('MMMM Do YYYY'),
+          week: blog.week,
+          date: moment__WEBPACK_IMPORTED_MODULE_8___default()(blog.date).format('MMMM Do YYYY'),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 68
           },
           __self: this
         })))));
@@ -451,51 +641,66 @@ function (_React$Component) {
         style: indexStyles,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 80
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 81
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Lato",
         rel: "stylesheet",
-        className: "jsx-1302619584",
+        className: "jsx-2940664450",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 82
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Bree+Serif",
         rel: "stylesheet",
-        className: "jsx-1302619584",
+        className: "jsx-2940664450",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 83
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("link", {
+        href: "https://fonts.googleapis.com/css?family=Fjalla+One",
+        rel: "stylesheet",
+        className: "jsx-2940664450",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-        styleId: "1302619584",
-        css: "*{margin:0;padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2pvZWwvRGVza3RvcC9NZW51LVBhcnNlci9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFpRW1DLEFBR2lDLFNBQ0MsVUFFVCIsImZpbGUiOiIvaG9tZS9qb2VsL0Rlc2t0b3AvTWVudS1QYXJzZXIvcGFnZXMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTGluayBmcm9tICduZXh0L2xpbmsnO1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCBEYXRlT2JqIGZyb20gJy4uL2NvbXBzL0RhdGVPYmplY3QnO1xuaW1wb3J0IENvbnRlbnQgZnJvbSAnLi4vY29tcHMvQ29udGVudCc7XG5pbXBvcnQgYmxvZ3MgZnJvbSAnLi4vZGF0YS9ibG9ncy5qc29uJztcbmltcG9ydCBtb21lbnQgZnJvbSAnbW9tZW50JztcbmltcG9ydCB7U3RpY2t5Q29udGFpbmVyLCBTdGlja3l9IGZyb20gJ3JlYWN0LXN0aWNreSc7XG5cblxuY29uc3QgaW5kZXhTdHlsZXMgPSB7XG4gICAgZm9udEZhbWlseTogJ0xhdG8nLFxuICAgIGZsZXg6IDEsXG5cbn1cbmNvbnN0IG5hdkNvbnRhaW5lclN0eWxlcyA9IHtcbiAgICBmbGV4RGlyZWN0aW9uOiAncm93JyxcbiAgICBmbG9hdDogJ2xlZnQnLFxuICAgIGhlaWdodDogJzEwMHZoJyxcbiAgICBvdmVyZmxvd1k6ICdzY3JvbGwnLFxuXG59XG5jb25zdCBjb250ZW50U3R5bGVzID0ge1xuICAgIGZsZXhEaXJlY3Rpb246ICdyb3cnLFxufVxuXG5cbmNvbnN0IG5hdlN0eWxlcyA9IHtcbiAgICBiYWNrZ3JvdW5kQ29sb3I6ICcgICAnXG59XG5leHBvcnQgZGVmYXVsdCBjbGFzcyBJbmRleCBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG4gICAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICAgICAgc3VwZXIocHJvcHMpXG4gICAgICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICAgICAgICBzZWxlY3RlZEJsb2dUaXRsZTogJycsXG4gICAgICAgICAgICBzZWxlY3RlZEJsb2dEYXRlOiAnJyxcbiAgICAgICAgICAgIHNlbGVjdGVkQmxvZ0NvbnRlbnQ6IFtdXG4gICAgICAgIH1cbiAgICB9XG4gICAgcmVuZGVyKCkge1xuICAgICAgICB2YXIgYmxvZ0xpc3QgPSBibG9ncy5tYXAoKGJsb2csIGluZGV4KSA9PiB7XG4gICAgICAgICAgICByZXR1cm4oXG4gICAgICAgICAgICAgICAgPGRpdiBzdHlsZT17bmF2U3R5bGVzfT5cbiAgICAgICAgICAgICAgICA8U3RpY2t5Q29udGFpbmVyPlxuICAgICAgICAgICAgICAgICAgICA8TGluayBocmVmPScvJz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxhIG9uQ2xpY2s9eygpID0+IHRoaXMuc2V0U3RhdGUoe1xuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0ZWRCbG9nVGl0bGU6IGJsb2cudGl0bGUsXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxlY3RlZEJsb2dEYXRlOiBibG9nLmRhdGUsXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxlY3RlZEJsb2dDb250ZW50OiBibG9nLmNvbnRlbnRcbiAgICAgICAgICAgICAgICAgICAgICAgIH0pfVxuICAgICAgICAgICAgICAgICAgICAgICAgc3R5bGU9e3t0ZXh0RGVjb3JhdGlvbkxpbmU6ICdub25lJ319PlxuICAgICAgICAgICAgICAgICAgICAgICAgPERhdGVPYmpcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aXRsZT17YmxvZy50aXRsZX1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRlPXttb21lbnQoYmxvZy5kYXRlKS5mb3JtYXQoJ01NTU0gRG8gWVlZWScpfVxuICAgICAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgICAgICAgIDwvU3RpY2t5Q29udGFpbmVyPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgKSBcbiAgICAgICAgICAgfSk7XG4gICAgICByZXR1cm4oXG4gICAgICAgIDxkaXYgc3R5bGU9e2luZGV4U3R5bGVzfT5cbiAgICAgICAgICAgIDxIZWFkPlxuICAgICAgICAgICAgICAgIDxsaW5rIGhyZWY9XCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9TGF0b1wiIHJlbD1cInN0eWxlc2hlZXRcIi8+XG4gICAgICAgICAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1CcmVlK1NlcmlmXCIgcmVsPVwic3R5bGVzaGVldFwiLz4gXG4gICAgICAgICAgICAgICAgPHN0eWxlIGpzeCBnbG9iYWw+e2BcbiAgICAgICAgICAgICAgICAgICAgKiB7IFxuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luOjA7XG4gICAgICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOjA7XG4gICAgICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgIH1gXG4gICAgICAgICAgICAgICAgfTwvc3R5bGU+XG4gICAgICAgICAgICA8L0hlYWQ+XG4gICAgICAgICAgICA8ZGl2IHN0eWxlPXtuYXZDb250YWluZXJTdHlsZXN9PlxuICAgICAgICAgICAgICAgIHtibG9nTGlzdH1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPENvbnRlbnRcbiAgICAgICAgICAgICAgICB0aXRsZT17dGhpcy5zdGF0ZS5zZWxlY3RlZEJsb2dUaXRsZX1cbiAgICAgICAgICAgICAgICBkYXRlPXttb21lbnQodGhpcy5zdGF0ZS5zZWxlY3RlZEJsb2dEYXRlKS5mb3JtYXQoJ01NTU0gRG8gWVlZWScpfVxuICAgICAgICAgICAgICAgIGNvbnRlbnQ9e3RoaXMuc3RhdGUuc2VsZWN0ZWRCbG9nQ29udGVudH1cbiAgICAgICAgICAgIC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgKSAgXG4gICAgfVxuICAgIFxufSJdfQ== */\n/*@ sourceURL=/home/joel/Desktop/Menu-Parser/pages/index.js */",
+        styleId: "2940664450",
+        css: "*{margin:0;padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2pvZWwvTWVudS1QYXJzZXIvcGFnZXMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBb0ZtQyxBQUdpQyxTQUNDLFVBQ1QiLCJmaWxlIjoiL2hvbWUvam9lbC9NZW51LVBhcnNlci9wYWdlcy9pbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMaW5rIGZyb20gJ25leHQvbGluayc7XG5pbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xuaW1wb3J0IERhdGVPYmogZnJvbSAnLi4vY29tcHMvRGF0ZU9iamVjdCc7XG5pbXBvcnQgQ29udGVudCBmcm9tICcuLi9jb21wcy9Db250ZW50JztcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi4vY29tcHMvSGVhZGVyJztcbmltcG9ydCBibG9ncyBmcm9tICcuLi9kYXRhL2Jsb2dzLmpzb24nO1xuaW1wb3J0IG1vbWVudCBmcm9tICdtb21lbnQnO1xuaW1wb3J0IHtTdGlja3lDb250YWluZXIsIFN0aWNreX0gZnJvbSAncmVhY3Qtc3RpY2t5JztcbmltcG9ydCBTY3JvbGxiYXJzIGZyb20gJ3JlYWN0LXNjcm9sbGJhcnMtY3VzdG9tJztcbmNvbnN0IGluZGV4U3R5bGVzID0ge1xuICAgIGZvbnRGYW1pbHk6ICdMYXRvJyxcbiAgICBmbGV4OiAxLFxuXG59XG5jb25zdCBuYXZDb250YWluZXJTdHlsZXMgPSB7XG4gICAgZmxleERpcmVjdGlvbjogJ3JvdycsXG4gICAgaGVpZ2h0OiAnOTV2aCcsXG4gICAgb3ZlcmZsb3dZOiAnaGlkZGVuJyxcbiAgICBiYWNrZ3JvdW5kQ29sb3I6ICdyZ2JhKDUxLDU0LDU5LDEpJyxcbiAgICBvdXRsaW5lOiAnbm9uZScsXG4gICAgd2lkdGg6ICczMDBweCcsXG4gICAgZmxvYXQ6ICdsZWZ0JyxcbiAgICB0ZXh0RGVjb3JhdGlvbkxpbmU6ICdub25lJ1xufVxuY29uc3QgY29udGVudFN0eWxlcyA9IHtcbiAgICBmbGV4RGlyZWN0aW9uOiAncm93Jyxcbn1cblxuXG5jb25zdCBuYXZTdHlsZXMgPSB7XG59XG5jb25zdCBob3ZlclN0eWxlcyA9IHtcbiAgICBvcGFjaXR5OiAnLjcnXG59XG5jb25zdCBsaW5rU3R5bGVzID0ge1xuICAgIHRleHREZWNvcmF0aW9uTGluZTogJ25vbmUnLCBwYWRkaW5nVG9wOiAxMCwgb3V0bGluZTogJ25vbmUnXG59XG5leHBvcnQgZGVmYXVsdCBjbGFzcyBJbmRleCBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG4gICAgY29uc3RydWN0b3IocHJvcHMpIHtcbiAgICAgICAgc3VwZXIocHJvcHMpXG4gICAgICAgIHRoaXMuc3RhdGUgPSB7XG4gICAgICAgICAgICBzZWxlY3RlZEJsb2dUaXRsZTogJycsXG4gICAgICAgICAgICBzZWxlY3RlZEJsb2dEYXRlOiAnJyxcbiAgICAgICAgICAgIHNlbGVjdGVkQmxvZ0NvbnRlbnQ6IFtdLFxuICAgICAgICAgICAgaG92ZXI6IGZhbHNlXG4gICAgICAgIH1cbiAgICAgICAgdGhpcy5ob3ZlclRvZ2dsZSA9IHRoaXMuaG92ZXJUb2dnbGUuYmluZCh0aGlzKVxuICAgIH1cbiAgICBob3ZlclRvZ2dsZSgpIHtcbiAgICAgICAgdGhpcy5zZXRTdGF0ZSh7aG92ZXI6ICF0aGlzLnN0YXRlLmhvdmVyfSlcbiAgICB9XG4gICAgcmVuZGVyKCkge1xuICAgICAgICB2YXIgYmxvZ0xpc3QgPSBibG9ncy5tYXAoKGJsb2csIGluZGV4KSA9PiB7XG4gICAgICAgICAgICByZXR1cm4oXG4gICAgICAgICAgICAgICAgPGRpdiBzdHlsZT17bmF2U3R5bGVzfVxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICA8U3RpY2t5Q29udGFpbmVyPlxuICAgICAgICAgICAgICAgICAgICA8TGluayBocmVmPScvJz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxhIG9uQ2xpY2s9eygpID0+IHRoaXMuc2V0U3RhdGUoe1xuICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0ZWRCbG9nVGl0bGU6IGJsb2cudGl0bGUsXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxlY3RlZEJsb2dEYXRlOiBibG9nLmRhdGUsXG4gICAgICAgICAgICAgICAgICAgICAgICBzZWxlY3RlZEJsb2dQYXJhZ3JhcGhzOiBibG9nLnBhcmFncmFwaHNcbiAgICAgICAgICAgICAgICAgICAgICAgIH0pfVxuICAgICAgICAgICAgICAgICAgICAgICAgb25Nb3VzZUVudGVyID0ge3RoaXMuaG92ZXJUb2dnbGV9XG4gICAgICAgICAgICAgICAgICAgICAgICBvbk1vdXNlTGVhdmUgPSB7dGhpcy5ob3ZlclRvZ2dsZX1cbiAgICAgICAgICAgICAgICAgICAgICAgIHN0eWxlPXt0aGlzLnN0YXRlLmhvdmVyID8gaG92ZXJTdHlsZXMgOiB7b3BhY2l0eTogJzEnfX1cbiAgICAgICAgICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxEYXRlT2JqXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdGl0bGU9e2Jsb2cudGl0bGV9XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgd2Vlaz17YmxvZy53ZWVrfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRhdGU9e21vbWVudChibG9nLmRhdGUpLmZvcm1hdCgnTU1NTSBEbyBZWVlZJyl9XG4gICAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgICAgICAgPC9TdGlja3lDb250YWluZXI+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICApIFxuICAgICAgICAgICB9KTtcbiAgICAgIHJldHVybihcbiAgICAgICAgPGRpdiBzdHlsZT17aW5kZXhTdHlsZXN9PlxuICAgICAgICAgICAgPEhlYWQ+XG4gICAgICAgICAgICAgICAgPGxpbmsgaHJlZj1cImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1MYXRvXCIgcmVsPVwic3R5bGVzaGVldFwiLz5cbiAgICAgICAgICAgICAgICA8bGluayBocmVmPVwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PUJyZWUrU2VyaWZcIiByZWw9XCJzdHlsZXNoZWV0XCIvPiBcbiAgICAgICAgICAgICAgICA8bGluayBocmVmPVwiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PUZqYWxsYStPbmVcIiByZWw9XCJzdHlsZXNoZWV0XCIvPiBcbiAgICAgICAgICAgICAgICA8c3R5bGUganN4IGdsb2JhbD57YFxuICAgICAgICAgICAgICAgICAgICAqIHsgXG4gICAgICAgICAgICAgICAgICAgICAgICBtYXJnaW46MDtcbiAgICAgICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6MDtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1gXG4gICAgICAgICAgICAgICAgfTwvc3R5bGU+XG4gICAgICAgICAgICA8L0hlYWQ+XG4gICAgICAgICAgICA8SGVhZGVyLz5cbiAgICAgICAgICAgIDxTY3JvbGxiYXJzIHN0eWxlPXtuYXZDb250YWluZXJTdHlsZXN9PlxuICAgICAgICAgICAgICAgIHtibG9nTGlzdH1cbiAgICAgICAgICAgIDwvU2Nyb2xsYmFycz5cblxuICAgICAgICAgICAgPENvbnRlbnRcbiAgICAgICAgICAgICAgICB0aXRsZT17dGhpcy5zdGF0ZS5zZWxlY3RlZEJsb2dUaXRsZX1cbiAgICAgICAgICAgICAgICBkYXRlPXttb21lbnQodGhpcy5zdGF0ZS5zZWxlY3RlZEJsb2dEYXRlKS5mb3JtYXQoJ01NTU0gRG8gWVlZWScpfVxuICAgICAgICAgICAgICAgIHBhcmFncmFwaHM9e3RoaXMuc3RhdGUuc2VsZWN0ZWRCbG9nUGFyYWdyYXBoc31cbiAgICAgICAgICAgIC8+XG4gICAgICAgIDwvZGl2PlxuICAgICAgKSAgXG4gICAgfVxuICAgIFxufSJdfQ== */\n/*@ sourceURL=/home/joel/Menu-Parser/pages/index.js */",
         __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_comps_Header__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_scrollbars_custom__WEBPACK_IMPORTED_MODULE_10___default.a, {
         style: navContainerStyles,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 93
         },
         __self: this
       }, blogList), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_comps_Content__WEBPACK_IMPORTED_MODULE_5__["default"], {
         title: this.state.selectedBlogTitle,
-        date: moment__WEBPACK_IMPORTED_MODULE_7___default()(this.state.selectedBlogDate).format('MMMM Do YYYY'),
-        content: this.state.selectedBlogContent,
+        date: moment__WEBPACK_IMPORTED_MODULE_8___default()(this.state.selectedBlogDate).format('MMMM Do YYYY'),
+        paragraphs: this.state.selectedBlogParagraphs,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 97
         },
         __self: this
       }));
@@ -565,6 +770,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-scrollbars-custom":
+/*!******************************************!*\
+  !*** external "react-scrollbars-custom" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-scrollbars-custom");
+
+/***/ }),
+
 /***/ "react-sticky":
 /*!*******************************!*\
   !*** external "react-sticky" ***!
@@ -584,6 +800,17 @@ module.exports = require("react-sticky");
 /***/ (function(module, exports) {
 
 module.exports = require("styled-jsx/style");
+
+/***/ }),
+
+/***/ "typed.js":
+/*!***************************!*\
+  !*** external "typed.js" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("typed.js");
 
 /***/ })
 
