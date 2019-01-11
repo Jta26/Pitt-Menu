@@ -5,7 +5,7 @@ import Content from '../comps/Content';
 import Header from '../comps/Header';
 import blogs from '../data/blogs.json';
 import moment from 'moment';
-import {StickyContainer, Sticky} from 'react-sticky';
+import { StickyContainer } from 'react-sticky';
 import Scrollbars from 'react-scrollbars-custom';
 const indexStyles = {
     fontFamily: 'Lato',
@@ -14,13 +14,13 @@ const indexStyles = {
 }
 const navContainerStyles = {
     flexDirection: 'row',
-    height: '95vh',
+    height: '94vh',
     overflowY: 'hidden',
-    backgroundColor: 'rgba(51,54,59,1)',
+    backgroundColor: '#fff',
     outline: 'none',
     width: '300px',
     float: 'left',
-    textDecorationLine: 'none'
+    backgroundColor: '#4f4f4f'
 }
 const contentStyles = {
     flexDirection: 'row',
@@ -29,9 +29,7 @@ const contentStyles = {
 
 const navStyles = {
 }
-const hoverStyles = {
-    opacity: '.7'
-}
+
 const linkStyles = {
     textDecorationLine: 'none', paddingTop: 10, outline: 'none'
 }
@@ -41,13 +39,18 @@ export default class Index extends React.Component {
         this.state = {
             selectedBlogTitle: '',
             selectedBlogDate: '',
-            selectedBlogContent: [],
+            selectedBlogParagraphs: [],
+            selectedBlogImages: [],
             hover: false
         }
-        this.hoverToggle = this.hoverToggle.bind(this)
     }
-    hoverToggle() {
-        this.setState({hover: !this.state.hover})
+    componentWillMount() {
+            this.setState({
+                selectedBlogTitle: blogs[blogs.length - 1].title,
+                selectedBlogDate: blogs[blogs.length - 1].date,
+                selectedBlogParagraphs: blogs[blogs.length - 1].paragraphs,
+                selectedBlogImages: blogs[blogs.length - 1].images
+            })
     }
     render() {
         var blogList = blogs.map((blog, index) => {
@@ -59,11 +62,10 @@ export default class Index extends React.Component {
                         <a onClick={() => this.setState({
                         selectedBlogTitle: blog.title,
                         selectedBlogDate: blog.date,
-                        selectedBlogParagraphs: blog.paragraphs
+                        selectedBlogParagraphs: blog.paragraphs,
+                        selectedBlogImages: blog.images
                         })}
-                        onMouseEnter = {this.hoverToggle}
-                        onMouseLeave = {this.hoverToggle}
-                        style={this.state.hover ? hoverStyles : {opacity: '1'}}
+                        style={{textDecorationLine: 'none'}}
                         >
                         <DateObj
                             title={blog.title}
@@ -82,6 +84,9 @@ export default class Index extends React.Component {
                 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
                 <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet"/> 
                 <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet"/> 
+                <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"/> 
+                <link href="https://photosom/css?family=Mukta:700" rel="stylesheet"/> 
+                <link href="https://photosom/css?family=Noto+Serif+TC" rel="stylesheet"/> 
                 <style jsx global>{`
                     * { 
                         margin:0;
@@ -93,11 +98,11 @@ export default class Index extends React.Component {
             <Scrollbars style={navContainerStyles}>
                 {blogList}
             </Scrollbars>
-
             <Content
                 title={this.state.selectedBlogTitle}
                 date={moment(this.state.selectedBlogDate).format('MMMM Do YYYY')}
                 paragraphs={this.state.selectedBlogParagraphs}
+                images={this.state.selectedBlogImages}
             />
         </div>
       )  

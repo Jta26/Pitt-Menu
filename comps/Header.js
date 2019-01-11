@@ -1,16 +1,16 @@
 import Typed from 'typed.js';
 
 const headerContainerStyles = {
-    backgroundColor: 'rgba(51,54,59,0.9)',
+    backgroundColor: '#315175',
     height: '5vh',
-    outline: '1px solid black'
+    borderBottom: '1px solid white',
+    paddingBottom: 0
 }
 const titleStyles = {
     textAlign: 'right',
     fontSize: '2em',
     marginRight: 20,
-    fontFamily: 'Fjalla One',
-    paddingTop: 5,
+    fontFamily: 'Noto Serif TC',
     color: '#fff'
 }
 
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
     }
     componentDidMount() {
         var options = {
-            strings: ["Joel Austin Capstone Blog"],
+            strings: ["Joel Austin | Capstone Blog"],
             typeSpeed: 50,
             showCursor: false
         }

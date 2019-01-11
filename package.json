@@ -25,7 +25,10 @@
     "next": "^7.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-image": "^1.5.1",
+    "react-images": "^0.5.19",
     "react-perfect-scrollbar": "^1.4.4",
+    "react-photo-gallery": "^6.3.0",
     "react-scrollbars-custom": "^3.1.5",
     "react-sticky": "^6.0.3",
     "typed.js": "^2.0.9"
