@@ -1,9 +1,8 @@
 import Typed from 'typed.js';
 
 const headerContainerStyles = {
-    backgroundColor: '#315175',
-    height: '5vh',
-    borderBottom: '1px solid white',
+    backgroundColor: '#1c2957',
+    height: '40px',
     paddingBottom: 0
 }
 const titleStyles = {

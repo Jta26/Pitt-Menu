@@ -2,36 +2,24 @@ import Scrollbars from 'react-scrollbars-custom';
 import Gallery from 'react-photo-gallery';
 import LightBox from 'react-images';
 const titleStyles = {
-    backgroundColor:'#4f4f4f',
     fontFamily: 'Mukta',
-    height: '20vh',
-    color: '#FFF',
     fontWeight: 'bold',
-    display: 'flex',
+    margin: 'auto',
     justifyContent: 'Center',
     flexDirection: 'column',
-
+    color: '#000',
+    marginTop: 50,
 }
 const contentStyle = {
-    height: '94vh',
+    height: '91vh',
     overflowY: 'hidden',
-    backgroundColor: '#FFF',
-    backgroundImage: `Url(${'https://i.imgur.com/IQfMFfo.png'})`,
+    //backgroundImage: `Url(${'https://i.imgur.com/IQfMFfo.png'})`,
     backgroundSize: 'cover',
-    borderLeft: '1px solid white'
 }
 const contentContainer = {
-    backgroundColor: '#FFF',
-    padding: 25,
     color: '#000',
-    width: '75%',
     margin: 'auto',
-    marginTop: '10vh',
-
-}
-const paraStyles = {
-    marginTop: 50,
-    opacity: '.9999',
+    width: '65%'
 }
 export default class Content extends React.Component {
     constructor(props) {
@@ -40,7 +28,7 @@ export default class Content extends React.Component {
             title: props.title,
             date: props.date,
             paragraphs: props.paragraphs.toString().split("\n").map((i, key) => {
-                return <p key={key}>{i}</p>
+                return <p style={{marginTop: 10}} key={key}>{i}</p>
             }),
             images: props.images,
             currentImage: 0
@@ -87,12 +75,13 @@ export default class Content extends React.Component {
         return (
             <Scrollbars style={contentStyle}>
                 <div style={titleStyles}>
-                <p style={{textAlign: 'center', paddingTop: 10, fontSize: 30}}>{this.state.date}</p>
+                
                 <p style={{textAlign: 'center', fontSize: 50}}>{this.state.title}</p>
+                <p style={{textAlign: 'center', paddingTop: 10, fontSize: 20, opacity: '0.5'}}>{this.state.date}</p>
                 </div>
                 <div style={contentContainer}>
-                    <div style={{width: '80%', margin: 'auto', marginTop: 35, marginBottom: 35, fontFamily: 'Noto Sans', lineHeight: 2}}>
-                        <p>{this.state.paragraphs}</p>
+                    <div style={{margin: 'auto', marginTop: 35, marginBottom: 35, fontFamily: 'Noto Sans', lineHeight: 2}}>
+                        <div>{this.state.paragraphs}</div>
                         <div>
                         <Gallery photos={this.state.images} direction={'column'} onClick={this.openLightbox}/>
                         <LightBox images={this.state.images}

@@ -10,24 +10,33 @@ import Scrollbars from 'react-scrollbars-custom';
 const indexStyles = {
     fontFamily: 'Lato',
     flex: 1,
-
+    overflowY: 'hidden',
+    backgroundColor: '#1c2957',
+}
+const container = {
+    width: '60%',
+    margin: 'auto',
+    marginTop: 50,
+    backgroundImage: " linear-gradient(to bottom, rgba(28,41,87,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 100%)"
 }
 const navContainerStyles = {
     flexDirection: 'row',
-    height: '94vh',
+    height: '91vh',
     overflowY: 'hidden',
-    backgroundColor: '#fff',
     outline: 'none',
     width: '300px',
     float: 'left',
-    backgroundColor: '#4f4f4f'
+    paddingLeft: 30
+    
 }
 const contentStyles = {
     flexDirection: 'row',
+    
 }
 
 
 const navStyles = {
+    marginTop: 20
 }
 
 const linkStyles = {
@@ -87,7 +96,7 @@ export default class Index extends React.Component {
                 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"/> 
                 <link href="https://photosom/css?family=Mukta:700" rel="stylesheet"/> 
                 <link href="https://photosom/css?family=Noto+Serif+TC" rel="stylesheet"/> 
-                <style jsx global>{`
+                <style>{`
                     * { 
                         margin:0;
                         padding:0;
@@ -95,6 +104,7 @@ export default class Index extends React.Component {
                 }</style>
             </Head>
             <Header/>
+            <div style={container}>
             <Scrollbars style={navContainerStyles}>
                 {blogList}
             </Scrollbars>
@@ -104,6 +114,8 @@ export default class Index extends React.Component {
                 paragraphs={this.state.selectedBlogParagraphs}
                 images={this.state.selectedBlogImages}
             />
+            </div>
+
         </div>
       )  
     }

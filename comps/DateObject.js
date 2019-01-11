@@ -1,7 +1,7 @@
 
 
 const dateTitleStyle = {
-    fontSize: 20,
+    fontSize: 15,
     textAlign: 'center',
     fontFamily: 'Mukta',
     marginLeft: 20,
@@ -9,18 +9,18 @@ const dateTitleStyle = {
     alignItems: 'column',
     marginTop: 10,
     marginBottom: 10,
-
+    color:'#000',
     textDecorationLine: 'none',
-    color: '#FFF'
 }
 const datePStyle = {
     float: 'left',
-    fontSize: 14,
+    fontSize: 12,
     //color: '#b2ac75',
-    color: '#cdbc70',
+    color: '#000',
     marginLeft: 22,
     marginRight: 22,
     fontFamily: 'Mukta',
+    
     
 }
 export default class DateObj extends React.Component {
@@ -41,7 +41,7 @@ export default class DateObj extends React.Component {
             onMouseLeave = {this.hoverToggle}
             >
                 <p style={dateTitleStyle}>{this.props.title}</p>
-                <div style={{display: 'flex', justifyContent:'space-between', flexDirection: 'row'}}>
+                <div style={{display: 'flex', justifyContent:'center'}}>
                 <p style={datePStyle}>Week {this.props.week}</p>
                 <p style={datePStyle}>{this.props.date}</p>
                 </div>
