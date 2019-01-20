@@ -31,12 +31,11 @@ CREATE TABLE Menu (
     UNIQUE KEY DateType (MenuDate, MenuType)
 );
 CREATE TABLE MenuItem (
-	MenuItemID INT UNIQUE NOT NULL AUTO_INCREMENT,
     ItemID INT NOT NULL,
     MenuID INT NOT NULL,
     CONSTRAINT ItemID_FK FOREIGN KEY (ItemID) REFERENCES Item(ItemID),
     CONSTRAINT MenuID_FK FOREIGN KEY (MenuID) REFERENCES Menu(MenuId),
-    PRIMARY KEY (MenuItemID)
+    UNIQUE KEY MenuItemKey (ItemID, MenuID)
 );
 DELIMITER //
 DROP PROCEDURE IF EXISTS menu_parser_db.InsertItem//
@@ -53,7 +52,7 @@ IN _MenuDate DATE,
 IN _MenuType BOOL,
 IN _Weekday VARCHAR(20))
 BEGIN
- 	INSERT INTO Menu(MenuDate, MenuType, WeekdayID) VALUES 
+ 	INSERT IGNORE INTO Menu(MenuDate, MenuType, WeekdayID) VALUES 
     (_MenuDate, _MenuType, (SELECT WeekdayID FROM Weekdays WHERE WeekdayName = LOWER(_Weekday)));
 END//
 DELIMITER ;
@@ -65,7 +64,7 @@ IN _MenuDate DATE,
 IN _MenuType BOOL,
 IN _ItemName VARCHAR(100))
 BEGIN
-	INSERT INTO MenuItem(ItemID, MenuID) VALUES(
+	INSERT IGNORE INTO MenuItem(ItemID, MenuID) VALUES(
     (SELECT ItemID FROM Item WHERE ItemName=_ItemName), 
     (SELECT MenuID FROM Menu WHERE MenuDate=_MenuDate AND MenuType=_MenuType));
 END//
@@ -77,11 +76,16 @@ CREATE PROCEDURE GetMenu(
 IN _MenuDate DATE,
 IN _MenuType BOOL)
 BEGIN 
-	SELECT i.ItemName FROM Item i 
+	SELECT 
+    i.ItemName AS 'Item Name',
+    m.MenuDate AS 'Menu Date',
+    m.MenuType AS 'Menu Type' FROM Item i 
     JOIN MenuItem mi ON i.ItemID = mi.ItemID 
-    JOIN Menu m ON m.MenuID = mi.MenuID
-    WHERE m.MenuDate = _MenuDate AND m.MenuType=_MenuType;
+	JOIN Menu m ON m.MenuID = mi.MenuID
+    WHERE 
+    m.MenuDate = _MenuDate
+    AND
+    m.MenuType = _MenuType;
 END//
 DELIMITER ;
-
 
