@@ -2,7 +2,7 @@ import Scrollbars from 'react-scrollbars-custom';
 import Gallery from 'react-photo-gallery';
 import LightBox from 'react-images';
 const titleStyles = {
-    fontFamily: 'Mukta',
+    fontFamily: 'Lato',
     fontWeight: 'bold',
     margin: 'auto',
     justifyContent: 'Center',
@@ -19,7 +19,7 @@ const contentStyle = {
 const contentContainer = {
     color: '#000',
     margin: 'auto',
-    width: '65%'
+    width: '90%'
 }
 export default class Content extends React.Component {
     constructor(props) {

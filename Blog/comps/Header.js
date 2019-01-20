@@ -9,7 +9,7 @@ const titleStyles = {
     textAlign: 'right',
     fontSize: '2em',
     marginRight: 20,
-    fontFamily: 'Noto Serif TC',
+    fontFamily: 'Lato',
     color: '#fff'
 }
 

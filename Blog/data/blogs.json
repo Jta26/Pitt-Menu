@@ -9,8 +9,22 @@
             "images": [
                 { "src": "https://i.imgur.com/gTvLu4t.png", "width": 2, "height": 1 },
                 { "src": "https://i.imgur.com/U4QZeGh.png", "width": 1.5, "height": 1 },
-                { "src": "https://i.imgur.com/GqV2Vh5.png", "width": 2, "height": 1 }
-
+                { "src": "https://i.imgur.com/GqV2Vh5.png", "width": 2, "height": 1 }                
+            ]
+        },
+        {
+            "title": "Database and Python Script Created",
+            "date": "Jan 19 2019",
+            "week": "2",
+            "paragraphs": [
+                "This week I developed a Python script that downloads, reads, and parses the .pdf files found at any given location. The script uses BeautifulSoup, Pandas, Numpy, and a vareity of other packages. The pdf file locations are discovered using a regular expression that finds .pdf urls in html. Those urls are then downloaded directly and saved to a directory. A package called Tabula pareses the downloaded PDF files for tables and converts them into dataframes that are readable by Pandas. The dataframes are then seperated into columns of data. The columns are searched for a readable date such as “12-Jan” and that is converted to a Python datetime readable format.\n The columns that contain the menu items are then organized by date and sent to a seperate method that uploads them to a MySql Database. The MySql database is hosted on AWS RDS and is designed in Third Normal Form. Below there is an Entity Relationship Diagram, as well as a Logical Model of the Database.    "
+            ],
+            "images": [
+                { "src": "https://i.imgur.com/ZJtIoS2.png", "width": 2, "height": 1 },
+                { "src": "https://i.imgur.com/Oql4TTv.png", "width": 1.5, "height": 1 },
+                { "src": "https://i.imgur.com/chPYKbf.png", "width": 2, "height": 1 },
+                { "src": "https://i.imgur.com/ItVio5v.png", "width": 2, "height": 1 },
+                {"src": "https://i.ibb.co/bFL3M0j/Screenshot-from-2019-01-20-16-53-48.png", "width": 2, "height": 1}   
                 
             ]
         }

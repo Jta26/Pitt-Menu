@@ -14,7 +14,7 @@ const indexStyles = {
     backgroundColor: '#1c2957',
 }
 const container = {
-    width: '60%',
+    width: '70%',
     margin: 'auto',
     marginTop: 50,
     backgroundImage: " linear-gradient(to bottom, rgba(28,41,87,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 100%)"
@@ -94,8 +94,6 @@ export default class Index extends React.Component {
                 <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet"/> 
                 <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet"/> 
                 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"/> 
-                <link href="https://photosom/css?family=Mukta:700" rel="stylesheet"/> 
-                <link href="https://photosom/css?family=Noto+Serif+TC" rel="stylesheet"/> 
                 <style>{`
                     * { 
                         margin:0;

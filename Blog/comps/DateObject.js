@@ -1,9 +1,7 @@
-
-
 const dateTitleStyle = {
     fontSize: 15,
     textAlign: 'center',
-    fontFamily: 'Mukta',
+    fontFamily: 'Lato',
     marginLeft: 20,
     marginRight: 20,
     alignItems: 'column',
@@ -19,7 +17,7 @@ const datePStyle = {
     color: '#000',
     marginLeft: 22,
     marginRight: 22,
-    fontFamily: 'Mukta',
+    fontFamily: 'Lato',
     
     
 }
