@@ -11,13 +11,15 @@ const indexStyles = {
     fontFamily: 'Lato',
     flex: 1,
     overflowY: 'hidden',
-    backgroundColor: '#1c2957',
+    backgroundImage: 'url(https://raw.githubusercontent.com/Jta26/JoelAustin.Net/master/public/JoelAustin.Net/Images/CityColor.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
 }
 const container = {
     width: '70%',
     margin: 'auto',
     marginTop: 50,
-    backgroundImage: " linear-gradient(to bottom, rgba(28,41,87,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 100%)"
+    backgroundImage: " linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 100%)"
 }
 const navContainerStyles = {
     flexDirection: 'row',
@@ -42,7 +44,8 @@ const navStyles = {
 const linkStyles = {
     textDecorationLine: 'none', paddingTop: 10, outline: 'none'
 }
-export default class Index extends React.Component {
+
+export default class index extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
