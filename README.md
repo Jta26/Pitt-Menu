@@ -4,7 +4,7 @@ Repo for my undergraduate capstone project.
 ## Table of Contents 
 --TODO
 ## Python PDF Processor
-This part of the project is found under the [File Processor](../FileProcessor) folder and is written in python. It downloads the university menus from a source link and differentiates between lunch and dinner menus. It then reads the items from the menus and uploads them to the MySql database.
+This part of the project is found under the [File Processor](/tree/master/FileProcessor) folder and is written in python. It downloads the university menus from a source link and differentiates between lunch and dinner menus. It then reads the items from the menus and uploads them to the MySql database.
 
 To Run, install the dependenices using:
 
