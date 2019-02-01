@@ -14,6 +14,12 @@ def UploadMenu(date, menutype, items):
     try:
         with connection.cursor() as cursor:
             query = 'CALL InsertMenu(%s, %s, %s)'
+            test = ''
+            if menutype: 
+                test = 'Dinner'
+            else :
+                test = 'Breakfast/Lunch'
+            print('MENU: ' + date + ' ' + test + ' Inserted' + '\n' + '------------------------------------------------------------')
             cursor.execute(query, (date, menutype, arrow.get(date).format('dddd')))
             for item in items:
                 if item == '':
