@@ -92,7 +92,7 @@ export default class Header extends React.Component {
                         onMouseLeave = {() => {
                             this.setState({hover: 0})
                         }}>
-                    <Link href='https://www.linkedin.com/feed/'>
+                    <Link href='https://www.linkedin.com/in/joel-austin/'>
                     <a style={linkStyle}>LinkedIn</a>
                     </Link>
                     </div>

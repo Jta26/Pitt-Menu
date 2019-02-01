@@ -27,6 +27,20 @@
                 {"src": "https://i.ibb.co/bFL3M0j/Screenshot-from-2019-01-20-16-53-48.png", "width": 1.4, "height": 1}   
                 
             ]
+        },
+        {
+            "title": "Python Script Improved, Node.js RESTful API Created",
+            "date": "Jan 30 2019",
+            "week": "3",
+            "paragraphs": [
+                "For week 3, I worked on debugging the python script I wrote last week, as well as beginning the NPM project for the Node.js REST API that will be responsible for serving the SQL data of the menus. The client will access the data through a url such a joelaustin.net/menu/2019-02-23?type=0. This url would indicate that the user wants the menu from the date specficied as a GET request to a directory, and has a query string that contains the type of the menu, 1 or 0, correlating to lunch or dinner. \n My python script had a few bugs that involved dates and a change in month. The script was incorrectly setup to not handle months that were 31 days long. This issue has now been fixed. I also improved logging on the python script so now it looks very presentable."
+            ],
+            "images": [
+                { "src": "https://cdn-images-1.medium.com/max/1600/1*d2zLEjERsrs1Rzk_95QU9A.png", "width": 2, "height": 1 },
+                { "src": "https://i.imgur.com/wabLTaV.png", "width": 1.2, "height": 1 },
+                { "src": "https://i.imgur.com/u9EP3qZ.png", "width": 1.4, "height": 1 }
+                
+            ]
         }
         
 ]

@@ -2,6 +2,7 @@ import pymysql.cursors
 import calendar
 import datetime
 import arrow
+from termcolor import colored, cprint
 
 def UploadMenu(date, menutype, items):
     connection = pymysql.connect(
@@ -11,22 +12,26 @@ def UploadMenu(date, menutype, items):
     db='menu_parser_db',
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
+    
     try:
         with connection.cursor() as cursor:
             query = 'CALL InsertMenu(%s, %s, %s)'
-            test = ''
+            strMenuType = ''
             if menutype: 
-                test = 'Dinner'
+                strMenuType = 'Dinner'
             else :
-                test = 'Breakfast/Lunch'
-            print('MENU: ' + date + ' ' + test + ' Inserted' + '\n' + '------------------------------------------------------------')
+                strMenuType = 'Breakfast/Lunch'
+            print('\n' + '------------------------------------------------------------' + '\n' + colored('MENU: ', 'green') + date + ' ' + strMenuType + '\n' + '------------------------------------------------------------')
             cursor.execute(query, (date, menutype, arrow.get(date).format('dddd')))
             for item in items:
                 if item == '':
                     continue
+                if ',' in item:
+                    print(colored('ITEM SKIPPED: ', 'red') + item + colored(' REASON: ', 'red') + 'Ambigious')
+                    continue
                 query = 'CALL InsertItem(%s)'
                 cursor.execute(query, item)
-                print(item + ' Inserted')
+                print(colored('ITEM: ', 'cyan') + item)
                 query = 'CALL InsertMenuItem(%s, %s, %s)'
                 cursor.execute(query, (date, menutype, item))
         connection.commit()
