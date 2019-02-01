@@ -110,7 +110,7 @@ def DetermineDate(date):
         for abbr in monthKeywords:
             if abbr in date.lower():
                 month = datetime.datetime.strptime(abbr, '%b').strftime('%B')
-        #Convert string number to date integer.
+        #Convert find string for int and convert it to valid date number.
         for i in range(32):
             if str(i) in date.lower():
                 if(i < 10):
