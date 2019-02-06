@@ -10,6 +10,7 @@ import arrow
 import datetime
 import re
 import os
+import shutil
 import glob
 
 def main():
@@ -78,10 +79,11 @@ def DownloadFile(url):
         return fileName
 #Deletes all files in the Files Folder.
 def ClearFiles():
-        files = glob.glob('Files/.*')
-        for file in files:
-                os.remove(file)
-        print('Files Folder Cleared')
+        filesDir = './Files/'
+        if (os.path.exists(filesDir)):
+                shutil.rmtree(filesDir)
+        os.mkdir('./Files')
+        
 
 #Uses pdftotext to find keyword "dinner" in a pdf.
 #If it doesn't have keyword "dinner", it must be breakfast/lunch.
@@ -124,6 +126,5 @@ def DetermineDate(date):
             date = date.shift(years=1)
         #return the formatted date.
         return date
-
 if __name__ == '__main__':
     main()

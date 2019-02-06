@@ -17,7 +17,7 @@ def UploadMenu(date, menutype, items):
         with connection.cursor() as cursor:
             query = 'CALL InsertMenu(%s, %s, %s)'
             strMenuType = ''
-            if menutype: 
+            if not menutype: 
                 strMenuType = 'Dinner'
             else :
                 strMenuType = 'Breakfast/Lunch'
