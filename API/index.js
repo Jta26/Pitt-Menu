@@ -5,7 +5,7 @@ var greenlock = require('greenlock-express');
 var app = express();
 var router = require('./routes/router');
 
-morgan('tiny');
+app.use(morgan('tiny'));
 
 app.use('/', router)
 
@@ -26,4 +26,3 @@ greenlock.create({
     communityMember: true,
     telemetry: true
 }).listen(80, 443);
-
