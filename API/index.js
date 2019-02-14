@@ -1,8 +1,11 @@
 var fs = require('fs');
 var express = require('express');
+var morgan = require('morgan');
 var greenlock = require('greenlock-express');
 var app = express();
 var router = require('./routes/router');
+
+morgan('tiny');
 
 app.use('/', router)
 
