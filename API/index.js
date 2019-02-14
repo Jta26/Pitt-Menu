@@ -16,7 +16,9 @@ greenlock.create({
     agreeTos: true,
     configDir: './',
 
-    app: require('./index.js'),
+    app: function(req, res) {
+        require('./index.js');
+    },
 
     communityMember: true,
     telemetry: true
