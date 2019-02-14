@@ -12,7 +12,7 @@ greenlock.create({
     server: 'https://acme-v02.api.letsencrypt.org/directory',
 
     email:'jta26@Pitt.edu',
-    approveDomains: ['joelaustin.net', 'www.joelaustin.net'],
+    approveDomains: ['api.joelaustin.net'],
     agreeTos: true,
     configDir: './',
 
