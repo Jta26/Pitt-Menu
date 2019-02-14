@@ -31,9 +31,10 @@ function getMenuIntent(agent) {
         sqlService(date, menutypeBool, function(result) {
             
             agent.add(`For ${menutype} on ${date} is:`);
+            var items = ''
             result[0].forEach(item => {
                 console.log(item['Item Name']);
-                agent.add(item['Item Name']);
+                items.concat(item['Item Name'] + '<break time=".3s"/> ');
             });
             resolve();
         });
