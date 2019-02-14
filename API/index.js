@@ -2,16 +2,19 @@ var fs = require('fs');
 var https = require('https');
 var express = require('express');
 var morgan = require('morgan');
+var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var app = express();
 var router = require('./routes/router');
 
-var privatekey = fs.readFileSync('/etc/letsencrypt/live/api.joelaustin.net-0001/privkey.pem');
-var cert = fs.readFileSync('/etc/letsencrypt/live/api.joelaustin.net-0001/fullchain.pem');
+var privatekey = fs.readFileSync('/home/ubuntu/Certs/privkey.pem');
+var cert = fs.readFileSync('/home/ubuntu/Certs/fullchain.pem');
 var creds = {key: privatekey, cert: cert};
 
 app.use(helmet());
 app.use(morgan('tiny'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/', router)
 
 https.createServer(creds, app).listen(443);
