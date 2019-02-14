@@ -23,6 +23,7 @@ function GetMenu(date, type, callback) {
     ]
     connection.query(sql, [param], function(err, result) {
         if (err) throw err;
+        console.log(`Retrieved Menu for ${type} on ${date}`);
         callback(result);
     })
 }
