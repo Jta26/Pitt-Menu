@@ -29,7 +29,7 @@ function getMenuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     return new Promise(() => {
         sqlService(menutypeBool, date, function(result) {
-            agent.add(result[0]);
+            agent.add('Retrieved Callback');
         });
     });
 	
