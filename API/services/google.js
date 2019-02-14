@@ -29,9 +29,10 @@ function getMenuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     return new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
-            console.log(result[0]);
+            
             agent.add(`For ${menutype} on ${date} is:`);
             result[0].forEach(item => {
+                console.log(item['Item Name']);
                 agent.add(item['Item Name']);
             });
             resolve();
