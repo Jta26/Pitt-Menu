@@ -10,7 +10,7 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 const sqlService = require('./sqlservice');
 
 function WelcomeIntent(agent) {
-    var ssml = "<speak>Welcome to Pitt Menu! <break time='1s'/> You can ask things such as, <break time='1s'/> What's for lunch today? <break time='1s'/> or <break time='1s'/> What's for supper on thursday? </speak>"
+    var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
     agent.add(ssml);
 }
 
