@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sqlservice = require('../services/sqlservice');
-
+var googleWebhook = require('../services/google');
 router.get('/menu/:date', (req, res) => {
     strDate = req.params.date
     intMenutype = req.query.type
@@ -24,7 +24,11 @@ router.get('/menu/:date', (req, res) => {
         res.status(200).json(result[0]);
     });
     
-}); 
+});
+
+router.post('/google', (req, res) => {
+    googleWebhook(req, res);
+})
 
 
 
