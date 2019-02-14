@@ -27,8 +27,10 @@ function getMenuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    sqlService(menutypeBool, date, function(result) {
-        agent.add(result[0]);
+    return new Promise(() => {
+        sqlService(menutypeBool, date, function(result) {
+            agent.add(result[0]);
+        });
     });
 	
 }
