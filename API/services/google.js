@@ -9,22 +9,33 @@ const {
 const { WebhookClient } = require('dialogflow-fulfillment');
 const sqlService = require('./sqlservice');
 
-function WelcomeIntent(agent) {
+function welcomeIntent(agent) {
     var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
     agent.add(ssml);
 }
 
-function getMenu(agent) {
+function getMenuIntent(agent) {
     var menutype = agent.parameters.menu;
     var date = agent.parameters.date;
     var timeperiod = agent.parameters['time-period'];
-	agent.add('You are asking for ' + menutype + ' on ' + date);
+    var menutypeBool;
+    date = date.split('T')[0];
+    if (menutype == 'dinner') {
+        menutypeBool = 1;
+    }
+    else {
+        menutypeBool = 0;
+    }
+    sqlService(menutypeBool, date, function(result) {
+        agent.add(result[0]);
+    })
+	
 }
 function googleWebhookProcessor(req, res) {
     const agent = new WebhookClient({request: req, response: res});
     let intentMap = new Map();
-    intentMap.set('Default Welcome Intent', WelcomeIntent);
-    intentMap.set('Get Menu', getMenu);
+    intentMap.set('Default Welcome Intent', welcomeIntent);
+    intentMap.set('Get Menu', getMenuIntent);
     agent.handleRequest(intentMap);
 }
 module.exports = googleWebhookProcessor;
