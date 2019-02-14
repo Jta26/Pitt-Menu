@@ -26,9 +26,10 @@ function getMenuIntent(agent) {
     else {
         menutypeBool = 0;
     }
+    console.log(menutype, menutypeBool, date, timeperiod);
     sqlService(menutypeBool, date, function(result) {
         agent.add(result[0]);
-    })
+    });
 	
 }
 function googleWebhookProcessor(req, res) {
