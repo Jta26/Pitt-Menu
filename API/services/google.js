@@ -13,6 +13,13 @@ function WelcomeIntent(agent) {
     agent.add('Hello World This is Data From A WebHook API');
 }
 
+function getMenu(agent) {
+    var menutype = agent.parameters.menu;
+    var date = agent.parameters.date;
+    var timeperiod = agent.parameters['time-period'];
+    
+}
+
 
 
 
