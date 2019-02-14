@@ -15,6 +15,7 @@
     "dialogflow-fulfillment": "^0.6.1",
     "express": "^4.16.4",
     "greenlock-express": "^2.6.7",
+    "helmet": "^3.15.1",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0"
   }

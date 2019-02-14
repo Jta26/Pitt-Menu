@@ -7,14 +7,17 @@ var helmet = require('helmet');
 var app = express();
 var router = require('./routes/router');
 
-var privatekey = fs.readFileSync('/home/ubuntu/Certs/privkey.pem');
-var cert = fs.readFileSync('/home/ubuntu/Certs/fullchain.pem');
+var privatekey = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/privkey.pem');
+var cert = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/fullchain.pem');
 var creds = {key: privatekey, cert: cert};
 
 app.use(helmet());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/', router)
+//app.use('/', express.static('public'));
+app.use('/', router);
 
+
+//app.listen(80);
 https.createServer(creds, app).listen(443);
