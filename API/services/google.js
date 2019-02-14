@@ -27,10 +27,13 @@ function getMenuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    return new Promise(() => {
+    agent.add('Retrieved Callback');
+    return new Promise((resolve, reject) => {
         sqlService(menutypeBool, date, function(result) {
             agent.add('Retrieved Callback');
+            res();
         });
+        
     });
 	
 }
