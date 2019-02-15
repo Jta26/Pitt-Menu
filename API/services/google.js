@@ -28,17 +28,16 @@ function getMenuIntent(agent) {
     }
     console.log(menutype, menutypeBool, date, timeperiod);
     return new Promise((resolve, reject) => {
+        agent.add(`<speak> For ${menutype} on ${date} is:</speak>`);
         sqlService(date, menutypeBool, function(result) {
-            
             items = '';
             count = 0;
             result[0].forEach((item, index, arr) => {
                 console.log(item['Item Name']);
-                items.concat(item['Item Name'] + '<break time=".3s"/> ');
-                count++;
+                agent.add('<speak> ' + item['Item Name'] + '</speak>');
+                count++; 
                 if (count === arr.length) {
                     console.log(items);
-                    agent.add(`<speak> For ${menutype} on ${date} is: ${items} </speak>`);
                     resolve();     
                 }
             });
