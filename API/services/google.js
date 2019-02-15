@@ -8,6 +8,7 @@ const {
   } = require('actions-on-google');
 const { WebhookClient } = require('dialogflow-fulfillment');
 const sqlService = require('./sqlservice');
+const async = require('async');
 
 function welcomeIntent(agent) {
     var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
@@ -29,10 +30,12 @@ async function menuIntent(agent) {
     var items = await getMenu(menutypeBool, date);
     console.log(items);
     var itemlist = '';
-    for(var item in items) {
-        itemlist.concat(item['Item Name']);
-    }
-    agent.add(itemlist);
+    async.forEach(items, function(item) {
+        itemlist + item;
+    }, function() {
+        agent.add('Meal:' + itemlist);
+    });
+    
 }
 function getMenu(menutypeBool, date) {
     return new Promise((resolve, reject) => {
