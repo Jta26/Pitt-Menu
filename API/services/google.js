@@ -31,7 +31,7 @@ function menuIntent(agent) {
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
             async.forEach(result[0], function(item, callback) {
-                itemList += item['Item Name'] + '<break time=".3s"/> ';
+                itemList += item['Item Name'] + ' <break time=".3s"/> ';
             });
             resolve();
         });
