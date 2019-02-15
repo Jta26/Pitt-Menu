@@ -14,7 +14,7 @@ function welcomeIntent(agent) {
     var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
     agent.add(ssml);
 }
-async function menuIntent(agent) {
+function menuIntent(agent) {
     var menutype = agent.parameters.menu;
     var date = agent.parameters.date;
     var timeperiod = agent.parameters['time-period'];
@@ -27,25 +27,11 @@ async function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    var items = await getMenu(menutypeBool, date);
-    console.log(items);
-    var itemlist = '';
-    async.forEach(items, function(item) {
-        itemlist + item;
-    }, function() {
-        agent.add('Meal:' + itemlist);
-    });
+    agent.add('testing123');
     
 }
 function getMenu(menutypeBool, date) {
-    return new Promise((resolve, reject) => {
-        sqlService(date, menutypeBool, function(result) {
-            items = '';
-            resolve(result[0]);
-        });
-        
-    });
-	
+	a
 }
 function googleWebhookProcessor(req, res) {
     const agent = new WebhookClient({request: req, response: res});
