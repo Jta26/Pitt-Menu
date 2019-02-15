@@ -27,8 +27,9 @@ function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    var items = getMenu(date, menutypeBool);
-    agent.add(JSON.stringify(items));
+    getMenu.then((items) => {
+        agent.add(JSON.stringify(items));
+    })
     
 }
 function getMenu(date, menutypeBool) {
