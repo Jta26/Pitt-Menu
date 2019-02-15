@@ -27,20 +27,17 @@ function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
+    var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
             async.forEach(result[0], function(item, callback) {
-                console.log(item['Item Name']);
-            }, function() {
-                console.log('Finished Items')
-                resolve(result[0]);
+                itemList += item['Item Name'] + '<break time=".3s"/> ';
             });
-            
+            resolve();
         });
     });
-    return getMenu.then((items) => {
-        console.log(items);
-        return agent.add(JSON.stringify(items));
+    return getMenu.then(() => {
+        agent.add(`<speak> Okay! The Menu for ${menutype} on ${date} is: ${itemList} </speak>`);
     })
     
 }
