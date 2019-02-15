@@ -28,7 +28,11 @@ async function menuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     var items = await getMenu(menutypeBool, date);
     console.log(items);
-    agent.add(items);
+    var itemlist = '';
+    for(var item in items) {
+        itemlist.concat(item['Item Name']);
+    }
+    agent.add(itemlist);
 }
 function getMenu(menutypeBool, date) {
     return new Promise((resolve, reject) => {
