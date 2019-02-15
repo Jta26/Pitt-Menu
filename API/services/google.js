@@ -27,11 +27,13 @@ function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    agent.add('testing123');
+    sqlService(date, menutypeBool, function(result) {
+        agent.add(JSON.stringify(result[0]));
+    });
     
 }
 function getMenu(menutypeBool, date) {
-	a
+	
 }
 function googleWebhookProcessor(req, res) {
     const agent = new WebhookClient({request: req, response: res});
