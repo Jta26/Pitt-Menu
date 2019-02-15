@@ -21,25 +21,25 @@ function menuIntent(agent) {
     var menutypeBool;
     date = date.split('T')[0];
     if (menutype == 'dinner') {
-        menutypeBool = 1;
+        menutypeBool = 0;
     }
     else {
-        menutypeBool = 0;
+        menutypeBool = 1;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
             async.forEach(result[0], function(item, callback) {
-                itemList += item['Item Name'] + ' <break time=".3s"/> ';
+		itemName = item['Item Name'];
+		itemName = itemName.replace('&', 'and');
+		console.log(itemName);
+                itemList += itemName + ' <break time=".3s"/> ';
             });
             resolve();
         });
     });
     return getMenu.then(() => {
-        if (itemList.includes('&')) {
-            itemList.replace('&', 'and');
-        }
         var SSML = "<speak> Okay! The Menu for " + menutype + " on " + date + " is: <break time='.5s'/>" + itemList + "</speak>";
         agent.add(SSML);
     })
