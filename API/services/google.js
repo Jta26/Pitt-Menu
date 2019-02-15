@@ -36,6 +36,7 @@ function getMenuIntent(agent) {
                 console.log(item['Item Name']);
                 items.concat(item['Item Name'] + '<break time=".3s"/> ');
             });
+            agent.add(items);
             resolve();
         });
         
