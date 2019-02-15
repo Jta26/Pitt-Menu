@@ -37,7 +37,9 @@ function menuIntent(agent) {
         });
     });
     return getMenu.then(() => {
-        agent.add(`<speak> Okay! The Menu for ${menutype} on ${date} is: ${itemList} </speak>`);
+        var SSML = `<speak> Okay! The Menu for ${menutype} on ${date} is: <break time=".3s"/> ${itemList} </speak>`;
+        console.log(SSML);
+        agent.add(SSML);
     })
     
 }
