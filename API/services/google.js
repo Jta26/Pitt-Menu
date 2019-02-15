@@ -28,7 +28,13 @@ function menuIntent(agent) {
     }
     console.log(menutype, menutypeBool, date, timeperiod);
     return getMenu(menutypeBool, date).then((items) => {
-        agent.add(`<speak> For ${menutype} on ${date} is: ${items}</speak>`);
+	itemlist = ''
+	console.log(items[5]);
+	for (i = 0; i > items.length; i++) {
+	    console.log(items[5]);
+	    itemlist.concat(items[i]['Item Name'] + '<break time=".3s"/>');
+	}
+        agent.add(`<speak> For ${menutype} on ${date} is: ${itemlist}</speak>`);
     }).catch(() => {
         
     });
@@ -37,7 +43,7 @@ function getMenu(menutypeBool, date) {
     return new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
             items = '';
-            agent.add(result[0]);
+            resolve(result[0]);
         });
         
     });
@@ -47,7 +53,7 @@ function googleWebhookProcessor(req, res) {
     const agent = new WebhookClient({request: req, response: res});
     let intentMap = new Map();
     intentMap.set('Default Welcome Intent', welcomeIntent);
-    intentMap.set('Get Menu', getMenuIntent);
+    intentMap.set('Get Menu', menuIntent);
     agent.handleRequest(intentMap);
 }
 module.exports = googleWebhookProcessor;
