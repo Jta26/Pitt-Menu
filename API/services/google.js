@@ -36,9 +36,9 @@ function menuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     return getMenu(menutypeBool, date).then(async (items) => {
 	itemlist = ''
-        for (var item of results[0]) {
-            await delayedConcat(items, item).then((str) => {
-                items = str;
+        for (var item of items) {
+            await delayedConcat(itemList, item).then((str) => {
+                itemList = str;
             });
         }
         agent.add(`<speak> For ${menutype} on ${date} is: ${itemlist}</speak>`);
