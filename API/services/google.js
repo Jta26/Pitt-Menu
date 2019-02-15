@@ -37,10 +37,11 @@ function menuIntent(agent) {
         });
     });
     return getMenu.then(() => {
-        
+        if (itemList.includes('&')) {
+            itemList.replace('&', 'and');
+        }
         var SSML = "<speak> Okay! The Menu for " + menutype + " on " + date + " is: <break time='.5s'/>" + itemList + "</speak>";
-        console.log(SSML);
-        agent.add('');
+        agent.add(SSML);
     })
     
 }
