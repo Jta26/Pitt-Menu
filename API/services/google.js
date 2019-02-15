@@ -14,14 +14,14 @@ function delay() {
 }
 async function delayedConcat(str, item) {
     await delay();
-    return new Promise(resolve => str.concat(item));
+    return new Promise(resolve(str.concat(item)));
 }
 
 function welcomeIntent(agent) {
     var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
     agent.add(ssml);
 }
-async function menuIntent(agent) {
+function menuIntent(agent) {
     var menutype = agent.parameters.menu;
     var date = agent.parameters.date;
     var timeperiod = agent.parameters['time-period'];
@@ -34,9 +34,13 @@ async function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    return getMenu(menutypeBool, date).then((items) => {
+    return getMenu(menutypeBool, date).then(async (items) => {
 	itemlist = ''
-	
+        for (var item of results[0]) {
+            await delayedConcat(items, item).then((str) => {
+                items = str;
+            });
+        }
         agent.add(`<speak> For ${menutype} on ${date} is: ${itemlist}</speak>`);
     }).catch(() => {
         
@@ -46,11 +50,6 @@ function getMenu(menutypeBool, date) {
     return new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
             items = '';
-            for (var item of results[0]) {
-                await delayedConcat(items, item).then((str) => {
-                    items = str;
-                });
-            }
             resolve(result[0]);
         });
         
