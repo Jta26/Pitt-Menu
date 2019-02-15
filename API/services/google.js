@@ -9,19 +9,11 @@ const {
 const { WebhookClient } = require('dialogflow-fulfillment');
 const sqlService = require('./sqlservice');
 
-function delay() {
-    return new Promise(resolve => setTimeout(resolve, 300));
-}
-async function delayedConcat(str, item) {
-    await delay();
-    return new Promise(resolve(str.concat(item)));
-}
-
 function welcomeIntent(agent) {
     var ssml = "<speak>Welcome to Pitt Menu! <break time='.3s'/> You can ask things such as, <break time='.3s'/> What's for lunch today? <break time='.3s'/> or <break time='.3s'/> What's for supper on thursday? </speak>"
     agent.add(ssml);
 }
-function menuIntent(agent) {
+async function menuIntent(agent) {
     var menutype = agent.parameters.menu;
     var date = agent.parameters.date;
     var timeperiod = agent.parameters['time-period'];
@@ -34,17 +26,9 @@ function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
-    return getMenu(menutypeBool, date).then(async (items) => {
-	itemlist = ''
-        for (var item of items) {
-            await delayedConcat(itemList, item).then((str) => {
-                itemList = str;
-            });
-        }
-        agent.add(`<speak> For ${menutype} on ${date} is: ${itemlist}</speak>`);
-    }).catch(() => {
-        
-    });
+    var items = await getMenu(menutypeBool, date);
+    console.log(items);
+    agent.add(items);
 }
 function getMenu(menutypeBool, date) {
     return new Promise((resolve, reject) => {
