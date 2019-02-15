@@ -31,14 +31,17 @@ function getMenuIntent(agent) {
         sqlService(date, menutypeBool, function(result) {
             
             items = '';
-            result[0].forEach(item => {
+            count = 0;
+            result[0].forEach((item, index, arr) => {
                 console.log(item['Item Name']);
                 items.concat(item['Item Name'] + '<break time=".3s"/> ');
+                count++;
+                if (count === arr.length) {
+                    console.log(items);
+                    agent.add(`<speak> For ${menutype} on ${date} is: ${items} </speak>`);
+                    resolve();     
+                }
             });
-            
-            console.log(items);
-            agent.add(`<speak> For ${menutype} on ${date} is: ${items} </speak>`);
-            resolve();
         });
         
     });
