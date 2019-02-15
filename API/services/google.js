@@ -34,7 +34,7 @@ function menuIntent(agent) {
     });
     getMenu.then((items) => {
         console.log(items);
-        agent.add(JSON.stringify(items));
+        return agent.add(JSON.stringify(items));
     })
     
 }
