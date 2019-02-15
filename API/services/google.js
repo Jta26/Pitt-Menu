@@ -29,10 +29,16 @@ function menuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
-            resolve(result[0]);
+            async.forEach(result[0], function(item, callback) {
+                console.log(item['Item Name']);
+            }, function() {
+                console.log('Finished Items')
+                resolve(result[0]);
+            });
+            
         });
     });
-    getMenu.then((items) => {
+    return getMenu.then((items) => {
         console.log(items);
         return agent.add(JSON.stringify(items));
     })
