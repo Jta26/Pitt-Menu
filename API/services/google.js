@@ -27,17 +27,15 @@ function menuIntent(agent) {
         menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
+    var getMenu = new Promise((resolve, reject) => {
+        sqlService(date, menutypeBool, function(result) {
+            resolve(result[0]);
+        });
+    });
     getMenu.then((items) => {
         agent.add(JSON.stringify(items));
     })
     
-}
-function getMenu(date, menutypeBool) {
-	new Promise((resolve, reject) => {
-        sqlService(date, menutypeBool, function(result) {
-            resolve(result[0]);
-        });
-    })
 }
 function googleWebhookProcessor(req, res) {
     const agent = new WebhookClient({request: req, response: res});
