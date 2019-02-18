@@ -30,16 +30,13 @@ function menuIntent(agent) {
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
-            async.forEach(result[0], function(item, callback) {
+            async.forEach(result[0], function(item, callback) {                
                 itemList += item['Item Name'] + ' <break time=".3s"/> ';
             });
             resolve();
         });
     });
     return getMenu.then(() => {
-        if (itemList.includes('&')) {
-            itemList.replace('&', 'and');
-        }
         var SSML = "<speak> Okay! The Menu for " + menutype + " on " + date + " is: <break time='.5s'/>" + itemList + "</speak>";
         agent.add(SSML);
     })
