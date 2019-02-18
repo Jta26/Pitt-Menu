@@ -21,17 +21,20 @@ function menuIntent(agent) {
     var menutypeBool;
     date = date.split('T')[0];
     if (menutype == 'dinner') {
-        menutypeBool = 1;
+        menutypeBool = 0;
     }
     else {
-        menutypeBool = 0;
+        menutypeBool = 1;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
         sqlService(date, menutypeBool, function(result) {
-            async.forEach(result[0], function(item, callback) {                
-                itemList += item['Item Name'] + ' <break time=".3s"/> ';
+            async.forEach(result[0], function(item, callback) {
+		itemName = item['Item Name'];
+		itemName = itemName.replace('&', 'and');
+		console.log(itemName);
+                itemList += itemName + ' <break time=".3s"/> ';
             });
             resolve();
         });
