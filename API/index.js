@@ -3,6 +3,7 @@ var https = require('https');
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var helmet = require('helmet');
 var app = express();
 var router = require('./routes/router');
@@ -11,7 +12,9 @@ var privatekey = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/privkey.p
 var cert = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/fullchain.pem');
 var creds = {key: privatekey, cert: cert};
 
+
 app.use(helmet());
+app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
