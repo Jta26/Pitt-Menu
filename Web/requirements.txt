@@ -1,0 +1,9 @@
+This file dictates the requirements that the web application will need.
+
+1. Read Menu
+2. Login System
+3. Vote on menu Items
+4. Well designed homepage (professional looking)
+5. Save Favorite Menu Items
+6. Show "dashboard" of next date that has favorite menu item.
+7. 
