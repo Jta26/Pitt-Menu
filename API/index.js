@@ -18,9 +18,6 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use('/', express.static('public'));
 app.use('/', router);
 
-
-//app.listen(80);
 https.createServer(creds, app).listen(443);
