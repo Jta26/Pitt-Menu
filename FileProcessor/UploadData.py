@@ -6,7 +6,7 @@ from termcolor import colored, cprint
 
 def UploadMenu(date, menutype, items):
     connection = pymysql.connect(
-    host='menu-parser-db.cr6wut1qfi23.us-west-2.rds.amazonaws.com',
+    host='jta26-captstone-db.c9cjk2mrsd30.us-east-2.rds.amazonaws.com',
     user='admin',
     password='google951',
     db='menu_parser_db',
