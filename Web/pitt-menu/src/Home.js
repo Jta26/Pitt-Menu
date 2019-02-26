@@ -8,6 +8,20 @@ class Home extends Component {
         return(
             <div>
             <div className="body-top">
+              <div className="sv-wrapper">
+              <h1 className="sv-sentence">
+                <span>Pitt Menu Helps You</span>
+                
+                <div className="slidingVertical sv-words">
+                    <span>Enjoy</span>
+                    <span>Share</span>
+                    <span>Experience</span>
+                </div>
+                <br/>
+                  <span>The Dining Hall on Campus</span>
+              </h1>
+              </div>
+            
               <Link to="/Menus">View Today's Menu</Link>
             </div>
             <div className="body-bottom">
