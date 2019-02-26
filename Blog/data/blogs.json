@@ -55,11 +55,11 @@
             ]
         },
         {
-            "title": "Google Assitant Working",
+            "title": "Google Assistant Working",
             "date": "Feb 22 2019",
             "week": "5",
             "paragraphs": [
-                "This week, I finished getting the Google Assitant working with my Restful API. Currently, If someone posts to “api.joelaustin.net/google” with a response in Dialogflow formatting that contains a date and a menutype for parameters, they will receive back a SSML speech response that reads the menu aloud. This is done as my fulfillment for my “Get Menu” action in “Actions on Google”."
+                "This week, I finished getting the Google Assistant working with my Restful API. Currently, If someone posts to “api.joelaustin.net/google” with a response in Dialogflow formatting that contains a date and a menutype for parameters, they will receive back a SSML speech response that reads the menu aloud. This is done as my fulfillment for my “Get Menu” action in “Actions on Google”."
             ],
             "images": [
                 {"src": "https://www.androidpolice.com/wp-content/uploads/2016/10/nexus2cee_image-1.png"},
