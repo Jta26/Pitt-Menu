@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 //Initialize the Connection object.
 var connection = mysql.createConnection({
-    host: 'menu-parser-db.cr6wut1qfi23.us-west-2.rds.amazonaws.com',
+    host: 'jta26-captstone-db.c9cjk2mrsd30.us-east-2.rds.amazonaws.com',
     user: 'admin',
     password: 'google951',
     database: 'menu_parser_db'
