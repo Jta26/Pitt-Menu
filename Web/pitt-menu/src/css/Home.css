@@ -1,0 +1,62 @@
+
+
+.body-top {
+  width: 100%;
+  text-align: center;
+  background: url(../img.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 
+  inset 0px 11px 8px -10px #3a3a3a,
+  inset 0px -11px 8px -10px #3a3a3a; 
+}
+.body-top a {
+
+  animation: fadein 2s;
+  color: black;
+  background-color: #fc7b44;
+  width: 12%;
+  margin: auto;
+  margin-top: 350px;
+  margin-bottom: 350px;
+  padding: 10px 0 10px 0;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif
+}
+.body-top a:hover {
+  opacity: .5;
+}
+
+.body-bottom {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif
+}
+.body-bottom p {
+  padding: 0;
+  margin: 0;
+}
+.body-bottom-left, .body-bottom-right {
+  width: 50%;
+  text-align: center;
+
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}

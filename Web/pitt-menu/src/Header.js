@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import bckimg from './img.jpg'
-import './App.css';
+import './css/App.css';
+import Home from './Home';
 
-class App extends Component {
+class Header extends Component {
+
   render() {
     return (
       <div className="App">
@@ -12,19 +15,14 @@ class App extends Component {
             Pitt Menu
           </div>
           <div className="nav-list">
-              <div><a href="#">Home</a></div>
-              <div><a href="#">Menus</a></div>
+              <div><Link to="/">Home</Link></div>
+              <div><Link to="/Menus">Menus</Link></div>
               <div><a href="#">About</a></div>
               <div><a href="#">Contact</a></div>
+              <div className="login">
+                <Link to="/login">Login</Link>
+              </div>
           </div>
-          </div>
-        </div>
-        <div className="App-body">
-          <div className="body-top">
-            <button>View Today's Menu</button>
-          </div>
-          <div className="body-bottom">
-            {/* TODO */}
           </div>
         </div>
       </div>
@@ -32,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Header;
