@@ -10,15 +10,16 @@ class Home extends Component {
             <div className="body-top">
               <div className="sv-wrapper">
               <h1 className="sv-sentence">
-                <span>Pitt Menu Helps You</span>
+                <span>Pitt Menu helps you</span>
                 
                 <div className="slidingVertical sv-words">
-                    <span>Enjoy</span>
-                    <span>Share</span>
-                    <span>Experience</span>
+                    <span>enjoy</span>
+                    <span>share</span>
+                    <span>hate</span>
+                    <span>experience</span>
                 </div>
                 <br/>
-                  <span>The Dining Hall on Campus</span>
+                  <span>the dining hall on campus.</span>
               </h1>
               </div>
             

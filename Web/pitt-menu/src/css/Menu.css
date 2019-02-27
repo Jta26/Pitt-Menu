@@ -1,0 +1,26 @@
+
+.menu  {
+    
+    background-color: #2B7A78;
+    font-size: 200%;
+    color: #FEFFFF;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.menu-items {
+    margin: auto;
+    background-color: #3AAFA9;
+    display: flex;
+    flex-direction: column;
+   border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   
+}
+.menu-item {
+    font-size: 70%;
+    margin: 5px 0 5px 0;
+    color: #17252A
+}
