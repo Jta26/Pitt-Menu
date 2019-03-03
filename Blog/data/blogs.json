@@ -50,8 +50,8 @@
                 "For week 4, I span up a new AWS instance to use for my Restful API that facilitates the transfer of data between end clients and the backend database. I also explored the feasibility of getting the Google assistant to read out menus for specified dates. This is why I immediately setup HTTPS on then new server. Google Dialogflow, which is Google’s service for creating assistant actions, has a feature called “Dialogflow Fulfillment” and has an open source library that is used to create “fulfillment services”. I used this library to create a Webhook that returns a Javascript Promise with the information that is required. The promise also returns a SSML string. SSML stands for Synthesized Speech Markup Language, and is used to process things that make speech more natural like pauses and acronym readings."
             ],
             "images": [
-                {"src": "https://www.gstatic.com/devrel-devsite/v0c5955d059aba786c5f2d09da2bfbe42bacdee18d42deaad3e06cc3eb2931920/dialogflow/images/lockup.svg?dcb_=0.7683600014506741"},
-                {"src": "https://i.imgur.com/CpAhV80.png"}
+                {"src": "https://www.gstatic.com/devrel-devsite/v0c5955d059aba786c5f2d09da2bfbe42bacdee18d42deaad3e06cc3eb2931920/dialogflow/images/lockup.svg?dcb_=0.7683600014506741", "width": 1, "height": 1},
+                {"src": "https://i.imgur.com/CpAhV80.png", "width": 1, "height": 1}
             ]
         },
         {
@@ -62,19 +62,20 @@
                 "This week, I finished getting the Google Assistant working with my Restful API. Currently, If someone posts to “api.joelaustin.net/google” with a response in Dialogflow formatting that contains a date and a menutype for parameters, they will receive back a SSML speech response that reads the menu aloud. This is done as my fulfillment for my “Get Menu” action in “Actions on Google”."
             ],
             "images": [
-                {"src": "https://www.androidpolice.com/wp-content/uploads/2016/10/nexus2cee_image-1.png"},
-                {"src": "https://i.imgur.com/f7eL0sN.png"}
+                {"src": "https://www.androidpolice.com/wp-content/uploads/2016/10/nexus2cee_image-1.png", "width": 1, "height": 1},
+                {"src": "https://i.imgur.com/f7eL0sN.png", "width": 1, "height": 1}
             ]
         },
         {
             "title": "Web Front End Development",
+            "date": "Feb 27 2019",
             "week":6,
             "paragraphs":[
                 "For this week, I began developing the front end using create-react-app. This tool handles all the creation of bundlers that make it extremely simple to get an application that uses react up and running. It handles all bundling with regards to Webpack, which is a tool that compiles JavaScript into a browser readable format. There is also Babel, which compiles what’s called JSX into html. JSX is html that is written in-line with JavaScript, and allows the developer to pre-compile any information into specfic spots, before it is given to the DOM. \n At this time, I am working with the design of the website. I want to make something that utlilizes a flat user interface, while still looking professional and sleek. Design is always a tough area, as it’s difficult to pick colors and have decent UX. I guess that’s why UX designers salaries are so high."
             ],
             "images": [
-                {"src": "https://i.imgur.com/P37WbmI.png"},
-                {"src": "https://i.imgur.com/YvoJ4Nq.png"}
+                {"src": "https://i.imgur.com/P37WbmI.png", "width": 1, "height": 1},
+                {"src": "https://i.imgur.com/YvoJ4Nq.png", "width": 1, "height": 1}
             ]
         }
         
