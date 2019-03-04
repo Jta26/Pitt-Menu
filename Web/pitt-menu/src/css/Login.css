@@ -1,0 +1,29 @@
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    text-align: center;
+    margin-top: 200px;
+    
+}
+.login input {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 130%;
+}
+.login p {
+    font-size: 150%;
+}
+.login button {
+    margin-top: 10px;
+    width: 30%;
+    margin: auto;
+}

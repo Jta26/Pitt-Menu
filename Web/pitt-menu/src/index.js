@@ -7,6 +7,7 @@ import TransitionShell from './components/TransitionShell';
 import Header from './Header'
 import Home from './Home';
 import Menus from './Menus';
+import Login from './Login';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
                         <Switch>
                             <Route exact path="/" component={TransitionShell(Home)}/>
                             <Route path="/Menus" component={TransitionShell(Menus)}/>
+                            <Route path="/Login" component={TransitionShell(Login)}/>
                         </Switch>
                 </div>
             </Router>, 

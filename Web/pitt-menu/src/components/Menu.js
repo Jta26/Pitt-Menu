@@ -29,7 +29,7 @@ class Menu extends Component {
     render() {
         return(
             <div className='menu'>
-            <span>{this.props.type ? 'Breakfast/Lunch' : 'Dinner'}</span>
+            <div className='menu-type'>{this.props.type ? 'Breakfast/Lunch' : 'Dinner'}</div>
             <div className="menu-items">
                 {
                     this.state.items.map((item) => {
