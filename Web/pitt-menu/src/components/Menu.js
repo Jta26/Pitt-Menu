@@ -20,7 +20,6 @@ class Menu extends Component {
             });
         }
     }
-    
     RetrieveMenuData() {
         fetch('https://api.joelaustin.net/menu/' + this.props.date + '?type=' + this.props.type).then((res) => {
             return res.json()

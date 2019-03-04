@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var sqlservice = require('../services/sqlservice');
 var googleWebhook = require('../services/google');
+var InvokePython = require('../services/invoke');
+
 router.get('/menu/:date', (req, res) => {
     strDate = req.params.date
     intMenutype = req.query.type
@@ -28,10 +30,24 @@ router.get('/menu/:date', (req, res) => {
 
 router.post('/google', (req, res) => {
     googleWebhook(req, res);
-})
-
-
-
+});
+router.get('/invoke', (req, res) => {
+    InvokePython()
+    .then((data) => {
+        console.log(data.toString());
+        res.json({
+            "response": 0,
+            "message": "Menu Retrieved Successfully"
+        });
+    })
+    .catch((err) => {
+        console.log(err.toString());
+        res.json({
+            "response": 1,
+            "message": "Could Not Retireve Menu"
+        });
+    });
+});
 
 
 
