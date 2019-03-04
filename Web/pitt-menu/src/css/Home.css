@@ -49,7 +49,6 @@
 	margin: 0;
 	text-align: left;
 	color: var(--text-color-alt);
-	text-shadow: 1px 1px black;
 }
 .sv-sentence span {
 	white-space: nowrap;
@@ -93,7 +92,6 @@
 	-ms-animation: topToBottom 12.5s linear infinite 0s;
 	-webkit-animation: topToBottom 12.5s linear infinite 0s;
 	color: var(--alt-color1);
-	text-shadow: 1px 1px black;
 	opacity: 0;
 	overflow: hidden;
 	position: absolute;

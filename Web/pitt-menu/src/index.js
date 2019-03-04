@@ -8,9 +8,14 @@ import Header from './Header'
 import Home from './Home';
 import Menus from './Menus';
 import Login from './Login';
+import SignUp from './SignUp';
 import * as serviceWorker from './serviceWorker';
 
+import Firebase, { FirebaseContext } from './components/firebase';
+
+
 ReactDOM.render(
+        <FirebaseContext.Provider value={new Firebase()}>
             <Router>
                 <div>
                 <Header/>
@@ -18,9 +23,11 @@ ReactDOM.render(
                             <Route exact path="/" component={TransitionShell(Home)}/>
                             <Route path="/Menus" component={TransitionShell(Menus)}/>
                             <Route path="/Login" component={TransitionShell(Login)}/>
+                            <Route path='/Register' component={TransitionShell(SignUp)}/>
                         </Switch>
                 </div>
-            </Router>, 
+            </Router>
+        </FirebaseContext.Provider>, 
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
