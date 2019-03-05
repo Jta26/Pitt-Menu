@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './css/App.css';
 
-import 'semantic-ui-css/semantic.min.css'
 
 import TransitionShell from './components/TransitionShell';
 
+import Header from './components/Header';
 import Home from './pages/home';
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <div className="App">
           <div>
+            <Header/>
              <Switch>
               <Route path='/' component={TransitionShell(Home)}/>
             </Switch>
