@@ -8,9 +8,9 @@ var helmet = require('helmet');
 var app = express();
 var router = require('./routes/router');
 
-var privatekey = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/privkey.pem');
-var cert = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/fullchain.pem');
-var creds = {key: privatekey, cert: cert};
+// var privatekey = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/privkey.pem');
+// var cert = fs.readFileSync('/etc/letsencrypt/live/joelaustin.net/fullchain.pem');
+// var creds = {key: privatekey, cert: cert};
 
 
 app.use(helmet());
@@ -20,4 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', router);
 
-https.createServer(creds, app).listen(443);
+app.listen(8080, console.log('Server Started on 8080'));
+
+// https.createServer(creds, app).listen(443);

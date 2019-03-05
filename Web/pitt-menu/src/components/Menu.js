@@ -13,22 +13,25 @@ class Menu extends Component {
 
     componentDidMount() {
         this.RetrieveMenuData();
-        console.log(this.state.items.length)
-        if (this.state.items.length != 0) {
-            this.setState({
-                isMenu: true
-            });
-        }
+        console.log(this.state.items.length);
+        console.log(this.props.date + ' ' + this.props.type);
     }
     RetrieveMenuData() {
         fetch('https://api.joelaustin.net/menu/' + this.props.date + '?type=' + this.props.type).then((res) => {
             return res.json()
         }).then((json) => {
             json.forEach(item => {
+                
                 this.setState({
                     items: [...this.state.items, item['Item Name']]
                 });
             });
+            if (this.state.items.length != 0) {
+                this.setState({
+                    isMenu: true
+                });
+            }
+            
             
         })
     }
