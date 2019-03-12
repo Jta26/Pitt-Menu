@@ -2,9 +2,29 @@ import React, { Component } from 'react';
 import '../css/home.css';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.setFadeUp = this.setFadeUp.bind(this);
+    }
+    setFadeUp() {
+        var buttons = document.getElementsByClassName('nav-item');
+        console.log(buttons)
+        for (var i = 0; i < buttons.length; i++) {
+            this.AddClass(buttons, i)
+        }
+    }
+    AddClass(arr, i) {
+        setTimeout(() => {
+            console.log(i);
+            arr[i].className += ' fadeup';
+        }, i * 400);
+    }
+    componentDidMount() {
+        this.setFadeUp();
+    }
   render() {
     return (
-      <div className="home">
+      <div className="home" >
           <header>
               <div className='header-text'>
                 <div className="sv-wrapper">
@@ -23,13 +43,13 @@ class Home extends Component {
                 </div>
               </div>
               <div className='header-nav'>
-                <div className='today-menu'>
+                <div className='today-menu nav-item'>
                     <a href='#'>View Today's Menu</a>
                 </div>
-                <div>
+                <div className='login nav-item'>
                     <a href='#'>Login</a>
                 </div>
-                <div>
+                <div className='signup nav-item'>
                     <a href='#'>Sign Up</a>
                 </div>
             

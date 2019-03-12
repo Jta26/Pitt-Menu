@@ -27,7 +27,7 @@ header {
     padding: 20px;
     margin: 10px;
     border: 1px solid white;
-   
+    opacity: 0; 
 }
 .header-nav div:hover {
     box-shadow: 10px 10px white;
@@ -44,6 +44,25 @@ header {
 }
 .today-menu {
     
+}
+.fadeup {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
 }
 .sv-wrapper{
       color: white;
@@ -167,5 +186,8 @@ footer p {
 footer p a {
     color: #e87e04;
     font-weight: bold;
-    font-style: italic;
+}
+footer p a:hover {
+    color: white;
+   
 }
