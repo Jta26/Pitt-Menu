@@ -1,0 +1,33 @@
+.signup-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100vh;
+    background-color: #c0392b;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.left h1 {
+    font-size: 6vmin;
+    
+}
+.left span {
+    color: #f89406;
+    text-decoration: underline;
+}
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #c0392b;
+    color: white;
+    width: 45%;
+    font-family: 'Rubik', sans-serif;
+    
+}
+
+@media(max-width:768px) {
+    .signup-wrapper {
+        flex-direction: column;
+    }
+}
