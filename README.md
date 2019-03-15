@@ -1,4 +1,4 @@
-# Menu-Parser
+# Pitt-Menu
 Repo for my undergraduate capstone project.
 
 ## Table of Contents 
