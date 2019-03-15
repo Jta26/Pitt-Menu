@@ -17,10 +17,10 @@ router.get('/menu/:date', (req, res) => {
         return;
     }
     var strMenuType;
-    if (intMenutype === 0) {
+    if (intMenutype == 0) {
         strMenuType = 'Dinner';
     }
-    else {
+    else if (intMenutype == 1) {
         strMenuType = 'Breakfast/Lunch';
     }
 
