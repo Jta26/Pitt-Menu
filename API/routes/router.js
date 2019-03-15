@@ -27,7 +27,7 @@ router.get('/menu/:date', (req, res) => {
     sqlservice.GetMenuItems(strDate, intMenutype).then((items) => {
         var json = {
             "date": strDate,
-            "type": intMenutype,
+            "type": strMenuType,
             "items": []
         }
         items.forEach((item, i, arr) => {
