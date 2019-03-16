@@ -39,6 +39,7 @@ function menuIntent(agent) {
             resolve();
         });
     });
+    console.log(itemList);
     return getMenu.then(() => {
         var SSML = "<speak> Okay! The Menu for " + menutype + " on " + date + " is: <break time='.5s'/>" + itemList + "</speak>";
         agent.add(SSML);
