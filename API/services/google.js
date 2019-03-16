@@ -29,7 +29,7 @@ function menuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
-        sqlService(date, menutypeBool, function(result) {
+        sqlService.GetMenuItems(date, menutypeBool, function(result) {
             async.forEach(result[0], function(item, callback) {
 		itemName = item['Item Name'];
 		itemName = itemName.replace('&', 'and');
