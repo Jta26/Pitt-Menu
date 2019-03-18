@@ -1,33 +1,38 @@
 .login-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #c0392b;
+    justify-content: space-evenly;
     height: 100vh;
-    color: white;
-    font-family: 'Rubik', sans-serif;
+    background-color: var(--main-color);
+    align-items: center;
+    flex-wrap: wrap;
 }
-.login-wrapper h1 {
-    font-family: 'Rubik', sans-serif;
-    font-weight: bold;   
+.login-wrapper .left {
+  width: 50%;
 }
-.login-wrapper input {
-    font-family: 'Rubik', sans-serif;
-    margin: 20px;
-    font-size: 2em;
-    width: 50vmin;
-    padding: 10px 0 10px 10px;
-    border: 1px solid white;
+.login-wrapper .left h1 {
+    font-size: calc(16px + 12*(100vw - 300px)/1300);
+    line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
+    
+}
+.login-wrapper .left span {
+    color: #f89406;
+    text-decoration: underline;
+}
+.right {
+    height: 100vh;
+    width: 50%;
+    background-image: url('../img/img9colorgrey.jpg');
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login {
+
+    
 }
 
-.err-msg {
-    
-    color: Yellow;
-}
-@media(max-width: 768px) {
-    .login-wrapper input {
-        width: 20em;
-        font-size: 1em;
+@media(max-width:768px) {
+    .login-wrapper {
+        flex-direction: column;
     }
 }

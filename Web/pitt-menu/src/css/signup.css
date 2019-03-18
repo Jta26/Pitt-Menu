@@ -6,8 +6,11 @@
     align-items: center;
     flex-wrap: wrap;
 }
-.left h1 {
-    font-size: 6vmin;
+.signup-wrapper .left {
+    margin: 20px;
+}
+.signup-wrapper .left h1 {
+    font-size: 5.5vmin;
     
 }
 .left span {

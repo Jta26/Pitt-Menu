@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/home.css';
 import Button from './button';
+import MenuControl from '../components/menucontrol';
 class Home extends Component {
     constructor(props) {
         super(props);
+    }
+
+    FormatDate(date) {
+        var d = new Date(date);
+        var month = '' + (d.getMonth() + 1);
+        var day = '' + d.getDate();
+        var year = d.getFullYear();
+        if (month.length < 2) {
+            month = '0' + month;
+         }
+         if (day.length < 2) {
+             day = '0' + day;
+         }
+        return [year, month, day].join('-');
     }
     componentDidMount() {
      
@@ -12,7 +27,9 @@ class Home extends Component {
     render() {
         return (
         <div className="home" >
+         
             <header>
+                
                 <div className='header-text'>
                     <div className="sv-wrapper">
                     <h1 className="sv-sentence">
@@ -30,17 +47,25 @@ class Home extends Component {
                     </div>
                 </div>
                 <div className='header-nav'>
-                    <Button text="View Today's Menu" link='/' fade time={1}/>
-                    <Button text='Login' link='/login' fade time={2}/>
-                    <Button text='Sign Up' link='/signup' fade time={3}/>
+                    <div className='nav-buttons'>
+                        <Button text="View Menus" link='/' fade time={1}/>
+                        <Button text='Login' link='/login' fade time={2}/>
+                        <Button text='Sign Up' link='/signup' fade time={3}/>
+                    </div>
+                    <div className='today-wrapper'>
+                  
+                            <p className='today-header'>Today's Menu</p>
+                            <MenuControl date={this.FormatDate(new Date())}/>   
                 
+                    </div>
+
 
                 </div>
             </header>
-            <footer>
+            {/* <footer>
                 <p>Created by <a href='http://joelaustin.net' target='_blank'>Joel Austin.</a></p>
                 
-            </footer>
+            </footer> */}
         </div>
         );
     }

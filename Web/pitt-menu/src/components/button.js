@@ -28,7 +28,7 @@ class Button extends Component {
     render() {
         return(
             <div className={'button ' + this.state.fade}>
-                <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a>
+                <p> <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a></p>
             </div>
         )
     }

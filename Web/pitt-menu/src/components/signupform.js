@@ -20,7 +20,8 @@ class SignUpForm extends Component {
         }
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
+        this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
     }
     isLoggedIn() {
         this.props.firebase.auth.onAuthStateChanged((user) => {
@@ -39,9 +40,9 @@ class SignUpForm extends Component {
         this.setState({pass: event.target.value});
     }
     handleConfirmPasswordChange(event) {
-
+        this.setState({confPass: event.target.value});
     }
-    handleLogin(event) {
+    handleSignUp(event) {
         if (isEmptyOrSpaces(this.state.email)) {
             this.setState({
                 err: 'err-msg',
@@ -54,19 +55,45 @@ class SignUpForm extends Component {
                 errmsg: 'Please Enter Your Password.'
             });
         }
+        else if (isEmptyOrSpaces(this.state.confPass)) {
+            this.setState({
+                err:'err-msg',
+                errmsg: 'Passwords do not Match'
+            });
+        }
+        else if (this.state.confPass !== this.state.pass) {
+            this.setState({
+                err:'err-msg',
+                errmsg: 'Passwords do not Match'
+            });
+        }
         else {
-            this.props.firebase.SignInWithEmailandPassword(this.state.email, this.state.pass)
+            this.props.firebase.CreateUserWithEmailandPassword(this.state.email, this.state.pass)
             .then(() => {
-                console.log(this.props);
-               this.props.history.push('/dashboard')
+               this.props.history.push('/login')
             })
             .catch((err) => {
-                if (err.code == 'auth/invalid-email' || err.code == 'auth/user-not-found') {
-                    console.log(err.code, err.messsage)
-                    this.setState({
-                        err: 'err-msg',
-                        errmsg: 'Email Address or Password is Incorrect'
-                    });
+                console.log(err.code, err.messsage);
+                
+                switch (err.code) {
+                    case ('auth/invalid-email'):
+                        this.setState({
+                            err: 'err-msg',
+                            errmsg: 'Email is Incorrectly Formatted.'
+                        });
+                        break;
+                    case ('auth/email-already-in-use'):
+                        this.setState({
+                            err: 'err-msg',
+                            errmsg: 'Email Already Registered.'
+                        });
+                        break;
+                    case ('auth/weak-password'):
+                        this.setState({
+                            err: 'err-msg',
+                            errmsg: 'Password Must be at Least 6 Characters Long.'
+                        });
+                        break;
                 }
             });
             
@@ -104,13 +131,13 @@ class SignUpForm extends Component {
                         placeholder='Confirm Password' 
                         required 
                         name='Confirg password' 
-                        value={this.state.pass} 
-                        onChange={this.handlePasswordChange} 
+                        value={this.state.confPass} 
+                        onChange={this.handleConfirmPasswordChange} 
                         fade time={3}/>
                     <Button 
-                        text='Login!' 
+                        text='Sign Up!' 
                         fade time={4} 
-                        onClick={this.handleLogin}/>
+                        onClick={this.handleSignUp}/>
                 </div>
         )
     }

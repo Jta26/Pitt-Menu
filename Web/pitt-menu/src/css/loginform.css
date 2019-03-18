@@ -1,0 +1,33 @@
+.loginform-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+}
+.loginform-wrapper h1 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;   
+}
+.loginform-wrapper input {
+    font-family: 'Rubik', sans-serif;
+ 
+    font-size: 2em;
+    width: 50vmin;
+    padding: 10px 0 10px 10px;
+    border: 1px solid white;
+}
+
+.err-msg {
+    
+    color: Yellow;
+}
+@media(max-width: 768px) {
+    .login-wrapper input {
+        width: 20em;
+        font-size: 1em;
+    }
+}

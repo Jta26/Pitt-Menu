@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import '../css/login.css';
+import '../css/loginform.css';
 import Button from './button';
 import Input from './input';
 function isEmptyOrSpaces(str){
@@ -82,7 +82,7 @@ class LoginForm extends Component {
     render() {
         return(
          
-                <div className='login-wrapper'>
+                <div className='loginform-wrapper'>
                     <h1>Login to Pitt Menu!</h1>
                     <p className={this.state.err}>{this.state.errmsg}</p>
                     <Input 

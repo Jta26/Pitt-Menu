@@ -8,14 +8,15 @@ import SignUp from './signup';
 import Dashboard from './dashboard';
 class App extends Component {
   render() {
+    console.log("This is the process.env", process.env.PUBLIC_URL)
     return (
       <div className="App">
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/login' component={Login}/>
-              <Route path='/signup' component={SignUp}/>
-              <Route path='/dashboard' component={Dashboard}/>
+              <Route exact path={'/'} component={Home}/>
+              <Route exact path={'/login'}component={Login}/>
+              <Route exact path={'/signup'} component={SignUp}/>
+              <Route exact path={'/dashboard'} component={Dashboard}/>
             </Switch>
           </BrowserRouter>
       </div>

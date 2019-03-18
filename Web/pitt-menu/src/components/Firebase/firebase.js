@@ -20,7 +20,7 @@ const config = {
 
       //Authentication
       CreateUserWithEmailandPassword = (email, password) => {
-          this.auth.createUserWithEmailAndPassword(email, password);
+          return this.auth.createUserWithEmailAndPassword(email, password);
       }
       SignInWithEmailandPassword = (email, password) => {
           return this.auth.signInWithEmailAndPassword(email, password);

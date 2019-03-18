@@ -17,7 +17,7 @@ class SignUp extends Component {
                     </FirebaseContext.Consumer>
                 </div>
                 <div className='signup left'>
-                    <h1>By Signing up for <span>Pitt Menu</span> You can <span>Vote On</span> and <span>Post Images</span> of your favorite food items.</h1>
+                    <h1>By Signing up for <span>Pitt Menu</span>, You can <span>Vote On</span> and <span>Post Images</span> of your favorite food items.</h1>
                 </div>
             </div>
             

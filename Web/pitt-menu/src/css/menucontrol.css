@@ -1,0 +1,51 @@
+.menu-control .tab{
+    overflow-y: scroll;
+    height: 50vh;
+    background-color: var(--side-color);
+    border: none;
+ 
+  
+}
+.menu-control div .ui.secondary.menu .item {
+    width: 47%;
+    text-align: center;
+    color: var(--side-color);
+    font-size: calc(5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    border: 1px solid var(--side-color);
+    transition: all .1s ease-in;
+    border-radius: 30px;
+}
+.menu-control div .ui.secondary.menu .item:hover {
+    color: var(--not-text-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--not-text-color); 
+}
+.menu-control div .ui.secondary.menu .active.item:hover {
+    color: var(--not-text-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--not-text-color); 
+}
+.menu-control div .ui.secondary.menu .active.item{
+    color: var(--text-color);
+ 
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: var(--side-color);
+    transition: all .1s ease-in;
+    
+}
+@media (max-width: 768px) {
+    
+    .menu-control .tab {
+        width: 100%;
+        height: auto;
+        overflow-y: auto;
+        
+    }
+    .menu-control div .ui.secondary.menu .item {
+        font-size: 1em;
+    }
+}

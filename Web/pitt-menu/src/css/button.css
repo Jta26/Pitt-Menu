@@ -1,22 +1,48 @@
 .button {
-    background-color: #e87e04;
-    width: 30vmin;
+    background-color: var(--side-color);
+    width: 15vw;
+    height: 3vw;
     margin: 20px;
-    border: 1px solid white;
+  
     opacity: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid white;
+    transition: all .1s ease-in;
+
 }
 .button:hover {
-    box-shadow: 10px 10px white;
+    border: 1px solid var(--not-text-color);
+    /* box-shadow: 0 0 px 0px var(--not-text-color); */
+    
 }
-.button a {
-    display: block;
-    color: white;
+.button p a:hover {
+    color: var(--not-text-color);
+}
+.button p {
+    
+    display:block;
     width: 100%;
     height: 100%;
-    font-size: 1.5em;
-    padding: 20px 0 20px 0;
+    
+ 
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     text-align: center;
     
+}
+.button p  a{
+    /* text-shadow: 1px 1px black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 1vw;
+    color: var(--text-color);
+    transition: all .1s ease-in;
 }
 
 
@@ -37,5 +63,16 @@
     to {
         transform: translate3d(0,0,0);
         opacity: 1
+    }
+}
+
+@media(max-width: 768px) {
+    .button {
+        width: 15em;
+        height: 5vh;
+    }
+    .button  p a {
+        font-size: calc(14px + 12*(100vw - 300px)/1300);
+        line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
     }
 }
