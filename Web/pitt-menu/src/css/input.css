@@ -1,14 +1,18 @@
 .input {
     opacity: 0;
-    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .input input {
     font-family: 'Rubik', sans-serif;
-    margin: 20px;
-    font-size: 1.1em;
-    width: 50vmin;
+    margin: 1vh;
+    font-size: calc(10px + 12*(100vw - 300px)/1300);
+    line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
     padding: 10px 0 10px 10px;
     border: 1px solid white;
+    width: 65%;
 }
 .fadeup {
     opacity: 0;
@@ -29,4 +33,7 @@
         transform: translate3d(0,0,0);
         opacity: 1
     }
+}
+@media(max-width: 768px) {
+    
 }

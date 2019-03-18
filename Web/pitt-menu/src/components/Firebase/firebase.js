@@ -26,6 +26,7 @@ const config = {
           return this.auth.signInWithEmailAndPassword(email, password);
       }
       SignOut = () => {
+          console.log('signing User out');
           this.auth.signOut();
       }
       

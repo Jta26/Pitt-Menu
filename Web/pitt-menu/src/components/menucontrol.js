@@ -20,7 +20,7 @@ class MenuControl extends Component {
      }
 
      GetMenus(date) {
-         
+         this.setState({loading: true});
         fetch(`https://api.joelaustin.net/menu/${date}/?type=${0}`)
         .then((res) => {
              return res.json();
@@ -31,7 +31,7 @@ class MenuControl extends Component {
                 panes: [...this.state.panes,
                 {
                     menuItem: menu.type,
-                    render: () => <Tab.Pane attached={false}><Menu items={menu.items}/></Tab.Pane>
+                    render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu items={menu.items}/></Tab.Pane>
                 }
                 ]
             });
@@ -47,7 +47,7 @@ class MenuControl extends Component {
                     panes: [...this.state.panes,
                     {
                         menuItem: menu.type,
-                        render: () => <Tab.Pane attached={false}><Menu items={menu.items}/></Tab.Pane>
+                        render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu items={menu.items}/></Tab.Pane>
                     }
                     ]
                 });
@@ -68,7 +68,7 @@ class MenuControl extends Component {
          return(
              <div>
                  <div className='menu-control'>
-                    <Tab loading={this.state.loading} menu={{secondary: true, pointing: false}} panes={this.state.panes}/>
+                    <Tab menu={{secondary: true, pointing: false}} panes={this.state.panes}/>
               
                  </div>
              </div>
