@@ -1,8 +1,8 @@
 .button {
     background-color: var(--side-color);
     width: 15vw;
-    height: 3vw;
-    margin: 20px;
+    height: 4vh;
+   
   
     opacity: 0; 
     display: flex;
@@ -69,7 +69,7 @@
 @media(max-width: 768px) {
     .button {
         width: 15em;
-        height: 5vh;
+        height: 3em;
     }
     .button  p a {
         font-size: calc(14px + 12*(100vw - 300px)/1300);

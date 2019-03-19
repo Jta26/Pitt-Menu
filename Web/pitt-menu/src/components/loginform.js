@@ -20,17 +20,7 @@ class LoginForm extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmitKeyDown = this.handleSubmitKeyDown.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
-    }
-    isLoggedIn() {
-        this.props.firebase.auth.onAuthStateChanged((user) => {
-            if (user) {
-                this.props.history.push('/dashboard')
-            }
-            else {
 
-            }
-        })
     }
     handleEmailChange(event) {
         this.setState({email: event.target.value});
@@ -63,8 +53,9 @@ class LoginForm extends Component {
                this.props.history.push('/dashboard')
             })
             .catch((err) => {
-                if (err.code == 'auth/invalid-email' || err.code == 'auth/user-not-found') {
-                    console.log(err.code, err.messsage)
+                console.log(err.code, err.messsage)
+                if (err.code == 'auth/invalid-email' || err.code == 'auth/user-not-found' || err.code == 'auth/wrong-password') {
+                    
                     this.setState({
                         err: 'err-msg',
                         errmsg: 'Email Address or Password is Incorrect'
@@ -77,7 +68,6 @@ class LoginForm extends Component {
         
     }
     componentDidMount() {
-       this.isLoggedIn();
     }
     render() {
         return(
@@ -104,7 +94,7 @@ class LoginForm extends Component {
                         onKeyPress={this.handleSubmitKeyDown}
                         fade time={2}/>
                     <Button 
-                        text='Login!' 
+                        text='Login' 
                         fade time={3} 
                         onClick={this.handleLogin}/>
                 </div>

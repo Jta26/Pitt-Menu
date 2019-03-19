@@ -1,0 +1,12 @@
+.header-wrapper {
+    position: fixed;
+
+}
+.header-wrapper ul {
+    display: flex;
+    list-style: none;
+    
+}
+.header-wrapper ul li {
+    
+}

@@ -3,8 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    height: 100vh;
+    min-width: 100%;
     color: white;
     font-family: 'Rubik', sans-serif;
 }
@@ -12,20 +11,17 @@
     font-family: 'Rubik', sans-serif;
     font-weight: bold;   
 }
-.loginform-wrapper input {
-    font-family: 'Rubik', sans-serif;
- 
-    font-size: 2em;
-    width: 50vmin;
-    padding: 10px 0 10px 10px;
-    border: 1px solid white;
+.loginform-wrapper .button {
+    margin-top: 2vh;
 }
-
 .err-msg {
     
     color: Yellow;
 }
 @media(max-width: 768px) {
+    .login-wrapper {
+
+    }
     .login-wrapper input {
         width: 20em;
         font-size: 1em;
