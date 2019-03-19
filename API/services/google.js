@@ -29,15 +29,17 @@ function menuIntent(agent) {
     console.log(menutype, menutypeBool, date, timeperiod);
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
-        sqlService.GetMenuItems(date, menutypeBool, function(result) {
-            async.forEach(result[0], function(item, callback) {
-		itemName = item['Item Name'];
-		itemName = itemName.replace('&', 'and');
-		console.log(itemName);
-                itemList += itemName + ' <break time=".3s"/> ';
-            });
-            resolve();
-        });
+        sqlService.GetMenuItems(date, menutypeBool).then((items => {
+        
+            async.forEach(result[0], function(item) {
+                itemName = item['Item Name'];
+                itemName = itemName.replace('&', 'and');
+                console.log(itemName);
+                        itemList += itemName + ' <break time=".3s"/> ';
+                    });
+                resolve();
+       
+        }));
     });
     console.log(itemList);
     return getMenu.then(() => {
