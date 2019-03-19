@@ -21,30 +21,36 @@ function menuIntent(agent) {
     var menutypeBool;
     date = date.split('T')[0];
     if (menutype == 'dinner') {
-        menutypeBool = 0;
+        menutypeBool = 1;
     }
     else {
-        menutypeBool = 1;
+        menutypeBool = 0;
     }
     console.log(menutype, menutypeBool, date, timeperiod);
     var itemList = '';
     var getMenu = new Promise((resolve, reject) => {
-        sqlService.GetMenuItems(date, menutypeBool).then((items => {
-        	console.log(items);
-            async.forEach(items, function(item) {
-		console.log(item);
-                itemName = item;
-                itemName = itemName.replace('&', 'and');
-                console.log(itemName);
-                        itemList += itemName + ' <break time=".3s"/> ';
-                    });
-                resolve();
-       
-        }));
+        sqlService(date, menutypeBool, function(result) {
+            async.forEach(result[0], function(item, callback) {
+                itemList += item['Item Name'] + '<break time=".3s"/> ';
+            });
+            resolve();
+        });
     });
-    console.log(itemList);
     return getMenu.then(() => {
-        var SSML = "<speak> Okay! The Menu for " + menutype + " on " + date + " is: <break time='.5s'/>" + itemList + "</speak>";
+//        var SSML = `<speak> Okay! The Menu for ${menutype} on ${date} is: <break time="1s"/> ${itemList} </speak>`;
+	var test = '<speak>
+  Here are <say-as interpret-as="characters">SSML</say-as> samples.
+  I can pause <break time="3s"/>.
+  I can play a sound
+  <audio src="https://www.example.com/MY_MP3_FILE.mp3">didn't get your MP3 audio file</audio>.
+  I can speak in cardinals. Your number is <say-as interpret-as="cardinal">10</say-as>.
+  Or I can speak in ordinals. You are <say-as interpret-as="ordinal">10</say-as> in line.
+  Or I can even speak in digits. The digits for ten are <say-as interpret-as="characters">10</say-as>.
+  I can also substitute phrases, like the <sub alias="World Wide Web Consortium">W3C</sub>.
+  Finally, I can speak a paragraph with two sentences.
+  <p><s>This is sentence one.</s><s>This is sentence two.</s></p>
+</speak>'
+        console.log(SSML);
         agent.add(SSML);
     })
     
