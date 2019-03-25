@@ -17,12 +17,14 @@ class LoginForm extends Component {
             errmsg: '',
             isLoading: false
         }
+        this.handleLogin = this.handleLogin.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmitKeyDown = this.handleSubmitKeyDown.bind(this);
 
     }
     handleEmailChange(event) {
+        console.log(this.state.email);
         this.setState({email: event.target.value});
     }
     handlePasswordChange(event) {

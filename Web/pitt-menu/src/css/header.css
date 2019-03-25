@@ -1,12 +1,15 @@
 .header-wrapper {
-    position: fixed;
+
 
 }
 .header-wrapper ul {
+    width: 30vw;
     display: flex;
     list-style: none;
-    
+    justify-content: space-between;
 }
 .header-wrapper ul li {
-    
+    font-size: calc(8px + 12*(100vw - 300px)/1300);
+    line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
+
 }

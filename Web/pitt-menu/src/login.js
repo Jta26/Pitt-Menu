@@ -11,12 +11,12 @@ class Login extends Component {
     render() {
         return(
             <div>
-                            <FirebaseContext.Consumer>
-                    {firebase => <Header firebase={firebase} isAuthPage/>}
-                </FirebaseContext.Consumer>
             <div className='login-wrapper'>
 
                 <div className='login left'>
+                <FirebaseContext.Consumer>
+                    {firebase => <Header firebase={firebase} buttons isAuthPage/>}
+                </FirebaseContext.Consumer>
                 <FirebaseContext.Consumer>
                     {firebase => <LoginForm firebase={firebase}/>}
                 </FirebaseContext.Consumer>

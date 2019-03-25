@@ -8,7 +8,6 @@ import SignUp from './signup';
 import Dashboard from './dashboard';
 class App extends Component {
   render() {
-    console.log("This is the process.env", process.env.PUBLIC_URL)
     return (
       <div className="App">
           <BrowserRouter basename={process.env.PUBLIC_URL}>
