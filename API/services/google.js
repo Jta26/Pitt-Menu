@@ -50,7 +50,7 @@ function menuIntent(agent) {
     return getMenu.then(() => {
         var SSML;
         if (itemList == '') {
-            SSML = "I'm Sorry, <break time='.5s'/> that menu isn't available yet.";
+            SSML = "<speak>I'm Sorry <break time='.5s'/> that menu isn't available yet.</speak>";
             
         }
         else {
