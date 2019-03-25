@@ -40,7 +40,11 @@ router.get('/menu/:date', (req, res) => {
 
         });
          
-    });
+    }, (err) => {
+        if (err === 0) {
+            res.status(200).json({"message": "No Menu"});
+        }
+    })
     
 });
 router.get('/item/:id', (req, res) => {

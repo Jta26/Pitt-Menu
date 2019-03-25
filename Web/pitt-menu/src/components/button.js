@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
 import '../css/button.css';
 
+//This defines a generic button that is used throughout Pitt-Menu.
+//props are fade, time, link, onclick, text.
 class Button extends Component {
     constructor(props) {
         super(props);
@@ -11,9 +12,10 @@ class Button extends Component {
         }
         this.fadeHandler.bind(this);    
     }
+    //Handles fades based on time prop.
     fadeHandler() {
         if (this.props.fade) {
-            console.log('Fading in ' + this.props.fadeTime);
+           
             setTimeout(() => {
                 this.setState({
                     fade: 'fadeup'
@@ -27,7 +29,7 @@ class Button extends Component {
     }
     render() {
         return(
-            <div className={'button ' + this.state.fade}>
+            <div className={'button ' + this.state.fade} style={this.props.fade ?  {opacity: 0} : {opacity: 1}}>
                 <p> <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a></p>
             </div>
         )

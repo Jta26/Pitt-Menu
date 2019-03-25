@@ -23,7 +23,10 @@ function GetMenuItems(date, type) {
             type
         ]
         connection.query(sql, [param], function(err, result) {
-            if (err) rej(err);
+            if (err) throw err;
+            if (result[0].length == 0) {
+                rej(0);
+            }
             console.log(`Retrieved Menu for ${type} on ${date}`);
             var items = [];
             result[0].forEach((item, i, arr) => {

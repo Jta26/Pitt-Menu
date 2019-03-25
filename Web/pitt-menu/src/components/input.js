@@ -12,7 +12,7 @@ class Input extends Component {
     }
     fadeHandler() {
         if (this.props.fade) {
-            console.log('Fading in ' + this.props.fadeTime);
+          
             setTimeout(() => {
                 this.setState({
                     fade: 'fadeup'

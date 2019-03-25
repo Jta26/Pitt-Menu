@@ -2,6 +2,9 @@
 
 
 }
+.header-wrapper .button {
+    margin: 20px;
+}
 .header-wrapper ul {
     width: 30vw;
     display: flex;

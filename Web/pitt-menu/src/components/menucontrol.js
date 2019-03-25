@@ -20,6 +20,7 @@ class MenuControl extends Component {
      }
 
      GetMenus(date) {
+         console.log(date)
          this.setState({loading: true});
         fetch(`https://api.joelaustin.net/menu/${date}/?type=${0}`)
         .then((res) => {
@@ -55,11 +56,15 @@ class MenuControl extends Component {
                 
                
             });
+        }).catch((err) => {
+            console.log(err)
+            // this.setState()
         });
        
      }
      componentDidMount() {
-        this.GetMenus('2019-02-02', 0)
+         
+        this.GetMenus(this.props.date);
 
          
      }
