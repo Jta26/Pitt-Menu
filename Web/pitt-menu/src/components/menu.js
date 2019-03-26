@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import MenuItem from './menuitem';
 import '../css/menu.css';
-
-// props menuItems.
+//Defines a "menu" component that takes in a list of items are generates MenuItem Components from the list.
+// props items.
 class Menu extends Component {
      constructor(props) {
         super(props);
@@ -9,14 +10,13 @@ class Menu extends Component {
 
         }
      }
-
      render() {
          return(
              <div>
                  <div className='menu'>
-                    {this.props.items.map((item) => {
-                        
-                        return <p>{item.itemName}</p>
+                    {this.props.items.map((item, i) => {
+                      
+                        return <MenuItem key={item.itemID} firebase={this.props.firebase} name={item.itemName} itemID={item.itemID} fade time={i} />
                     })}
                  </div>
              </div>

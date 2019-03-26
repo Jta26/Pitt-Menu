@@ -3,10 +3,15 @@ import {withRouter} from 'react-router-dom';
 import '../css/loginform.css';
 import Button from './button';
 import Input from './input';
+
+//Determines if a box is empty or whitespace.
+//matches regex.
 function isEmptyOrSpaces(str){
     return str === null || str.match(/^ *$/) !== null;
 }
 
+//defines a login form dedicated to using Firebase to sign the user in and redirect them to the dashboard.
+//props are firebase
 class LoginForm extends Component {
     constructor(props) {
         super(props);

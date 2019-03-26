@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Tab} from 'semantic-ui-react';
 import Menu from './menu';
 import '../css/menucontrol.css';
-
 //props include date.
 class MenuControl extends Component {
      constructor(props) {
@@ -18,7 +17,7 @@ class MenuControl extends Component {
     
         this.GetMenus = this.GetMenus.bind(this);
      }
-
+     //Fetchs dinner, then Fetchs Lunch/Breakfast
      GetMenus(date) {
          console.log(date)
          this.setState({loading: true});
@@ -32,7 +31,7 @@ class MenuControl extends Component {
                 panes: [...this.state.panes,
                 {
                     menuItem: menu.type,
-                    render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu items={menu.items}/></Tab.Pane>
+                    render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu firebase={this.props.firebase} items={menu.items}/></Tab.Pane>
                 }
                 ]
             });
@@ -48,7 +47,7 @@ class MenuControl extends Component {
                     panes: [...this.state.panes,
                     {
                         menuItem: menu.type,
-                        render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu items={menu.items}/></Tab.Pane>
+                        render: () => <Tab.Pane loading={this.state.loading} attached={false}><Menu firebase={this.props.firebase} items={menu.items}/></Tab.Pane>
                     }
                     ]
                 });
@@ -63,10 +62,7 @@ class MenuControl extends Component {
        
      }
      componentDidMount() {
-         
         this.GetMenus(this.props.date);
-
-         
      }
 
      render() {

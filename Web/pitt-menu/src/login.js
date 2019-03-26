@@ -3,6 +3,7 @@ import LoginForm from './components/loginform';
 import Header from './components/header';
 import './css/login.css';
 import { FirebaseContext } from './components/Firebase';
+//Page Component that is a basic login page.
 class Login extends Component {
     constructor(props) {
         super(props);

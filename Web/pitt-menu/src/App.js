@@ -6,6 +6,7 @@ import Home from './components/home';
 import Login from './login';
 import SignUp from './signup';
 import Dashboard from './dashboard';
+//Defines the class that loads the router that mounts the other page components.
 class App extends Component {
   render() {
     return (

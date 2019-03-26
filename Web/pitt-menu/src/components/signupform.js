@@ -23,16 +23,16 @@ class SignUpForm extends Component {
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSignUp = this.handleSignUp.bind(this);
     }
-    isLoggedIn() {
-        this.props.firebase.auth.onAuthStateChanged((user) => {
-            if (user) {
-                this.props.history.push('/dashboard')
-            }
-            else {
+    // isLoggedIn() {
+    //     this.props.firebase.auth.onAuthStateChanged((user) => {
+    //         if (user) {
+    //             this.props.history.push('/dashboard')
+    //         }
+    //         else {
 
-            }
-        })
-    }
+    //         }
+    //     })
+    // }
     handleEmailChange(event) {
         this.setState({email: event.target.value});
     }
@@ -102,7 +102,7 @@ class SignUpForm extends Component {
         
     }
     componentDidMount() {
-       this.isLoggedIn();
+    //    this.isLoggedIn();s
     }
     render() {
         return(

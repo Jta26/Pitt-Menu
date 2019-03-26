@@ -15,7 +15,6 @@ class Button extends Component {
     //Handles fades based on time prop.
     fadeHandler() {
         if (this.props.fade) {
-           
             setTimeout(() => {
                 this.setState({
                     fade: 'fadeup'

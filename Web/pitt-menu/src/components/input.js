@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/input.css';
 
+//Defines basic input component used throughout Pitt Menu.
+//props are fade, time, placeholder, required, value, onChange, type, and onKeyPress.
 class Input extends Component {
     constructor(props) {
         super(props);

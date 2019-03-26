@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../css/home.css';
 import Button from './button';
 import MenuControl from '../components/menucontrol';
+import { FirebaseContext } from './Firebase';
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -55,7 +56,10 @@ class Home extends Component {
                     <div className='today-wrapper'>
                   
                             <p className='today-header'>Today's Menu</p>
-                            <MenuControl date={this.FormatDate(new Date())}/>   
+                            <FirebaseContext.Consumer>
+                                {firebase => <MenuControl firebase={firebase} date={this.FormatDate(new Date())}/>}
+                            </FirebaseContext.Consumer>
+                               
                 
                     </div>
 
