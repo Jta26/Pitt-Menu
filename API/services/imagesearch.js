@@ -6,13 +6,14 @@ var cheerio = require('cheerio');
 
 async function CheckItems() {
     let items = await firebase.GetFirebaseItemList();
-    for (const item of items) {
-        if (!("images" in item)) {
-            console.log(' --------------------------- \n images not found in ' + item.name);
-            let itemName = item.name.replace(' ' , '+');
+    for (const [i, item] of items.entries()) {
+        if (!("images" in item[1])) {
+            console.log(' --------------------------- \n images not found in ' + item[1].name);
+            let itemID = item[0];
+            let itemName = item[1].name.replace(' ' , '+');
             let headers = new Headers({
                 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
-            })
+            });
             let searchUrl = `https://www.google.com/search?q=${itemName}&biw=884&bih=978&tbm=isch&source=lnt&tbs=isz:ex,iszw:800,iszh:800`
             let searchResponse = await fetch(searchUrl, {
                 method: 'GET',
@@ -21,16 +22,27 @@ async function CheckItems() {
             let data = await searchResponse.text();
             let $ = cheerio.load(data);
             let imgUrl = JSON.parse($('.rg_meta').first().text()).ou;
-
-            let imgResponse = await fetch(imgUrl)
-            let imgBuffer = await imgResponse.buffer();
-            firebase.StoreImageFromUInt8Arr(item.name, imgBuffer);
+            let extension = imgUrl.split(/\#|\?/)[0].split('.').pop().trim();
+            let imgResponse;
+            try {
+                imgResponse = await fetch(imgUrl);
+            }
+            catch (err) {
+                if (err) continue;
+            }
             
+            let imgBuffer = await imgResponse.buffer();
+            firebase.StoreImageFromUInt8Arr(item[1].name, itemID, imgBuffer);
+            
+            
+        }
+        else {
+            console.log(`${item [0] + ' ' + item[1].name} has images; skipping`);
         }
     }
     
     
 }
-CheckItems();
+// CheckItems();
 
 
