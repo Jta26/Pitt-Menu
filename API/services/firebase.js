@@ -49,7 +49,9 @@ function StoreImageFromUInt8Arr(imgName, itemID, imgBuffer) {
     return new Promise(async (res, rej) => {
         var bucket = admin.storage().bucket();
         var file = bucket.file(imgName + '.jpg');
-        file.save(imgBuffer);
+        await file.save(imgBuffer);
+        await file.setMetadata({contentType: 'image/jpeg'}, function(err, apiResponse) {});
+        
         var fileUrl = await file.getSignedUrl({
             action: 'read',
             expires: '03-17-2025'

@@ -4,6 +4,7 @@ var sqlservice = require('../services/sqlservice');
 var firebase = require('../services/firebase');
 var googleWebhook = require('../services/google');
 var InvokePython = require('../services/invoke');
+var ImageSearch = require('../services/imagesearch');
 
 router.get('/menu/:date', (req, res) => {
     strDate = req.params.date
@@ -69,6 +70,7 @@ router.get('/invoke', (req, res) => {
     .then((data) => {
         console.log(data.toString());
         firebase.updateFirebase();
+        ImageSearch.VerifyFirebaseItemImageContent();
         res.json({
             "response": 1,
             "message": "Menu Retrieved; Firebase Updated"

@@ -4,7 +4,7 @@ var cheerio = require('cheerio');
 // if they do not have an image, it searches google images and fill it with the first one.
 
 
-async function CheckItems() {
+async function VerifyFirebaseItemImageContent() {
     let items = await firebase.GetFirebaseItemList();
     for (const [i, item] of items.entries()) {
         if (!("images" in item[1])) {
@@ -43,6 +43,5 @@ async function CheckItems() {
     
     
 }
-// CheckItems();
 
-
+module.exports.VerifyFirebaseItemImageContent = VerifyFirebaseItemImageContent;
