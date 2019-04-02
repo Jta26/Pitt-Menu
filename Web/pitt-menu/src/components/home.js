@@ -7,6 +7,7 @@ import { FirebaseContext } from './Firebase';
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state={visible: false}
     }
 
     FormatDate(date) {
@@ -23,7 +24,7 @@ class Home extends Component {
         return [year, month, day].join('-');
     }
     componentDidMount() {
-     
+        this.setState({visible: !this.state.visible})
     }
     render() {
         return (
@@ -49,12 +50,12 @@ class Home extends Component {
                 </div>
                 <div className='header-nav'>
                     <div className='nav-buttons'>
-                        <Button text="View Menus" link='/' fade time={1}/>
-                        <Button text='Login' link='/login' fade time={2}/>
-                        <Button text='Sign Up' link='/signup' fade time={3}/>
+                            <Button text="View Menus" link='/' fade  time={1}/>
+                                <Button text='Login' link='/login' fade time={2}/>
+                                <Button text='Sign Up' link='/signup' fade  time={3}/>
+
                     </div>
-                    <div className='today-wrapper'>
-                  
+                    <div className='today-wrapper' >
                             <p className='today-header'>Today's Menu</p>
                             <FirebaseContext.Consumer>
                                 {firebase => <MenuControl firebase={firebase} date={this.FormatDate(new Date())}/>}

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../css/button.css';
-
+import { Transition, Container, Image } from 'semantic-ui-react';
+import PackageComponent from './packagecomponent';
 //This defines a generic button that is used throughout Pitt-Menu.
 //props are fade, time, link, onclick, text.
 class Button extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fade: ''
+            visible: false
         }
         this.fadeHandler.bind(this);    
     }
@@ -17,20 +18,24 @@ class Button extends Component {
         if (this.props.fade) {
             setTimeout(() => {
                 this.setState({
-                    fade: 'fadeup'
+                    visible: true
                 })
-            }, this.props.time * 400)
+            }, this.props.time * 650)
         }
     }
     
     componentDidMount() {
-        this.fadeHandler();
+        this.fadeHandler()
     }
     render() {
         return(
-            <div className={'button ' + this.state.fade} style={this.props.fade ?  {opacity: 0} : {opacity: 1}}>
-                <p> <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a></p>
-            </div>
+            <Transition animation={'fade right'} duration={1000} visible={this.state.visible}>
+                <PackageComponent>
+                    <div className={'button '}>
+                        <p> <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a></p>
+                    </div>
+                </PackageComponent>
+            </Transition>
         )
     }
 }

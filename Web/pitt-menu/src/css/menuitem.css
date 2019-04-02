@@ -3,16 +3,18 @@
     justify-content: flex-start;
     height: 100px;
     margin: 20px 0 20px 0;
-    border: 1px solid white;
+    border: 1px solid var(--text-color);
     /* border-radius: 50px; */
     transition: ease all .1s;
+    background-color: var(--not-text-color)
 }
 .menu-item-wrapper:hover {
-    color: var(--not-text-color);
-    border: 1px solid var(--not-text-color);
+    color: var(--inverse-text-color);
+    border: 1px solid var(--text-color);
+    box-shadow: 0px 0px 5px 1px black;
 }
 .menu-item-wrapper .img-wrapper {
-   width: 25%;
+    width: 150px;
     height: 100%;
     overflow: hidden;
     /* border-top-left-radius: 50px; */

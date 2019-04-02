@@ -19,7 +19,7 @@ class Input extends Component {
                 this.setState({
                     fade: 'fadeup'
                 })
-            }, this.props.time * 400)
+            }, this.props.time * 650)
         }
     }
     

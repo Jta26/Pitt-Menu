@@ -1,0 +1,24 @@
+.form-container {
+
+    
+    max-width: 70%;
+    margin: auto;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    
+
+}
+.form-container h1 {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: white;
+}
+.form-container .submit {
+    width: 50%;
+    margin: 20px auto 0 auto;
+}
+
+.err-msg {
+    text-align: center;
+    color: Yellow;
+}

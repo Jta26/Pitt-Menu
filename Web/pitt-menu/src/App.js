@@ -6,6 +6,7 @@ import Home from './components/home';
 import Login from './login';
 import SignUp from './signup';
 import Dashboard from './dashboard';
+import Item from './item';
 //Defines the class that loads the router that mounts the other page components.
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
               <Route exact path={'/login'}component={Login}/>
               <Route exact path={'/signup'} component={SignUp}/>
               <Route exact path={'/dashboard'} component={Dashboard}/>
+              <Route exact path={'/item/:id'} component={Item}/>
             </Switch>
           </BrowserRouter>
       </div>

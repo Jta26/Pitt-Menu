@@ -8,16 +8,20 @@ import '../css/header.css';
 class Header extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            linkName: 'Login',
+            link: '/login'
+        }
         this.handleLogout = this.handleLogout.bind(this);
     }
     loadHeader() {
         console.log('header');
         if (this.props.buttons) {
             return (
-                <div>
+                <div className='btn-wrapper'>
                 <Button text='Home' fade time={1} link='/' OnClick={this.handleLogout}/>
                 <Button text='View Menus' fade time={2}  link='/menus' OnClick={this.handleLogout}/>
-                <Button text='Sign Up' fade time={3} link='/signup' OnClick={this.handleLogout}/>
+                <Button text={this.state.linkName} fade time={3} link={this.state.link} OnClick={this.handleLogout}/>
                 </div>
             
             )
@@ -26,7 +30,8 @@ class Header extends Component {
             return (
                 <ul>
                     <li><a href='/'>Home</a></li>
-                    <li><a href='/'>Home</a></li>
+                    <li><a href='/'>View Menus</a></li>
+                    <li><a href={this.state.link}>{this.state.linkName}</a></li>
                 </ul>
             )
         }
@@ -37,8 +42,13 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.buttons);
-        
+        if (this.props.location.pathname === '/signup') {
+            this.setState({
+                linkName: 'Login',
+                link: '/login'
+
+            });
+        }
     }
     render() {
         return(
@@ -47,7 +57,7 @@ class Header extends Component {
             //     <button onClick={() => {this.props.firebase.SignOut(); this.props.history.push('/')}}>Sign Out</button>
             // </div>
             
-            <div class='header-wrapper'>
+            <div className='header-wrapper'>
                 {this.loadHeader()}
             </div>
         )

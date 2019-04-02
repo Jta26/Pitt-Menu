@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import '../css/signupform.css';
+import '../css/form.css';
 import Button from './button';
 import Input from './input';
 function isEmptyOrSpaces(str){
@@ -107,7 +107,7 @@ class SignUpForm extends Component {
     render() {
         return(
          
-                <div className='signupform-wrapper'>
+                <div className='form-container'>
                     <h1>Sign Up for Pitt Menu!</h1>
                     <p className={this.state.err}>{this.state.errmsg}</p>
                     <Input 
@@ -134,10 +134,12 @@ class SignUpForm extends Component {
                         value={this.state.confPass} 
                         onChange={this.handleConfirmPasswordChange} 
                         fade time={3}/>
-                    <Button 
-                        text='Sign Up!' 
-                        fade time={4} 
-                        onClick={this.handleSignUp}/>
+                    <div className='submit'>
+                        <Button 
+                            text='Sign Up!' 
+                            fade time={4} 
+                            onClick={this.handleSignUp}/>
+                    </div>
                 </div>
         )
     }

@@ -1,12 +1,15 @@
 
 :root {
-  --main-color: #2e3131;
-  --side-color: #;
-  --text-color: #FFF;
-  --not-text-color: #22a7f0 ;
+  --main-color: #FFF;
+  --side-color: #192D67;
+  /* --tert-color: #9AAEE7; */
+  --text-color: #000;
+  --inverse-text-color: #FFF;
+  --not-text-color: #DDC171 ;
+  --hover-color: #CEA633;
 }
 * {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 html {
   background-color: var(--main-color);

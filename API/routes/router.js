@@ -38,9 +38,7 @@ router.get('/menu/:date', (req, res) => {
                     res.status(200).json(json);
                 }
             });
-
         });
-         
     }, (err) => {
         if (err === 0) {
             res.status(200).json({"message": "No Menu"});
@@ -54,11 +52,16 @@ router.get('/item/:id', (req, res) => {
         res.status(400).send('400, Bad Request ID not valid');
     }
     else {
-        sqlservice.GetItemByItemID(intID).then((result) => {
-            sqlservice.GetMenusThatContainItemName(result[0].ItemName).then((result) => {
-                res.status(200).json(result);
-            })
-        })
+        sqlservice.GetItemByItemID(intID).then((result1) => {
+            sqlservice.GetMenuDatesThatContainItemName(result1[0].ItemName).then((result2) => {
+                responseJSON = {
+                    "itemID": intID,
+                    "itemName": result1[0].itemName,
+                    "itemDates": result2
+                }
+                res.status(200).json(responseJSON);
+            });
+        });
     }
     
 })

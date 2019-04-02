@@ -1,18 +1,50 @@
 .header-wrapper {
-
+    height: 100%;
+    width: 100%;
 
 }
-.header-wrapper .button {
-    margin: 20px;
+
+.header-wrapper .btn-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start;
+   
+ 
+
 }
+.header-wrapper .btn-wrapper div {
+    margin: 4px auto 4px auto;
+}
+
 .header-wrapper ul {
     width: 30vw;
     display: flex;
     list-style: none;
     justify-content: space-between;
+    align-items: center;
 }
 .header-wrapper ul li {
     font-size: calc(8px + 12*(100vw - 300px)/1300);
     line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
 
+}
+
+@media(max-width: 768px) {
+    .header-wrapper {
+
+    }
+    .header-wrapper .btn-wrapper {
+        
+        align-items: center;
+
+       
+       
+       
+    }
+    .header-wrapper .btn-wrapper .button {
+        width: 50vw;
+    }
 }

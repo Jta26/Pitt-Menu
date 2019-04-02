@@ -7,36 +7,45 @@
 }
 
 .signup-wrapper .left h1 {
-    color: var(--text-color);
+    color: var(--inverse-text-color);
     text-shadow: 1px 1px black;
     font-size: 3vw;
     line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
     width: 80%;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Lato', sans-serif;
     
 }
 .signup-wrapper .left {
-    background-image: url(../img/img8colorgrey.jpg);
+    background-image: url(../img/img8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .signup-wrapper .left span {
     color: var(--not-text-color);
     text-decoration: underline;
 }
+.signup-wrapper .signup-header {
+    width: 50%;
+    height: 20%;
+}
 .signup-wrapper .right {
     width: 35%;
+   
+    
+   font-family: 'Lato', 'sans-serif';
+   
 }
 .signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
+
+
 
     height: 100%;
-    font-family: 'Rubik', sans-serif;
+    
     
 }
 

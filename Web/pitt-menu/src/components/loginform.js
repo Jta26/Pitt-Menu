@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import '../css/loginform.css';
+import '../css/form.css';
 import Button from './button';
 import Input from './input';
 
@@ -79,7 +79,7 @@ class LoginForm extends Component {
     render() {
         return(
          
-                <div className='loginform-wrapper'>
+                <div className='form-container'>
                     <h1>Login to Pitt Menu!</h1>
                     <p className={this.state.err}>{this.state.errmsg}</p>
                     <Input 
@@ -100,10 +100,12 @@ class LoginForm extends Component {
                         onChange={this.handlePasswordChange} 
                         onKeyPress={this.handleSubmitKeyDown}
                         fade time={2}/>
-                    <Button 
+                        <div className='submit'> 
+                        <Button 
                         text='Login' 
                         fade time={3} 
                         onClick={this.handleLogin}/>
+                        </div>
                 </div>
         )
     }

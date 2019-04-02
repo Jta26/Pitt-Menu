@@ -14,48 +14,64 @@ header {
 
 .header-nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width:35%;
     
+    
+    
 
 }
 .nav-buttons {
+    /* background-color: var(--side-color); */
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 20%;
     
-    width: 100%;
-    margin-top: 20px;
     
 }
 .nav-buttons div {
     margin: 2vh auto 2vh auto;
 }
 .today-wrapper {
-    width: 90%;
-    color: white;
+    width: 100%;
+    height: 80%;
+    color: var(--text-color);
     /* text-shadow: 1px 1px var(--not-text-color);s */
-    
+    background-color: var(--side-color);
+    /* border: 1px solid black; */
+    padding: 10px;
+    border-top: 2px solid black;
 
 }
 .today-wrapper .today-header {
-    color: var(--side-color);
+    font-family: 'Lato', 'Sans';
+    color: var(--inverse-text-color);
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     font-size: 2em;
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     text-decoration: underline;
+    padding: 10px 0 10px 0;
+  
 }
 
 .header-text {
     width: 65%;
     height: 100vh;
-    background-image: url('../img/img2colorgrey.jpg');
+    background-image: url('../img/img2color.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-right: 2px solid black;
 }
 .sv-wrapper{
       color: white;
@@ -80,7 +96,7 @@ header {
   .sv-sentence span {
       white-space: nowrap;
     
-      font-family: 'Rubik', sans-serif;
+      font-family: 'Poppins', sans-serif;
   }
   .sv-words {
     display: inline;
@@ -204,9 +220,13 @@ footer p a:hover {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 90%
+        width: 100%;
+        height: 100%;
 
 
+    }
+    .nav-buttons {
+        height: 20vh;
     }
     .sv-sentence {
         font-size: 20px;

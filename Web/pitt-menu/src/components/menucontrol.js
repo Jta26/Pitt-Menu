@@ -69,7 +69,7 @@ class MenuControl extends Component {
          return(
              <div>
                  <div className='menu-control'>
-                    <Tab menu={{secondary: true, pointing: false}} panes={this.state.panes}/>
+                    <Tab menu={{secondary: true, pointing: false}} panes={this.state.panes} renderActiveOnly={true}/>
               
                  </div>
              </div>

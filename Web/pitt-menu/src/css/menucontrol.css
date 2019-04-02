@@ -1,39 +1,42 @@
 .menu-control .tab{
     overflow-y: scroll;
-    height: 50vh;
+    height: 60vh;
     background-color: var(--side-color);
-    border: none;
- 
+    /* border: 1px solid black; */
+    
   
 }
 .menu-control div .ui.secondary.menu .item {
     width: 47%;
     text-align: center;
-    color: var(--side-color);
+    color: var(--inverse-text-color);
     font-size: calc(5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     display: flex;
     justify-content: center;
     align-items: center;   
-    border: 1px solid var(--side-color);
+    border: 1px solid var(--inverse-text-color);
     transition: all .1s ease-in;
-    border-radius: 30px;
+    
+  
 }
 .menu-control div .ui.secondary.menu .item:hover {
-    color: var(--not-text-color);
-    background-color: var(--main-color);
-    border: 1px solid var(--not-text-color); 
+    color: var(--inverse-text-color);
+    background-color: var(--not-text-color);
+    border: 1px solid var(--text-color); 
+    box-shadow: 0px 0px 1px .5px black;
+    border-radius: 5px;
 }
 .menu-control div .ui.secondary.menu .active.item:hover {
-    color: var(--not-text-color);
+    /* color: var(--not-text-color);
     background-color: var(--main-color);
-    border: 1px solid var(--not-text-color); 
+    border: 1px solid var(--not-text-color);  */
 }
 .menu-control div .ui.secondary.menu .active.item{
     color: var(--text-color);
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
  
-    border: 1px solid white;
-    border-radius: 30px;
-    background-color: var(--side-color);
+    background-color: var(--not-text-color);
     transition: all .1s ease-in;
     
 }
