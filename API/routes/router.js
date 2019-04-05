@@ -65,16 +65,25 @@ router.get('/item/:id', (req, res) => {
     }
     
 });
-router.get('/rating/:id', async (req, res) => {
+router.post('/rating/:id', async (req, res) => {
     let itemID = req.params.id;
+    let userID = req.body.ID;
+    
     if (typeof parseInt(itemID) !== 'number') {
         res.status(400).send('400, Bad Request ID not valid');
     }
     if (itemID < 1) {
         res.status(400).send('400, Bad Request ID not valid');
     }
+    if (typeof userID === 'number') {
+        console.log('userID')
+        let itemRating = await rating.GetRating(itemID, userID);
+        res.json({
+            "rating": itemRating
+        });
+    }
     else {
-        let itemRating = await rating.GetRating(itemID)
+        let itemRating = await rating.GetRating(itemID);
         res.json({
             "rating": itemRating
         });

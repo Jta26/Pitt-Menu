@@ -18,6 +18,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 app.use('/', router);
 
 app.listen(8080, console.log('Server Started on 8080'));
