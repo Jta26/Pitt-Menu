@@ -5,7 +5,7 @@ var firebase = require('../services/firebase');
 var googleWebhook = require('../services/google');
 var InvokePython = require('../services/invoke');
 var ImageSearch = require('../services/imagesearch');
-
+var rating = require('../services/rating');
 router.get('/menu/:date', (req, res) => {
     strDate = req.params.date
     intMenutype = req.query.type
@@ -64,7 +64,22 @@ router.get('/item/:id', (req, res) => {
         });
     }
     
-})
+});
+router.get('/rating/:id', async (req, res) => {
+    let itemID = req.params.id;
+    if (typeof parseInt(itemID) !== 'number') {
+        res.status(400).send('400, Bad Request ID not valid');
+    }
+    if (itemID < 1) {
+        res.status(400).send('400, Bad Request ID not valid');
+    }
+    else {
+        let itemRating = await rating.GetRating(itemID)
+        res.json({
+            "rating": itemRating
+        });
+    }
+});
 router.post('/google', (req, res) => {
     googleWebhook(req, res);
 });

@@ -2,6 +2,10 @@ var sql = require('./sqlservice');
 var fs = require('fs');
 var firebase = require('firebase');
 
+//This file handles functions that map 
+// tenency of the items in the MySQL database 
+// to the items in the firebase realtime database.
+
 //DELETE EVENTUALLY
 var app = firebase.initializeApp({
     apiKey: "AIzaSyDpBoyI13RY9mHU2C1cOSyAC_tfr3-hu5U",
@@ -24,15 +28,10 @@ admin.initializeApp({
 });
 console.log('firebase initialized');
 let database = admin.database();
-//This file handles functions that map 
-// tenency of the items in the MySQL database 
-// to the items in the firebase realtime database.
-
 
 //function that returns promise that gets the items from the database.
 function GetFirebaseItemList() {
     return new Promise((res, rej) => {
-      
         var itemsRef =  database.ref('/items/');
         var items = [];
         itemsRef.once('value').then((snapshot) => {
@@ -45,6 +44,30 @@ function GetFirebaseItemList() {
         })
     })
 }
+//This function gets the data for a single item in firebase.
+async function GetFirebaseItem(itemID) {
+    let itemRef = database.ref(`items/${itemID}/`);
+    let item = await itemRef.once('value').then((snapshot) => {
+        let itemData = {
+            name: snapshot.val().name,
+            desc: snapshot.val().desc,
+            images: [],
+            ratings: []
+        }
+        snapshot.child('/images').forEach((img) => {
+            itemData.images.push(img.val());
+        });
+        snapshot.child('/ratings').forEach((rating) => {
+            itemData.ratings.push(rating.val());
+        });
+        
+        return itemData
+
+    });
+    return item
+
+}
+//This function stores and image into firebase storage from a buffer of bytes.
 function StoreImageFromUInt8Arr(imgName, itemID, imgBuffer) {
     return new Promise(async (res, rej) => {
         var bucket = admin.storage().bucket();
@@ -60,11 +83,26 @@ function StoreImageFromUInt8Arr(imgName, itemID, imgBuffer) {
         CreateDatabaseReferenceLink(itemID, fileUrl[0]);
     });
 }
+//Creates a reference for firebase storage images in firebase realtime database.
 function CreateDatabaseReferenceLink(itemID, link) {
     let ref = database.ref(`items/${itemID}/images`);
     ref.push(link);
     console.log('pushed');
 }
+//Sets a user's rating for a specific item.
+function SetRating(itemID, userID, rating) {
+    let ratingRef = database.ref(`/items/${itemID}/ratings/${userID}`);
+    ratingRef.set(rating);
+    console.log(`Item Rating for USER: ${userID} on ITEM: ${itemID} updated to ${rating}.`);
+}
+//Gets the rating for a specific user.
+function GetUserRating(itemID, userID) {
+    let userRatingRef = database.ref(`/items/${itemID}/ratings/${userID}`);
+    return userRatingRef.once('value').then((rating) => {
+        return rating.val();
+    })
+}
+//Updates items in the SQL database to the firebase realtime database.
 function updateFirebase() {
     sql.GetItems().then((items) => {
         items.forEach(item => {
@@ -81,5 +119,8 @@ function updateFirebase() {
 
 
 module.exports.GetFirebaseItemList = GetFirebaseItemList;
+module.exports.GetFirebaseitem = GetFirebaseItem;
+module.exports.SetRating = SetRating;
+module.exports.GetUserRating = GetUserRating;
 module.exports.StoreImageFromUInt8Arr = StoreImageFromUInt8Arr;
 module.exports.updateFirebase = updateFirebase;
