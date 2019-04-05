@@ -46,6 +46,7 @@ function GetFirebaseItemList() {
 }
 //This function gets the data for a single item in firebase.
 async function GetFirebaseItem(itemID) {
+   
     let itemRef = database.ref(`items/${itemID}/`);
     let item = await itemRef.once('value').then((snapshot) => {
         let itemData = {
@@ -58,6 +59,7 @@ async function GetFirebaseItem(itemID) {
             itemData.images.push(img.val());
         });
         snapshot.child('/ratings').forEach((rating) => {
+            
             itemData.ratings.push(rating.val());
         });
         

@@ -9,16 +9,19 @@ async function RateItem(itemID, userID, rating) {
     return returnRating;
 }
 async function GetRating(itemID, userID) {
-    let item = await firebase.GetFirebaseitem(itemID);
-    if (typeof userID != null) {
+    console.log(typeof userID);
+    if (userID != null) {
         console.log('userID');
          let userRating = await firebase.GetUserRating(itemID, userID);
          console.log(userRating)
          return userRating;
     }
     else {
+        let item = await firebase.GetFirebaseitem(itemID);
+        console.log(item)
         let ratings = item.ratings;
         let averageRating = AverageNumbers(ratings);
+        // console.log(averageRating)
         return averageRating;
     }
 
