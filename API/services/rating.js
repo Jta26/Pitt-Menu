@@ -10,8 +10,10 @@ async function RateItem(itemID, userID, rating) {
 }
 async function GetRating(itemID, userID) {
     let item = await firebase.GetFirebaseitem(itemID);
-    if (typeof userID === 'number') {
+    if (typeof userID != null) {
+        console.log('userID');
          let userRating = await firebase.GetUserRating(itemID, userID);
+         console.log(userRating)
          return userRating;
     }
     else {

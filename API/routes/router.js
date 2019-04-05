@@ -75,19 +75,11 @@ router.post('/rating/:id', async (req, res) => {
     if (itemID < 1) {
         res.status(400).send('400, Bad Request ID not valid');
     }
-    if (typeof userID === 'number') {
-        console.log('userID')
-        let itemRating = await rating.GetRating(itemID, userID);
-        res.json({
-            "rating": itemRating
-        });
-    }
-    else {
-        let itemRating = await rating.GetRating(itemID);
-        res.json({
-            "rating": itemRating
-        });
-    }
+    
+    let itemRating = await rating.GetRating(itemID, userID);
+    res.json({
+        "rating": itemRating
+    });
 });
 router.post('/google', (req, res) => {
     googleWebhook(req, res);
