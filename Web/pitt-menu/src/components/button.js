@@ -22,6 +22,11 @@ class Button extends Component {
                 })
             }, this.props.time * 650)
         }
+        else {
+            this.setState({
+                visible: true
+            })
+        }
     }
     
     componentDidMount() {
@@ -31,7 +36,7 @@ class Button extends Component {
         return(
             <Transition animation={'fade right'} duration={1000} visible={this.state.visible}>
                 <PackageComponent>
-                    <div className={'button '}>
+                    <div className={'btn'}>
                         <p> <a href={this.props.link} onClick={this.props.onClick}>{this.props.text}</a></p>
                     </div>
                 </PackageComponent>

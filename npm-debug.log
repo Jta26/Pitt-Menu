@@ -1,11 +1,11 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start', 'debug' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
 2 info using npm@3.5.2
 3 info using node@v8.10.0
 4 verbose stack Error: ENOENT: no such file or directory, open '/home/joel/Projects/Pitt-Menu/package.json'
 5 verbose cwd /home/joel/Projects/Pitt-Menu
 6 error Linux 4.15.0-46-generic
-7 error argv "/usr/bin/node" "/usr/bin/npm" "start" "debug"
+7 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 8 error node v8.10.0
 9 error npm  v3.5.2
 10 error path /home/joel/Projects/Pitt-Menu/package.json

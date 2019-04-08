@@ -225,10 +225,15 @@ footer p a:hover {
 
 
     }
+    .header-nav .today-wrapper .today-header {
+        font-size: calc(20px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+        line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    }
     .nav-buttons {
         height: 20vh;
     }
     .sv-sentence {
-        font-size: 20px;
+        font-size: calc(20px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+        line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     }
 }

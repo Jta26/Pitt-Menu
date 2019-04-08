@@ -20,16 +20,28 @@
 }
 
 .header-wrapper ul {
-    width: 30vw;
+    width: 100vw;
+    height: 5vh;
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    padding: 20px;
+    background-color: var(--not-text-color);
+    border-bottom: 2px solid black;
 }
 .header-wrapper ul li {
-    font-size: calc(8px + 12*(100vw - 300px)/1300);
+    font-size: calc(12px + 12*(100vw - 300px)/1300);
     line-height: calc(1.3em + 0.3*(100vw - 300px)/1300);
+    margin: 2vw;
+    color: black;
 
+}
+.header-wrapper ul li a {
+    color: black;
+}
+.header-wrapper ul li a:hover {
+    color: white;
 }
 
 @media(max-width: 768px) {

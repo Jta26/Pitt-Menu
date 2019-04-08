@@ -37,9 +37,10 @@
 .form-wrapper .item-right {
     height: 100%;
     width: 65%;
-    background-image: url('../img/img9.jpg');
+    background-image: url('../img/img12.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;

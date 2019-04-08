@@ -10,18 +10,25 @@ class Header extends Component {
         super(props);
         this.state = {
             linkName: 'Login',
-            link: '/login'
+            link: '/login',
+            isSignOut: false
         }
         this.handleLogout = this.handleLogout.bind(this);
     }
+    handleLogout() {
+        console.log('signed out');
+        this.props.firebase.SignOut();
+        this.props.history.push('/')
+    }
     loadHeader() {
-        console.log('header');
+      
         if (this.props.buttons) {
             return (
                 <div className='btn-wrapper'>
-                <Button text='Home' fade time={1} link='/' OnClick={this.handleLogout}/>
-                <Button text='View Menus' fade time={2}  link='/menus' OnClick={this.handleLogout}/>
-                <Button text={this.state.linkName} fade time={3} link={this.state.link} OnClick={this.handleLogout}/>
+                <Button text='Home' fade time={1} link='/'/>
+                <Button text='View Menus' fade time={2}  link='/menus'/>
+                <Button text={this.state.linkName} fade time={3} link={this.state.link} 
+                OnClick={this.state.isSignOut ? this.handleLogout : () => {}}/>
                 </div>
             
             )
@@ -31,24 +38,45 @@ class Header extends Component {
                 <ul>
                     <li><a href='/'>Home</a></li>
                     <li><a href='/'>View Menus</a></li>
-                    <li><a href={this.state.link}>{this.state.linkName}</a></li>
+                    <li><a href={this.state.link} onClick={this.state.isSignOut ? this.handleLogout : () => {}}>{this.state.linkName}</a></li>
                 </ul>
             )
         }
         
-    }
-    handleLogout() {
-        this.props.firebase.SignOut();
     }
 
     componentDidMount() {
         if (this.props.location.pathname === '/signup') {
             this.setState({
                 linkName: 'Login',
-                link: '/login'
+                link: '/login',
+                isSignOut: false
 
             });
         }
+        if (this.props.location.pathname === '/login') {
+            this.setState({
+                linkName: 'Sign Up',
+                link: '/signup',
+                isSignOut: false
+            })
+        }
+        this.props.firebase.auth.onAuthStateChanged((user) => {
+            console.log(user)
+            if (user) {
+                this.setState({
+                    linkName: 'Logout',
+                    link: '#',
+                    isSignOut: true
+                });
+                
+            }
+            else {
+                if (this.props.location.pathname === '/dashboard') {
+                    this.props.history.push('/login');
+                }
+            }
+        })
     }
     render() {
         return(

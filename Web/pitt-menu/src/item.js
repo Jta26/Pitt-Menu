@@ -7,20 +7,29 @@ class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemID: 0
+            itemID: 0,
+            itemData: {}
         }
     }
-    getItemData() {
-        fetch('https://api.joelaustin.net/')
+    getItemData(itemId) {
+        console.log(itemId)
+        fetch(`https://api.joelaustin.net/item/` + itemId).then((res) => {
+        
+            return res.json()
+        }).then((itemData) => {
+          
+            this.setState({
+                itemData: itemData
+            });
+        });
     }
     
     componentWillMount() {
 
     }
     componentDidMount() {
-        this.setState({
-            itemID: this.props.match.params.id
-        });
+
+        this.getItemData(this.props.match.params.id);
     }
     render() {
         
@@ -32,7 +41,7 @@ class Item extends Component {
                         return(
                             <div>
                                 <Header firebase={firebase}/>
-                                <MenuItem itemID={this.props.match.params.id} isFullItem firebase={firebase}></MenuItem>
+                                <MenuItem itemID={this.props.match.params.id} dates={this.state.itemData.itemDates} isFullItem firebase={firebase}></MenuItem>
                             </div>
                         )
                     }}
