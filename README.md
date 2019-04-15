@@ -3,11 +3,12 @@ Repo for my undergraduate capstone project. The project is a fullstack applicati
 
 
 ## Table of Contents 
- - [Python PDF Processor](python-pdf-processor)
- - [MySQL Database](mysql-database)
- - [Node.JS REST API](node.js-rest-api)
- - [React Web App](react-web-app)
-## Python PDF Processor 
+ - [Python PDF Processor](#python-pdf-processor)
+ - [MySQL Database](#mysql-database)
+ - [Node.JS REST API](#node.js-rest-api)
+ - [React Web App](#react-web-app)
+ - [Systems Architecture](#systems-architecture)
+## Python PDF Processor <a name='python-pdf-processor'></a>
 This part of the project is found under the [File Processor](https://github.com/Jta26/Menu-Parser/tree/master/FileProcessor) folder and is written in python. It downloads the university menus from a source link and differentiates between lunch and dinner menus. It then reads the items from the menus and uploads them to the MySql database.
 
 To Run, install the dependenices using:
@@ -26,7 +27,7 @@ Then:
 - [pdftotext](https://pypi.org/project/pdftotext/)
 - [Arrow](https://github.com/crsmithdev/arrow)
 
-## MySQL Database
+## MySQL Database <a name='mysql-database'></a>
 Run the [SQL script](https://github.com/Jta26/Pitt-Menu/blob/master/Database/menu-parser.sql) in a database you have setup. 
 
 Here is the ER Conceptual and Logical diagrams for the database.
@@ -36,7 +37,7 @@ Here is the ER Conceptual and Logical diagrams for the database.
 #### Logical
 ![diagram2](https://i.imgur.com/Oql4TTv.png)
 
-## Node.JS REST API
+## Node.JS REST API <a name='nodejs-rest-api'></a>
 the endpoint for the Node.JS REST API is https://api.joelaustin.net.
 
 The requests that you can make the API are as follows.
@@ -73,14 +74,14 @@ When a GET request is made to this address it creates a child process that runs 
 
 `GET https://api.joelaustin.net/invoke`
 
-## React Web App
+## React Web App <a name='react-web-app'></a>
 
 The Pitt Menu Web Application is built using React. It uses a mix of Semantic UI and my own styles and components. It can be visited below.
 
 https://pitt-menu.joelaustin.net
 
 
-## System Architecture
+## System Architecture <a name='systems-architecture'></a>
 
 Below is a diagram that outlines the system architecture for Pitt Menu. The data is stored in a mix of MySQL and Google Firebase. Firebase Mostly handles the user authentication.
 
