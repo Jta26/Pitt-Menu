@@ -34,24 +34,27 @@ const config = {
           this.auth.signOut();
       }
       StoreItemImageFromFile = async (itemID, file, callback) => {
-        if (file.type != '.jpg' || file.type != '.png') {
+        if (file.type == 'image/jpeg'|| file.type == 'image/png') {
+            if (file.size > 10000000) {
+                callback('400', 'File must be less than 10 megabytes.');
+                return;
+            }
+            let storageRef = this.storage.ref();
+            let imgName = uuid() + file.type;
+            let imgStorageRef = storageRef.child(imgName);
+            await imgStorageRef.put(file);
+            console.log(imgName + ' Stored');
+            let imagesDBRef = this.database.ref(`/items/${itemID}/images`);
+            let imgurl = await imgStorageRef.getDownloadURL();
+            console.log(imgurl);
+            imagesDBRef.push(imgurl);
+            callback('200')
+            return
+        }
+        else {
             callback('400', 'File must be either JPG or PNG.');
-            return;
+            return
         }
-        if (file.size > 10000) {
-            callback('400', 'File must be less than 10 megabytes.');
-            return;
-        }
-        let storageRef = this.storage.ref();
-        let imgName = uuid() + file.type;
-        let imgStorageRef = storageRef.child(imgName);
-        await imgStorageRef.put(file);
-        console.log(imgName + ' Stored');
-        let imagesDBRef = this.database.ref(`/items/${itemID}/images`);
-        let imgurl = await imgStorageRef.getDownloadURL();
-        console.log(imgurl);
-        imagesDBRef.push(imgurl);
-        callback('200')
       }
       GetItemData = (itemID, callback) => {
         

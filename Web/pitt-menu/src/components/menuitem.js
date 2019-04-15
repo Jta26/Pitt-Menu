@@ -246,7 +246,8 @@ class MenuItem extends Component {
     }
     handleImgChange(event) {
         this.setState({
-            imgFile: event.target.files[0]
+            imgFile: event.target.files[0],
+            
         });
     }
     handleImageUpload() {
@@ -258,6 +259,7 @@ class MenuItem extends Component {
             if (!this.state.uploadActive) {
                 this.setState({
                     uploadActive: true
+                
                 });
                 return
             }
@@ -269,14 +271,28 @@ class MenuItem extends Component {
             }
             else {
                 //upload image to firebase here
+
                 let file = this.state.imgFile
+                this.setState({
+                    imgloading: true,
+                    uploadActive: false
+                })
                 firebase.StoreItemImageFromFile(itemID, file, (value, err) => {
                     if (err) {
                         toast.error(err, {autoClose: 10000, toastId: 2});
+                        this.setState({
+                            uploadActive: true,
+                            imgloading: false, 
+                        });
                     }
                     else {
                         toast.success('Image Uploaded', {autoClose: 10000, toastId: 1})
+                        this.setState({
+                            imgloading: false, 
+                            uploadActive: false
+                        });
                     }
+
 
                     
                 });
@@ -357,7 +373,7 @@ class MenuItem extends Component {
                                 </div>
                             : 
                                 <div>
-                                    <p>{this.state.desc}</p>
+                                    <p className={'text-desc'}>{this.state.desc}</p>
                                     <div className='add-desc'>
                                         <Button text={'Edit Description'} fade time={1} onClick={this.handleOnDescribe}/>
                                     </div>
@@ -376,13 +392,37 @@ class MenuItem extends Component {
                         </div>
                         <div className={`add-image`}>
                             <Button text={'Add Image'} fade time={2} onClick={this.handleImageUpload}/>
-                            <TransitionGroup animation={'fade down'} duration={500}>
                             {
-                                this.state.uploadActive && 
-                                    <input type='file' className={'input-upload'} onChange={this.handleImgChange}/>
+                                <TransitionGroup animation={'fade down'} duration={500}>
+                                
+               
+                                    
+                                 
+                                        {
+                                            this.state.uploadActive 
+                                            &&
+                                            <input type='file' className={'input-upload'} onChange={this.handleImgChange}/>
+                                        }
+                                        {
+                                            this.state.imgloading
+                                            &&
+                                            <Loader inline size={'small'} className={'input-upload'}/>
+                                        }
+                                            
+                                
+                                    
+                                
+                                
+                                {/* {
+                                    this.state.uploadActive 
+                                    && 
+                                   
+                                    
+                                } */}
+                                </TransitionGroup>
                                 
                             }
-                            </TransitionGroup>
+                            
                         </div>
                         
                     </div>
@@ -407,27 +447,6 @@ class MenuItem extends Component {
                 <div className='comment-container'>
                     <h1>What's your experience with {this.state.name}?</h1>
                     <Comments firebase={this.props.firebase} itemID={this.props.itemID} comments={this.state.comments}/>
-                    {/* <Comment.Group>
-                        {this.state.comments.map(comment => {
-                            console.log(comment)
-                        return(
-                        <Comment>
-                            
-                        <Comment.Content>
-                          <Comment.Author>{comment[1]}</Comment.Author>
-                          <Comment.Metadata>
-                            <div>{moment(comment[0]).format('MMMM Do YYYY')}</div>
-                          </Comment.Metadata>
-                          <Comment.Text>{comment[2]}</Comment.Text>
-                        </Comment.Content>
-                      </Comment>
-                        ) 
-                        })}
-                    </Comment.Group>
-                   <Form reply>
-                    <Form.TextArea onChange={this.handleCommentChange} />
-                    <Btn content='Add Comment' labelPosition='left' icon='edit' primary onClick={this.handleComment} />
-                    </Form> */}
                </div>
                </div>
             )

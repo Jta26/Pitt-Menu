@@ -1,7 +1,7 @@
 .btn {
     background-color: var(--not-text-color);
     width: 100%;
-    height: 4vh;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,8 +69,8 @@
 
 @media(max-width: 768px) {
     .btn {
-        
-        
+       
+        height: 2rem;
     }
     .btn  p a {
         font-size: calc(14px + 12*(100vw - 300px)/1300);
