@@ -5,7 +5,7 @@ Repo for my undergraduate capstone project. The project is a fullstack applicati
 ## Table of Contents 
  - [Python PDF Processor](#python-pdf-processor)
  - [MySQL Database](#mysql-database)
- - [Node.JS REST API](#node.js-rest-api)
+ - [Node.JS REST API](#nodejs-rest-api)
  - [React Web App](#react-web-app)
  - [Systems Architecture](#systems-architecture)
 ## Python PDF Processor <a name='python-pdf-processor'></a>
