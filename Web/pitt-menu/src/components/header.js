@@ -26,7 +26,6 @@ class Header extends Component {
             return (
                 <div className='btn-wrapper'>
                 <Button text='Home' fade time={1} link='/'/>
-                <Button text='View Menus' fade time={2}  link='/menus'/>
                 <Button text={this.state.linkName} fade time={3} link={this.state.link} 
                 OnClick={this.state.isSignOut ? this.handleLogout : () => {}}/>
                 </div>
@@ -37,7 +36,6 @@ class Header extends Component {
             return (
                 <ul>
                     <li><a href='/'>Home</a></li>
-                    <li><a href='/'>View Menus</a></li>
                     <li><a href={this.state.link} onClick={this.state.isSignOut ? this.handleLogout : () => {}}>{this.state.linkName}</a></li>
                 </ul>
             )

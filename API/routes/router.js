@@ -6,6 +6,7 @@ var googleWebhook = require('../services/google');
 var InvokePython = require('../services/invoke');
 var ImageSearch = require('../services/imagesearch');
 var rating = require('../services/rating');
+
 router.get('/menu/:date', (req, res) => {
     strDate = req.params.date
     intMenutype = req.query.type

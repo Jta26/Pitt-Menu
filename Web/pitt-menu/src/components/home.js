@@ -50,7 +50,7 @@ class Home extends Component {
                 </div>
                 <div className='header-nav'>
                     <div className='nav-buttons'>
-                            <Button text="View Menus" link='/' fade  time={1}/>
+                       
                                 <Button text='Login' link='/login' fade time={2}/>
                                 <Button text='Sign Up' link='/signup' fade  time={3}/>
 

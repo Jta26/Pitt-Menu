@@ -29,6 +29,12 @@ Then:
 ## MySQL Database
 Run the [SQL script](https://github.com/Jta26/Pitt-Menu/blob/master/Database/menu-parser.sql) in a database you have setup. 
 
+Here is the ER Conceptual and Logical diagrams for the database.
+
+#### Conceptual
+![diagram](https://i.imgur.com/ZJtIoS2.png)
+#### Logical
+![diagram2](https://i.imgur.com/Oql4TTv.png)
 
 ## Node.JS REST API
 the endpoint for the Node.JS REST API is https://api.joelaustin.net.

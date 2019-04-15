@@ -17,6 +17,7 @@
 }
 .header-wrapper .btn-wrapper div {
     margin: 4px auto 4px auto;
+
 }
 
 .header-wrapper ul {
@@ -56,7 +57,10 @@
        
        
     }
+    .header-wrapper .btn-wrapper div {
+        width: 200px;
+    }
     .header-wrapper .btn-wrapper .button {
-        width: 50vw;
+       
     }
 }
