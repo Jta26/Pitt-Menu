@@ -5,7 +5,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 .full-menu-item-wrapper .title-bar-wrapper {
     /* background-color: var(--side-color); */
@@ -29,31 +28,63 @@
     
 }
 .full-menu-item-wrapper .title-bar-wrapper .desc-wrapper {
-  margin: 12vh auto 0 auto;
+  margin: 12vh 0 0 0;
   color: black;
   width: 40vw;
+  
+}
+.full-menu-item-wrapper .title-bar-wrapper .desc-wrapper .desc {
+    margin-bottom: 3vh;
+
+}
+.full-menu-item-wrapper .desc-wrapper .add-desc {
+    width: 40%;
   
 }
 .full-menu-item-wrapper .desc-wrapper .describe-ta {
     margin-top: 3vh;
     border: 1px solid black;
+    font-size: calc(5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+  
 }
 .full-menu-item-wrapper .img-container {
-  width: 50%;
-    
+    width: 50%;
+    height: auto;
+    margin: 10px;
     display: Flex;
     justify-content: center;
     align-items: center;
+   
+   
 }
 .full-menu-item-wrapper .img-container .img-wrapper {
-    width: 75%;
+    width: 50%;
+    height: auto;
+ 
     position: relative;
     z-index: 2;
     /* margin-bottom: 20vh; */
     border: 2px solid black;
-   
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+}
+.full-menu-item-wrapper .add-image {
+    width: 40%;
+    transition: all .5s ease;
+}
+.full-menu-item-wrapper .desc-wrapper .edit-desc {
+    width: 40%;
+    margin-top: 20px;
+    
+}
+.full-menu-item-wrapper .add-image .input-upload {
+    font-size: calc(1px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    margin-top: 3vh;
+}
 .comment-container {
     width: 50%;
     margin: auto;

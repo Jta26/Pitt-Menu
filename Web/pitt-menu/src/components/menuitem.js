@@ -7,8 +7,9 @@ import {withRouter} from 'react-router-dom';
 import Button from './button';
 import { Loader, Rating, Transition, TransitionGroup, Comment, Form, TextArea, Button as Btn } from 'semantic-ui-react';
 import { ToastContainer, toast, Flip } from 'react-toastify';
+import uuid from 'uuid';
 import PackageComponent from './packagecomponent';
-
+import Comments from './comments';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/menuitem.css';
 import '../css/fullmenuitem.css';
@@ -21,16 +22,19 @@ class MenuItem extends Component {
         this.state = {
             name: '',
             desc: false,
-            fade: '',
             images: [],
             comments: [],
             loading: false,
             rating: 0,
             errMessage: '',
             visibleMessage: false,
-            commentText: '',
-            describeActive: false
+            describeActive: false,
+            describeText: '',
+            uploadActive: false,
+            imgFile: false,
+            fade: '',
         }
+
         this.getFirebaseMenuData = this.getFirebaseMenuData.bind(this);
         this.handleFade = this.handleFade.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
@@ -39,9 +43,13 @@ class MenuItem extends Component {
         this.handleComponentType = this.handleComponentType.bind(this);
         this.handleEmptyContent = this.handleEmptyContent.bind(this);
         this.handleMapDates = this.handleMapDates.bind(this);
-        this.handleCommentChange = this.handleCommentChange.bind(this);
-        this.handleComment = this.handleComment.bind(this);
         this.handleOnDescribe = this.handleOnDescribe.bind(this);
+        this.handleDescribeChange = this.handleDescribeChange.bind(this);
+        this.handleEditDescClick = this.handleDescribeChange.bind(this);
+        this.handleOnAddImageClick = this.handleOnAddImageClick.bind(this);
+        this.handleComponentType = this.handleComponentType.bind(this);
+        this.handleImgChange = this.handleImgChange.bind(this);
+        this.handleImageUpload = this.handleImageUpload.bind(this);
     }
     //Retrieves Firebase data from the ID
     getFirebaseMenuData() {
@@ -139,7 +147,6 @@ class MenuItem extends Component {
             let latestDate = dates[0].date;
             latestDate = moment(latestDate.split('T')[0]).format('MMMM Do YYYY');
             let today = moment(new Date()).format('MMMM Do YYYY');
-            console.log(latestDate, today)
             if (latestDate === today) {
                 return <p>Serving Today, {latestDate}</p>
             }
@@ -156,6 +163,17 @@ class MenuItem extends Component {
         let ID = this.props.itemID;
         this.props.history.push('/item/' + ID);
         
+    }
+    handleOnAddImageClick() {
+        let ID = this.props.itemID;
+        let firebase = this.props.firebase;
+        let user = firebase.auth.currentUser;
+        if (user != null) {
+            //Add Image Here
+        }
+        else {
+            toast.error('Login to Post New Images.', {autoClose: 10000, toastId: 1});
+        }
     }
     //This function gets all of the ratings for the item, averages
     handleOnRate(e, {rating, maxRating}) {
@@ -191,32 +209,83 @@ class MenuItem extends Component {
             }, this.props.time * 400)
         }
     }
-    handleCommentChange(event) {
-        this.setState({commentText: event.target.value});
-    }
-    handleComment() {
-        let firebase = this.props.firebase;
-        let user = firebase.auth.currentUser;
-        let time = new Date().toISOString();
-        let name
-        let email
-        let uid
-        console.log(time);
-        if (user != null) {
-            email = user.email;
-            uid = user.uid;
-            let comment = this.state.commentText;
-            firebase.database.ref(`/items/${this.props.itemID}/comments`).push([
-                time,
-                email,
-                comment
-            ]);
-        }
+    handleDescribeChange(event) {
+        this.setState({describeText: event.target.value});
     }
     handleOnDescribe() {
+        console.log(this.state.describeActive);
+       
+        let firebase = this.props.firebase;
+        let user = firebase.auth.currentUser;
+        let itemID = this.props.itemID;
+        if (this.state.describeText === '' && this.state.describeActive) {
+            this.setState({
+                describeActive: false
+            });
+            return;
+        }
+        if (user != null) {
+            if (this.state.describeActive == false) {
+                this.setState({
+                    describeActive: !this.state.describeActive
+                });
+            }
+            else {
+                console.log('NEW DESC');
+                firebase.database.ref(`/items/${itemID}/desc`).set(this.state.describeText);
+                this.setState({
+                    describeActive: false,
+                    describeText: ''
+                });
+                toast.success('Description Set', {autoClose: 10000, toastId: 1});
+            }
+        }
+        else {
+            toast.error('Login to Add Content.', {autoClose: 10000, toastId: 1});
+        }
+    }
+    handleImgChange(event) {
         this.setState({
-            describeActive: !this.state.describeActive
-        })
+            imgFile: event.target.files[0]
+        });
+    }
+    handleImageUpload() {
+        let itemID = this.props.itemID;
+        let firebase = this.props.firebase;
+        let user = firebase.auth.currentUser;
+        let database = firebase.database;
+        if (user != null) {
+            if (!this.state.uploadActive) {
+                this.setState({
+                    uploadActive: true
+                });
+                return
+            }
+            else if (this.state.uploadActive && !this.state.imgFile) {
+                this.setState({
+                    uploadActive: false
+                });
+                return
+            }
+            else {
+                //upload image to firebase here
+                let file = this.state.imgFile
+                firebase.StoreItemImageFromFile(itemID, file, (value, err) => {
+                    if (err) {
+                        toast.error(err, {autoClose: 10000, toastId: 2});
+                    }
+                    else {
+                        toast.success('Image Uploaded', {autoClose: 10000, toastId: 1})
+                    }
+
+                    
+                });
+            }
+        }
+        else {
+            toast.error('Login to Add Content.', {autoClose: 10000, toastId: 1});
+        }
+
     }
     handleComponentType() {
         if (this.props.isFullItem) {
@@ -230,7 +299,17 @@ class MenuItem extends Component {
                     <div className='img-container'>
                         <div className='img-wrapper'>
                             {this.state.images.length > 0 ?
-                                <Carousel emulateTouch showThumbs={false} showArrows showStatus={false} useKeyboardArrows>
+                                <Carousel 
+                                emulateTouch 
+                                showThumbs={false} 
+                                showArrows 
+                                showStatus={false} 
+                                infiniteLoop 
+                                dynamicHeight 
+                                useKeyboardArrows
+                                autoPlay
+                                selectedItem={this.state.CarouselItem}
+                                onChange={(item) => this.setState({CarouselItem: item})}>
                                     {this.state.images.map((img) => {
                                         return (
                                             <div>
@@ -243,6 +322,7 @@ class MenuItem extends Component {
                                 <img src={this.state.images}/>
                             }
                         </div>
+                        
                     </div>
                     
                     <div className='title-bar-wrapper'>
@@ -257,25 +337,56 @@ class MenuItem extends Component {
                         </div>
                         <div className='desc-wrapper'>
                         
-                        <p>{this.state.desc == 'Add Description' ?  
+                        <div className='desc'>{this.state.desc == undefined ?  
                                 <div>
-                                    <Button text={'Add Description'} fade time={1} onClick={this.handleOnDescribe}></Button>
+                                    <div className={'add-desc'}>
+                                    <Button  text={'Add Description'} fade time={0} onClick={this.handleOnDescribe}></Button>
+                                    </div>
+                                    
                                     <TransitionGroup animation={'fade down'} duration={500}>
                                         {
                                             this.state.describeActive 
                                             &&
                                             <Form className='describe-ta'>
-                                                <TextArea placeholder={"Share what it's like"}></TextArea>
+                                                <TextArea placeholder={"Share what it's like"} onChange={this.handleDescribeChange}></TextArea>
                                             </Form>
                                         } 
                                     </TransitionGroup>
-                                  
+                                   
                                     
                                 </div>
                             : 
-                            this.state.desc}
-                        </p>
+                                <div>
+                                    <p>{this.state.desc}</p>
+                                    <div className='add-desc'>
+                                        <Button text={'Edit Description'} fade time={1} onClick={this.handleOnDescribe}/>
+                                    </div>
+                                    <TransitionGroup animation={'fade down'} duration={500}>
+                                        {
+                                            this.state.describeActive 
+                                            &&
+                                            <Form className='describe-ta'>
+                                                <TextArea placeholder={"Share what it's like"} onChange={this.handleDescribeChange}></TextArea>
+                                            </Form>
+                                        } 
+                                    </TransitionGroup>
+                                </div>
+                              }
+                            
+                        </div>
+                        <div className={`add-image`}>
+                            <Button text={'Add Image'} fade time={2} onClick={this.handleImageUpload}/>
+                            <TransitionGroup animation={'fade down'} duration={500}>
+                            {
+                                this.state.uploadActive && 
+                                    <input type='file' className={'input-upload'} onChange={this.handleImgChange}/>
+                                
+                            }
+                            </TransitionGroup>
+                        </div>
+                        
                     </div>
+                    
                     </div>
                  
                     <ToastContainer
@@ -292,9 +403,11 @@ class MenuItem extends Component {
             
                 />
                 </div>
+
                 <div className='comment-container'>
                     <h1>What's your experience with {this.state.name}?</h1>
-                    <Comment.Group>
+                    <Comments firebase={this.props.firebase} itemID={this.props.itemID} comments={this.state.comments}/>
+                    {/* <Comment.Group>
                         {this.state.comments.map(comment => {
                             console.log(comment)
                         return(
@@ -314,7 +427,7 @@ class MenuItem extends Component {
                    <Form reply>
                     <Form.TextArea onChange={this.handleCommentChange} />
                     <Btn content='Add Comment' labelPosition='left' icon='edit' primary onClick={this.handleComment} />
-                    </Form>
+                    </Form> */}
                </div>
                </div>
             )
@@ -335,24 +448,33 @@ class MenuItem extends Component {
             )
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
         this.handleFade();
-        this.getFirebaseMenuData();
+        // this.getFirebaseMenuData();
         this.getRating();
-        
+        this.props.firebase.GetItemData(this.props.itemID, (itemData) => {
+            console.log(itemData);
+            this.setState({
+                name: itemData.name,
+                desc: itemData.desc,
+                images: itemData.images,
+                comments: itemData.comments,
+                loading: false
+            });
+        });
     }
     componentDidCatch() {
         
     }
     componentDidUpdate() {
         this.handleEmptyContent();
+
         
     }
     render() {
         return (
             <div>
-                
-                {this.handleComponentType()}
+               {this.handleComponentType()}
             </div>
         )
     }

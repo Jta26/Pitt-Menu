@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { FirebaseContext } from './components/Firebase';
 import Header from './components/header';
 import MenuControl from './components/menucontrol';
+import './css/dashboard.css';
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -25,12 +26,15 @@ class Dashboard extends Component {
         return(
             <div>
 
-<FirebaseContext.Consumer>
+            <FirebaseContext.Consumer>
                 {firebase => <Header firebase={firebase}/>}
             </FirebaseContext.Consumer>
-            <FirebaseContext.Consumer>
-                                {firebase => <MenuControl firebase={firebase} date={this.FormatDate(new Date())}/>}
-                            </FirebaseContext.Consumer>
+            <div className='dash-wrapper'>
+                <h1>Today's Menu</h1>
+                <FirebaseContext.Consumer>
+                    {firebase => <MenuControl firebase={firebase} date={this.FormatDate(new Date())}/>}
+                </FirebaseContext.Consumer>
+            </div>
             </div>
         )
     }

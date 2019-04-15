@@ -1,0 +1,12 @@
+.dash-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--side-color);
+    height: 100vh;
+    flex-direction: column;
+}
+.dash-wrapper h1 {
+    color: white;
+}
