@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: process.env.DBCONN,
     user: process.env.DBUSER,
     password: process.env.DBPASS,
-    database: 'menu_parser_db'
+    database: 'pitt_menu'
 });
 //Connect to the database.
 connection.connect(function(err) {

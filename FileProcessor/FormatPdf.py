@@ -96,7 +96,7 @@ def GetMenuType(file):
                         return False
 #Uses Tabula to convert pdf to pandas Dataframe.
 def GetDataFrame(file):
-        df = read_pdf(file)
+        df = read_pdf(file)     
         df = pd.DataFrame(df)
         df = df.fillna('')
         return df

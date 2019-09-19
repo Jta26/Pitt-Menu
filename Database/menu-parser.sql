@@ -1,6 +1,6 @@
-DROP DATABASE menu_parser_db;
-CREATE DATABASE menu_parser_db;
-USE menu_parser_db;
+DROP DATABASE pitt_menu;
+CREATE DATABASE pitt_menu;
+USE pitt_menu;
 
 CREATE TABLE Item (
 	ItemID INT UNIQUE NOT NULL AUTO_INCREMENT,

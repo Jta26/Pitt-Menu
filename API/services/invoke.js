@@ -2,7 +2,7 @@
 //for callling the set of locally hosted Python Scripts
 //that get new data from the Metz Website.
 
-//Takes in nothing, Returns a promise when the script is finished.
+//Takes in nothing, Returns a promise that comes back when the script is finished.
 function InvokePython() {
     console.log('invoking')
     return new Promise((res, rej) => {
@@ -16,9 +16,4 @@ function InvokePython() {
         })
     });
 }
-
-// InvokeScript.then((data) => {
-//     console.log(data.toString());
-// })
-
 module.exports = InvokePython;
