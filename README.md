@@ -8,12 +8,13 @@ Repo for my undergraduate capstone project. The project is a fullstack applicati
  - [Node.JS REST API](#nodejs-rest-api)
  - [React Web App](#react-web-app)
  - [Systems Architecture](#systems-architecture)
+
 ## Python PDF Processor <a name='python-pdf-processor'></a>
 This part of the project is found under the [File Processor](https://github.com/Jta26/Menu-Parser/tree/master/FileProcessor) folder and is written in python. It downloads the university menus from a source link and differentiates between lunch and dinner menus. It then reads the items from the menus and uploads them to the MySql database.
 
 To Run, install the dependenices using:
 
-`pip install [dependency]`
+`pip3 install [dependency]`
 
 Then:
 
@@ -23,7 +24,7 @@ Then:
 ### Python Dependencies
 - [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/)
 - [Pandas](https://pandas.pydata.org/)
-- [tabula-py](https://github.com/chezou/tabula-py)
+- [tabula-py 1.3.1](https://github.com/chezou/tabula-py)
 - [pdftotext](https://pypi.org/project/pdftotext/)
 - [Arrow](https://github.com/crsmithdev/arrow)
 
