@@ -21,7 +21,13 @@ async function VerifyFirebaseItemImageContent() {
             });
             let data = await searchResponse.text();
             let $ = cheerio.load(data);
-            let imgUrl = JSON.parse($('.rg_meta').first().text()).ou;
+            let imUrl;
+            try {
+                imgUrl = JSON.parse($('.rg_meta').first().text()).ou;
+            }
+            catch {
+                continue;
+            }
             let extension = imgUrl.split(/\#|\?/)[0].split('.').pop().trim();
             let imgResponse;
             try {
