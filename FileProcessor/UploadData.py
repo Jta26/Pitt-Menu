@@ -2,14 +2,17 @@ import pymysql.cursors
 import calendar
 import datetime
 import arrow
+import os
 from termcolor import colored, cprint
+from dotenv import load_dotenv
+load_dotenv()
 
 def UploadMenu(date, menutype, items):
     connection = pymysql.connect(
-    host='jta26-captstone-db.c9cjk2mrsd30.us-east-2.rds.amazonaws.com',
-    user='admin',
-    password='google951',
-    db='menu_parser_db',
+    host=os.getenv('DBCONN'),
+    user=os.getenv('DBUSER'),
+    password=os.getenv('DBPASS'),
+    db='pitt_menu',
     charset='utf8mb4',
     cursorclass=pymysql.cursors.DictCursor)
     
