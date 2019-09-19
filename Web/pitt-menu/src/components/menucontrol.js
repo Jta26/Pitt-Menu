@@ -21,7 +21,7 @@ class MenuControl extends Component {
      GetMenus(date) {
          console.log(date)
          this.setState({loading: true});
-        fetch(`https://api.joelaustin.net/menu/${date}/?type=${0}`)
+        fetch(`https://34.68.102.189/menu/${date}/?type=${0}`)
         .then((res) => {
              return res.json();
         }).then((menu) => {
@@ -37,7 +37,7 @@ class MenuControl extends Component {
             });
             this.setState({loading: false});
             
-            fetch(`https://api.joelaustin.net/menu/${date}/?type=${1}`)
+            fetch(`https://34.68.102.189/menu/${date}/?type=${1}`)
             .then((res) => {
                  return res.json();
             }).then((menu) => {
