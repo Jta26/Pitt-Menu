@@ -1,5 +1,5 @@
 # Pitt-Menu
-Repo for my undergraduate capstone project. The project is a fullstack application that parsers a PDF of the menu from my school's dining hall, and uploads it to a normalized database. The data is then used in a Node.JS REST API and delivered to multiple front-end apps. The front end apps include a mobile and desktop friendly React App, as well as a Google Home Action for getting the lunch and dinner menu for the day.
+Repo for my undergraduate capstone project. The project is a fullstack application that parses a PDF of the menu from my school's dining hall, and uploads it to a normalized database. The data is then used in a Node.JS REST API and delivered to multiple front-end apps. The front end apps include a mobile and desktop friendly React App, as well as a Google Home Action for getting the lunch and dinner menu for the day.
 
 
 ## Table of Contents 
