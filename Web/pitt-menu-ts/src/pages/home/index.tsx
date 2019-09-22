@@ -1,6 +1,7 @@
 import React from 'react';
 import './home.scss';
 import Menu from '../../components/menu';
+import Button from '../../components/button';
 
 const Home = () => {
     return (
@@ -8,17 +9,12 @@ const Home = () => {
             <div className='content'>
                 <div className='title'>
                     <h1>Pitt Menu</h1>
-                    <h2>LoginButton</h2>
-                    <h2>SignUpButton</h2>
-                </div>
-                <div className='menu'>
-                    <div className='menu-title'>
-                        <h1>Today&apos;s Feast</h1>
-                    </div>
-                    
-                    <Menu/>
+                    <Button text='Browse'/>
+                    <Button text='Login'/>
+                    <Button text='Sign Up'/>
                     
                 </div>
+                <Menu/>
             </div>
             
         </div>

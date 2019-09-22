@@ -1,6 +1,14 @@
 .menu-list {
-    height: 75vh;
-    width: 95%;
+    height: 100%;
+    width: 90%;
     margin: auto;
    
 }
+
+
+
+@media (max-width: 1366px) {
+    .menu-list {
+        height: 100%;
+    }
+} 
