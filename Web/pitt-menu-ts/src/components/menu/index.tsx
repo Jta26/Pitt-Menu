@@ -4,6 +4,7 @@ import {Scrollbars} from 'react-custom-scrollbars';
 import './menu.scss';
 
 import Item from '../item';
+import MenuPicker from '../menuPicker';
 
 const menu = () => {
 
@@ -34,6 +35,9 @@ const menu = () => {
         <div className='menu'>
             <div className='menu-title'>
                 <h1>Today&apos;s Feast</h1>
+            </div>
+            <div>
+                <MenuPicker/>
             </div>
             <div className='menu-list'>
                 {window.innerWidth > 1366 ? 

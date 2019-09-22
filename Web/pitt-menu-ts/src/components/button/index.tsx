@@ -11,8 +11,8 @@ interface IButtonProps {
 const Button = (props: IButtonProps) => {
 
     return (
-        <div onClick={props.onPress} className='button-container'>
-            <button><span>{props.text}</span></button>
+        <div className='button-container'>
+            <button onClick={props.onPress}><span>{props.text}</span></button>
         </div>
     );
 };

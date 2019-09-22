@@ -1,0 +1,42 @@
+
+.menu-picker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    position: relative;
+    font-size: 1em;
+    margin: 10px;
+    
+    .breakfast {
+        width: 33%
+    }
+    .lunch {
+        width: 33%;
+     
+    }
+    .dinner {
+        width: 33%;
+    
+    }
+    .menu-selection {
+        z-index: 1;
+        transition: color .5s ease;
+        font-size: 1.1rem;
+        &:hover {
+            // text-decoration: underline;
+            background-color: #ae52d4;
+            border-radius: 20px;
+        }
+        
+    }
+    .slider {
+        border-radius: 20px;
+        background-color: #7b1fa2;
+        height: 100%;
+        z-index: -1;
+        position: absolute;
+        transition: left .5s ease;
+        width: 33%;
+    }
+}
